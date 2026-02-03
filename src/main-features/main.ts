@@ -8,6 +8,7 @@ import "./profile.ts";
 import "../main-features/keybinds.ts";
 import "./appearance/background-image.ts";
 import "./appearance/weather-effects.ts";
+import { initializeAssignmentReminders } from "./assignment-reminders.js";
 // Games
 import "../games/games.ts";
 import "../games/breakout.ts";
@@ -448,6 +449,7 @@ async function main() {
   }
 
   await apply();
+  initializeAssignmentReminders();
 }
 
 main();

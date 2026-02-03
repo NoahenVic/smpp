@@ -9,8 +9,36 @@ import {
   setEditMode,
   toggleBag,
 } from "../widgets/widgets.js";
+import { openURL } from "../common/utils.js";
 
 export type Keybind = Uppercase<string> | symbol | "None" | "Space";
+
+function openPageShortcut(selector: string, fallbackUrl: string) {
+  const button = document.querySelector(selector) as HTMLElement | null;
+  if (button) {
+    button.click();
+    return;
+  }
+  openURL(fallbackUrl);
+}
+
+function handlePageNavigationKeybind(key: string): boolean {
+  if (!keybinds?.pageNavigation) return false;
+
+  switch (key) {
+    case keybinds.pageNavigation.home:
+      openURL("/");
+      return true;
+    case keybinds.pageNavigation.messages:
+      openPageShortcut(".js-btn-messages", "/messages");
+      return true;
+    case keybinds.pageNavigation.planner:
+      openURL("/planner");
+      return true;
+    default:
+      return false;
+  }
+}
 
 document.addEventListener("keyup", async (e) => {
   if (e.target?.tagName === "INPUT") return;
@@ -29,6 +57,8 @@ document.addEventListener("keyup", async (e) => {
     do_qm("dmenu");
     return;
   }
+
+  if (handlePageNavigationKeybind(key)) return;
 
   // General
   switch (key) {

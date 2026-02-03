@@ -11,11 +11,18 @@
       "blur": "number"
     },
     "weatherOverlay": {
-      "type": ["realtime", "rain", "snow"],
+      "type": [
+        "realtime",
+        "rain",
+        "snow"
+      ],
       "amount": "number",
       "opacity": "number"
     },
-    "tabLogo": ["sm", "smpp"],
+    "tabLogo": [
+      "sm",
+      "smpp"
+    ],
     "news": "boolean"
   },
   "topNav": {
@@ -48,7 +55,15 @@
       "widgetEditMode": "keybind",
       "widgetBag": "keybind",
       "settings": "keybind",
-      "gc": "keybind"
+      "gc": "keybind",
+      "pageNavigation": {
+        "home": "keybind",
+        "messages": "keybind",
+        "planner": "keybind"
+      }
+    },
+    "reminders": {
+      "assignments": "boolean"
     }
   }
 }

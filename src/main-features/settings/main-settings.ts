@@ -66,12 +66,20 @@ export type Settings = {
       itemScore: boolean;
       toplevelConfig: boolean;
     };
+    reminders: {
+      assignments: boolean;
+    };
     keybinds: {
       dmenu: Keybind;
       widgetEditMode: Keybind;
       widgetBag: Keybind;
       settings: Keybind;
       gc: Keybind;
+      pageNavigation: {
+        home: Keybind;
+        messages: Keybind;
+        planner: Keybind;
+      };
     };
   };
 };
@@ -584,6 +592,14 @@ export class SettingsWindow extends BaseWindow {
             settings.other.discordButton;
         }
 
+        const assignmentsReminderButton = document.getElementById(
+          "settings-page-assignments-reminder-button"
+        );
+        if (assignmentsReminderButton) {
+          (assignmentsReminderButton as HTMLInputElement).checked =
+            settings.other.reminders.assignments;
+        }
+
         function loadKeybind(id: string, key: Keybind) {
           let keybindInput = document.getElementById(id) as HTMLInputElement;
           if (!keybindInput) return;
@@ -613,6 +629,19 @@ export class SettingsWindow extends BaseWindow {
             "settings-page-gc-keybinding",
             settings.other.keybinds.gc
           );
+
+        loadKeybind(
+          "settings-page-shortcut-home-keybinding",
+          settings.other.keybinds.pageNavigation.home
+        );
+        loadKeybind(
+          "settings-page-shortcut-messages-keybinding",
+          settings.other.keybinds.pageNavigation.messages
+        );
+        loadKeybind(
+          "settings-page-shortcut-planner-keybinding",
+          settings.other.keybinds.pageNavigation.planner
+        );
 
         break;
       }
@@ -842,6 +871,10 @@ export class SettingsWindow extends BaseWindow {
           "settings-page-discord-button"
         );
 
+        settings.other.reminders.assignments = getCheckboxValue(
+          "settings-page-assignments-reminder-button"
+        );
+
         // Keybindings
         settings.other.keybinds.dmenu = saveKeybind(
           "settings-page-quick-menu-keybinding"
@@ -861,6 +894,16 @@ export class SettingsWindow extends BaseWindow {
             "settings-page-gc-keybinding"
           );
         }
+
+        settings.other.keybinds.pageNavigation.home = saveKeybind(
+          "settings-page-shortcut-home-keybinding"
+        );
+        settings.other.keybinds.pageNavigation.messages = saveKeybind(
+          "settings-page-shortcut-messages-keybinding"
+        );
+        settings.other.keybinds.pageNavigation.planner = saveKeybind(
+          "settings-page-shortcut-planner-keybinding"
+        );
 
         applyOther(settings.other);
         break;
@@ -1466,6 +1509,17 @@ export class SettingsWindow extends BaseWindow {
           )
         );
 
+        this.settingsPage.appendChild(createSectionTitle("Reminders"));
+        this.settingsPage.appendChild(
+          createDescription("Task reminders at 24h, 6h and 1h before deadline.")
+        );
+        this.settingsPage.appendChild(
+          createSettingsButtonWithLabel(
+            "settings-page-assignments-reminder-button",
+            "Assignment reminders"
+          )
+        );
+
         this.settingsPage.appendChild(createSectionTitle("Keybindings"));
         this.settingsPage.appendChild(
           createDescription("Customize your keybindings")
@@ -1498,6 +1552,29 @@ export class SettingsWindow extends BaseWindow {
             createKeybindInput("settings-page-gc-keybinding", "Global Chat")
           );
         }
+
+        this.settingsPage.appendChild(createSectionTitle("Page shortcuts"));
+        this.settingsPage.appendChild(
+          createDescription("Open key pages quickly from any Smartschool page.")
+        );
+        this.settingsPage.appendChild(
+          createKeybindInput(
+            "settings-page-shortcut-home-keybinding",
+            "Go to Home"
+          )
+        );
+        this.settingsPage.appendChild(
+          createKeybindInput(
+            "settings-page-shortcut-messages-keybinding",
+            "Go to Messages"
+          )
+        );
+        this.settingsPage.appendChild(
+          createKeybindInput(
+            "settings-page-shortcut-planner-keybinding",
+            "Go to Planner"
+          )
+        );
 
         this.settingsPage.appendChild(createSectionTitle("Reset"));
         this.settingsPage.appendChild(

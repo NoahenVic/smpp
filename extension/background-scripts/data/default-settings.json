@@ -57,6 +57,14 @@
     "widgetEditMode": "E",
     "widgetBag": "Space",
     "settings": ",",
-    "gc": "G"
+    "gc": "G",
+    "pageNavigation": {
+      "home": "H",
+      "messages": "M",
+      "planner": "P"
+    }
+  },
+  "reminders": {
+    "assignments": true
   }
 }
