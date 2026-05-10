@@ -277,7 +277,9 @@
     if (loginAppLeft) {
       loginAppLeft.innerHTML = " ";
     }
-    const platformIndicator = document.getElementsByClassName("login-app__platform-indicator").item(0);
+    const platformIndicator = document.querySelector(
+      ".login-app__platform-indicator"
+    );
     if (platformIndicator) {
       platformIndicator.innerHTML = '<h1 class="logintitle">Smartschool ++</h1>';
     }
@@ -5434,6 +5436,12 @@ Is it scaring you off?`,
     if (performanceModeToggle) {
       data2.other.performanceMode = performanceModeToggle.checked;
     }
+    const focusModeToggle = document.getElementById(
+      "focus-mode-toggle"
+    );
+    if (focusModeToggle) {
+      data2.other.focusMode = focusModeToggle.checked;
+    }
     await browser.runtime.sendMessage({ action: "setSettingsData", data: data2 });
     await loadQuickSettings();
     if (settingsWindow) {
@@ -5460,9 +5468,19 @@ Is it scaring you off?`,
     if (performanceModeToggle) {
       performanceModeToggle.checked = data2.other.performanceMode;
     }
+    const focusModeToggle = document.getElementById(
+      "focus-mode-toggle"
+    );
+    if (focusModeToggle) {
+      focusModeToggle.checked = data2.other.focusMode;
+    }
     const performanceModeInfo = document.getElementById("performance-mode-info");
     if (performanceModeInfo) {
       performanceModeInfo.innerHTML = `Toggle performance mode ${data2.other.performanceMode ? "<span class='green-underline'>Enabled</span>" : "<span class='red-underline'>Disabled</span>"}`;
+    }
+    const focusModeInfo = document.getElementById("focus-mode-info");
+    if (focusModeInfo) {
+      focusModeInfo.innerHTML = `Toggle focus mode ${data2.other.focusMode ? "<span class='green-underline'>Enabled</span>" : "<span class='red-underline'>Disabled</span>"}`;
     }
     await compactThemeSelector.updateInput();
   }
@@ -5499,6 +5517,16 @@ Is it scaring you off?`,
     performanceModeTooltipLabel.innerHTML += performanceModeSvg;
     const performanceModeInfo = document.createElement("span");
     performanceModeInfo.id = "performance-mode-info";
+    const focusModeLabel = document.createElement("label");
+    focusModeLabel.className = "performanceModeTooltipLabel";
+    focusModeLabel.id = "focusModeTooltipLabel";
+    const focusModeToggle = document.createElement("input");
+    focusModeToggle.type = "checkbox";
+    focusModeToggle.id = "focus-mode-toggle";
+    focusModeLabel.appendChild(focusModeToggle);
+    focusModeLabel.innerHTML += performanceModeSvg;
+    const focusModeInfo = document.createElement("span");
+    focusModeInfo.id = "focus-mode-info";
     const themeHeading = document.createElement("h3");
     themeHeading.className = "quick-settings-title";
     themeHeading.textContent = "Theme:";
@@ -5540,9 +5568,11 @@ Is it scaring you off?`,
     themeContainer.appendChild(themeHeading);
     themeContainer.appendChild(compactThemeSelector.element);
     parent.appendChild(performanceModeTooltipLabel);
+    parent.appendChild(focusModeLabel);
     parent.appendChild(themeContainer);
     parent.appendChild(wallpaperTopContainer);
     parent.appendChild(performanceModeInfo);
+    parent.appendChild(focusModeInfo);
     parent.appendChild(extraSettingsButton);
     return parent;
   }
@@ -5566,6 +5596,16 @@ Is it scaring you off?`,
       });
       tooltipLabel.addEventListener("mouseout", () => {
         tooltipInfo.style.opacity = "0";
+      });
+    }
+    const focusTooltipLabel = document.getElementById("focusModeTooltipLabel");
+    const focusTooltipInfo = document.getElementById("focus-mode-info");
+    if (focusTooltipLabel && focusTooltipInfo) {
+      focusTooltipLabel.addEventListener("mouseover", () => {
+        focusTooltipInfo.style.opacity = "1";
+      });
+      focusTooltipLabel.addEventListener("mouseout", () => {
+        focusTooltipInfo.style.opacity = "0";
       });
     }
     document.addEventListener("click", (e5) => {
@@ -5957,6 +5997,10 @@ Is it scaring you off?`,
             "settings-page-max-assignments-slider",
             "TakenWidget.maxAssignments"
           );
+          await loadWidgetSettingSlider(
+            "settings-page-assignment-days-slider",
+            "TakenWidget.foresightDays"
+          );
           if (!liteMode) {
             const showSnakeGridButton = document.getElementById(
               "settings-page-show-snake-grid-button"
@@ -5979,6 +6023,12 @@ Is it scaring you off?`,
           );
           if (performanceModeButton) {
             performanceModeButton.checked = settings.other.performanceMode;
+          }
+          const focusModeButton = document.getElementById(
+            "settings-page-focus-mode-button"
+          );
+          if (focusModeButton) {
+            focusModeButton.checked = settings.other.focusMode;
           }
           const splashTextButton = document.getElementById(
             "settings-page-splash-text-button"
@@ -6156,6 +6206,11 @@ Is it scaring you off?`,
             "TakenWidget.maxAssignments",
             "number"
           );
+          await updateWidgetSetting(
+            "settings-page-assignment-days-slider",
+            "TakenWidget.foresightDays",
+            "number"
+          );
           if (!liteMode) {
             await updateWidgetSetting(
               "settings-page-show-snake-grid-button",
@@ -6168,6 +6223,9 @@ Is it scaring you off?`,
         case "other": {
           settings.other.performanceMode = getCheckboxValue(
             "settings-page-performance-mode-button"
+          );
+          settings.other.focusMode = getCheckboxValue(
+            "settings-page-focus-mode-button"
           );
           settings.other.splashText = getCheckboxValue(
             "settings-page-splash-text-button"
@@ -6646,6 +6704,14 @@ Is it scaring you off?`,
               "Max assignments"
             )
           );
+          this.settingsPage.appendChild(
+            createLabeledSlider(
+              "7",
+              "60",
+              "settings-page-assignment-days-slider",
+              "Days ahead"
+            )
+          );
           if (!liteMode) {
             this.settingsPage.appendChild(createMainTitle("Games"));
             this.settingsPage.appendChild(createSectionTitle("Snake"));
@@ -6672,6 +6738,12 @@ Is it scaring you off?`,
             createSettingsButtonWithLabel(
               "settings-page-performance-mode-button",
               "Performance mode"
+            )
+          );
+          this.settingsPage.appendChild(
+            createSettingsButtonWithLabel(
+              "settings-page-focus-mode-button",
+              "Focus mode"
             )
           );
           this.settingsPage.appendChild(createSectionTitle("Login"));
@@ -10256,7 +10328,11 @@ Your version: <b>${data2.plantVersion}</b> is not the newest available version`;
     return cmd_list;
   }
   function add_quick(name2, url, favorite = void 0) {
-    let quick = { name: name2.toLowerCase(), url, favorite: favorite ?? false };
+    let quick = {
+      name: name2.toLowerCase(),
+      url,
+      favorite: favorite ?? false
+    };
     for (let i5 = 0; i5 < quicks.length; i5++) {
       if (quicks[i5].name == name2) {
         quick.favorite = favorite ?? quicks[i5].favorite ?? false;
@@ -10289,7 +10365,9 @@ Your version: <b>${data2.plantVersion}</b> is not the newest available version`;
     }
     quicks = loadedQuicks.map(normalizeQuick);
     const migratedFavoriteKeys = quicks.filter((quick) => quick.favorite).map((quick) => makeFavoriteKey("quick", quick.name));
-    const mergedFavoriteKeys = [.../* @__PURE__ */ new Set([...favoriteKeys, ...migratedFavoriteKeys])];
+    const mergedFavoriteKeys = [
+      .../* @__PURE__ */ new Set([...favoriteKeys, ...migratedFavoriteKeys])
+    ];
     if (mergedFavoriteKeys.length !== favoriteKeys.length) {
       favoriteKeys = mergedFavoriteKeys;
       await saveFavoriteKeys();
@@ -10397,6 +10475,9 @@ Your version: <b>${data2.plantVersion}</b> is not the newest available version`;
   }
   async function do_qm(opener = "") {
     await loadFavoriteKeys();
+    const settings = await browser.runtime.sendMessage({
+      action: "getSettingsData"
+    });
     let cmd_list = quick_cmd_list().concat(
       goto_items.map(
         (item) => createQuickMenuItem("goto", item.value, item.meta, { url: item.url })
@@ -10411,6 +10492,16 @@ Your version: <b>${data2.plantVersion}</b> is not the newest available version`;
       )
     ).concat([
       createQuickMenuItem("cmd", "home", "command"),
+      createQuickMenuItem("cmd", "planner", "command"),
+      createQuickMenuItem("cmd", "messages", "command"),
+      createQuickMenuItem("cmd", "results", "command"),
+      createQuickMenuItem("cmd", "assignments", "command"),
+      createQuickMenuItem("cmd", "today", "command"),
+      createQuickMenuItem("cmd", "focus", "command"),
+      createQuickMenuItem("cmd", "theme random", "command"),
+      createQuickMenuItem("cmd", "copy link", "command"),
+      createQuickMenuItem("cmd", "reload", "command"),
+      createQuickMenuItem("cmd", "top", "command"),
       createQuickMenuItem("cmd", "quick add", "command"),
       createQuickMenuItem("cmd", "quick remove", "command"),
       createQuickMenuItem("cmd", "unbloat", "command"),
@@ -10466,8 +10557,62 @@ Your version: <b>${data2.plantVersion}</b> is not the newest available version`;
           case "home":
             openURL2("/");
             return;
+          case "planner":
+            openURL2("/planner");
+            return;
+          case "messages":
+            openURL2("/messages");
+            return;
+          case "results":
+            openURL2("/results");
+            return;
+          case "assignments":
+            openURL2("/planner");
+            return;
+          case "today":
+            openURL2("/");
+            return;
+          case "focus":
+            settings.other.focusMode = !settings.other.focusMode;
+            await browser.runtime.sendMessage({
+              action: "setSettingsData",
+              data: settings
+            });
+            document.body.classList.toggle(
+              "smpp-focus-mode",
+              settings.other.focusMode
+            );
+            new Toast(
+              settings.other.focusMode ? "Focus mode enabled" : "Focus mode disabled",
+              "info"
+            ).render();
+            return;
           case "clearsettings":
             clearAllData();
+            return;
+          case "theme random":
+            {
+              const themes = await browser.runtime.sendMessage({
+                action: "getThemes",
+                categories: ["quickSettings"],
+                includeHidden: false
+              });
+              const themeNames = Object.keys(themes);
+              if (themeNames.length === 0) return;
+              const nextTheme = themeNames[Math.floor(Math.random() * themeNames.length)];
+              await updateTheme(nextTheme);
+              new Toast("Theme changed", "success").render();
+            }
+            return;
+          case "copy link":
+            await navigator.clipboard.writeText(window.location.href);
+            new Toast("Page link copied", "success").render();
+            return;
+          case "reload":
+            window.location.reload();
+            return;
+          case "top":
+            window.scrollTo({ top: 0, behavior: "smooth" });
             return;
           case "ridge":
             document.body.classList.add("ridge");
@@ -12167,6 +12312,259 @@ Your version: <b>${data2.plantVersion}</b> is not the newest available version`;
   };
   registerWidget(new SpaceInvadersWidget());
 
+  // src/games/reaction.ts
+  var ReactionWidget = class extends WidgetBase {
+    timeoutId;
+    startedAt;
+    state = "idle";
+    root;
+    status;
+    score;
+    button;
+    get category() {
+      return "games";
+    }
+    get name() {
+      return "ReactionWidget";
+    }
+    defaultSettings() {
+      return {
+        bestTime: null
+      };
+    }
+    clearPendingRound() {
+      if (this.timeoutId) {
+        clearTimeout(this.timeoutId);
+        this.timeoutId = null;
+      }
+    }
+    setState(state) {
+      this.state = state;
+      this.root.dataset.state = state;
+    }
+    renderScore() {
+      this.score.textContent = this.settings.bestTime ? `Best: ${this.settings.bestTime} ms` : "Best: --";
+    }
+    armRound() {
+      this.clearPendingRound();
+      this.setState("waiting");
+      this.status.textContent = "Wait for green...";
+      this.button.textContent = "Wait";
+      const delay2 = 1200 + Math.random() * 2800;
+      this.timeoutId = setTimeout(() => {
+        this.startedAt = performance.now();
+        this.setState("ready");
+        this.status.textContent = "Click now!";
+        this.button.textContent = "Click";
+      }, delay2);
+    }
+    async finishRound() {
+      const reactionTime = Math.round(performance.now() - this.startedAt);
+      this.setState("done");
+      this.status.textContent = `${reactionTime} ms`;
+      this.button.textContent = "Play again";
+      if (!this.settings.bestTime || reactionTime < this.settings.bestTime) {
+        await this.setSetting("bestTime", reactionTime);
+        this.status.textContent = `${reactionTime} ms - new best`;
+      }
+      this.renderScore();
+    }
+    async handlePress() {
+      if (this.state === "idle" || this.state === "done" || this.state === "early") {
+        this.armRound();
+        return;
+      }
+      if (this.state === "waiting") {
+        this.clearPendingRound();
+        this.setState("early");
+        this.status.textContent = "Too soon";
+        this.button.textContent = "Try again";
+        return;
+      }
+      if (this.state === "ready") {
+        await this.finishRound();
+      }
+    }
+    async createContent() {
+      this.root = document.createElement("div");
+      this.root.classList.add("game-container", "reaction-game");
+      this.root.dataset.state = "idle";
+      const title = document.createElement("h2");
+      title.classList.add("game-title");
+      title.textContent = "Reaction++";
+      this.score = document.createElement("span");
+      this.score.classList.add("game-score");
+      this.status = document.createElement("strong");
+      this.status.classList.add("reaction-game-status");
+      this.status.textContent = "Ready?";
+      this.button = document.createElement("button");
+      this.button.classList.add("game-button");
+      this.button.textContent = "Play";
+      this.button.addEventListener("click", () => this.handlePress());
+      this.root.append(title, this.score, this.status, this.button);
+      this.renderScore();
+      return this.root;
+    }
+    async createPreview() {
+      const preview = document.createElement("div");
+      preview.classList.add(
+        "game-container",
+        "reaction-game",
+        "reaction-preview"
+      );
+      const title = document.createElement("h2");
+      title.classList.add("game-title");
+      title.textContent = "Reaction++";
+      const status = document.createElement("strong");
+      status.classList.add("reaction-game-status");
+      status.textContent = "Click fast";
+      preview.append(title, status);
+      return preview;
+    }
+    onRemove() {
+      this.clearPendingRound();
+    }
+  };
+  registerWidget(new ReactionWidget());
+
+  // src/games/memory.ts
+  var SYMBOLS = ["A", "B", "C", "D", "E", "F"];
+  function shuffle(values) {
+    const items = [...values];
+    for (let i5 = items.length - 1; i5 > 0; i5--) {
+      const j2 = Math.floor(Math.random() * (i5 + 1));
+      [items[i5], items[j2]] = [items[j2], items[i5]];
+    }
+    return items;
+  }
+  var MemoryWidget = class extends WidgetBase {
+    cards = [];
+    selected = [];
+    locked = false;
+    moves = 0;
+    matches = 0;
+    movesElement;
+    bestElement;
+    board;
+    get category() {
+      return "games";
+    }
+    get name() {
+      return "MemoryWidget";
+    }
+    defaultSettings() {
+      return {
+        bestMoves: null
+      };
+    }
+    renderStats() {
+      this.movesElement.textContent = `${this.moves} moves`;
+      this.bestElement.textContent = this.settings.bestMoves ? `Best: ${this.settings.bestMoves}` : "Best: --";
+    }
+    createCard(symbol, index) {
+      const card = document.createElement("button");
+      card.classList.add("memory-card");
+      card.type = "button";
+      card.dataset.symbol = symbol;
+      card.dataset.index = String(index);
+      card.textContent = "?";
+      card.addEventListener("click", () => this.pickCard(card));
+      return card;
+    }
+    resetGame() {
+      this.moves = 0;
+      this.matches = 0;
+      this.selected = [];
+      this.locked = false;
+      this.cards = shuffle([...SYMBOLS, ...SYMBOLS]);
+      this.board.innerHTML = "";
+      this.cards.forEach((symbol, index) => {
+        this.board.appendChild(this.createCard(symbol, index));
+      });
+      this.renderStats();
+    }
+    reveal(card) {
+      card.classList.add("is-open");
+      card.textContent = card.dataset.symbol;
+    }
+    hide(card) {
+      card.classList.remove("is-open");
+      card.textContent = "?";
+    }
+    async finishIfDone() {
+      if (this.matches !== SYMBOLS.length) return;
+      if (!this.settings.bestMoves || this.moves < this.settings.bestMoves) {
+        await this.setSetting("bestMoves", this.moves);
+      }
+      this.renderStats();
+    }
+    async pickCard(card) {
+      if (this.locked || card.classList.contains("is-open") || card.classList.contains("is-matched")) {
+        return;
+      }
+      this.reveal(card);
+      this.selected.push(card);
+      if (this.selected.length !== 2) return;
+      this.moves += 1;
+      this.renderStats();
+      const [first, second] = this.selected;
+      if (first.dataset.symbol === second.dataset.symbol) {
+        first.classList.add("is-matched");
+        second.classList.add("is-matched");
+        this.selected = [];
+        this.matches += 1;
+        await this.finishIfDone();
+        return;
+      }
+      this.locked = true;
+      setTimeout(() => {
+        this.hide(first);
+        this.hide(second);
+        this.selected = [];
+        this.locked = false;
+      }, 650);
+    }
+    async createContent() {
+      const container = document.createElement("div");
+      container.classList.add("memory-game", "game-container");
+      const title = document.createElement("h2");
+      title.classList.add("game-title");
+      title.textContent = "Memory++";
+      const stats = document.createElement("div");
+      stats.classList.add("memory-stats");
+      this.movesElement = document.createElement("span");
+      this.bestElement = document.createElement("span");
+      stats.append(this.movesElement, this.bestElement);
+      this.board = document.createElement("div");
+      this.board.classList.add("memory-board");
+      const resetButton = document.createElement("button");
+      resetButton.classList.add("game-button");
+      resetButton.textContent = "New game";
+      resetButton.addEventListener("click", () => this.resetGame());
+      container.append(title, stats, this.board, resetButton);
+      this.resetGame();
+      return container;
+    }
+    async createPreview() {
+      const preview = document.createElement("div");
+      preview.classList.add("memory-game", "game-container", "memory-preview");
+      const title = document.createElement("h2");
+      title.classList.add("game-title");
+      title.textContent = "Memory++";
+      const board = document.createElement("div");
+      board.classList.add("memory-board");
+      for (let i5 = 0; i5 < 6; i5++) {
+        const card = document.createElement("div");
+        card.classList.add("memory-card");
+        card.textContent = "?";
+        board.appendChild(card);
+      }
+      preview.append(title, board);
+      return preview;
+    }
+  };
+  registerWidget(new MemoryWidget());
+
   // src/widgets/tutorial-widget.ts
   var TutorialWidget = class extends WidgetBase {
     constructor() {
@@ -12288,18 +12686,364 @@ Your version: <b>${data2.plantVersion}</b> is not the newest available version`;
   };
   registerWidget(new TutorialWidget());
 
+  // src/widgets/today.ts
+  function formatTime(dateString) {
+    return new Date(dateString).toLocaleTimeString("nl-NL", {
+      hour: "2-digit",
+      minute: "2-digit"
+    });
+  }
+  function isAssignment(element) {
+    return ["planned-assignments", "planned-to-dos"].includes(
+      element.plannedElementType
+    );
+  }
+  function createStat(value, label) {
+    const stat = document.createElement("div");
+    stat.classList.add("today-widget-stat");
+    const valueElement = document.createElement("strong");
+    valueElement.textContent = String(value);
+    const labelElement = document.createElement("span");
+    labelElement.textContent = label;
+    stat.append(valueElement, labelElement);
+    return stat;
+  }
+  var TodayWidget = class extends WidgetBase {
+    get category() {
+      return "other";
+    }
+    get name() {
+      return "TodayWidget";
+    }
+    async fetchTodayData() {
+      const schoolName = getSchoolName();
+      const userId = getUserId();
+      if (!schoolName || !userId) return null;
+      try {
+        const date = getCurrentDate();
+        const response = await fetch(
+          `/planner/api/v1/planned-elements/user/${userId}?from=${date}&to=${date}`
+        );
+        if (!response.ok) return null;
+        return await response.json();
+      } catch (error) {
+        console.warn("SMPP: today planner data could not be loaded.", error);
+        return null;
+      }
+    }
+    createShell() {
+      const container = document.createElement("div");
+      container.classList.add("today-widget");
+      const title = document.createElement("h2");
+      title.textContent = "Vandaag";
+      const subtitle = document.createElement("p");
+      subtitle.classList.add("today-widget-date");
+      subtitle.textContent = (/* @__PURE__ */ new Date()).toLocaleDateString("nl-NL", {
+        weekday: "long",
+        day: "numeric",
+        month: "long"
+      });
+      container.append(title, subtitle);
+      return container;
+    }
+    createEmptyState() {
+      const empty = document.createElement("p");
+      empty.classList.add("today-widget-empty");
+      empty.textContent = "Geen planning voor vandaag.";
+      return empty;
+    }
+    createNextLesson(lessons) {
+      const now = /* @__PURE__ */ new Date();
+      const nextLesson = lessons.find(
+        (lesson) => new Date(lesson.period.dateTimeTo) > now
+      );
+      const block = document.createElement("div");
+      block.classList.add("today-widget-next");
+      const label = document.createElement("span");
+      label.textContent = "Volgende";
+      const value = document.createElement("strong");
+      if (!nextLesson) {
+        value.textContent = "Geen lessen meer";
+        block.append(label, value);
+        return block;
+      }
+      const course = nextLesson.courses?.[0]?.name || nextLesson.name || "Les";
+      value.textContent = course;
+      const time = document.createElement("span");
+      time.textContent = `${formatTime(
+        nextLesson.period.dateTimeFrom
+      )} - ${formatTime(nextLesson.period.dateTimeTo)}`;
+      block.append(label, value, time);
+      return block;
+    }
+    createActions() {
+      const actions = document.createElement("div");
+      actions.classList.add("today-widget-actions");
+      const plannerButton = document.createElement("button");
+      plannerButton.textContent = "Planner";
+      plannerButton.addEventListener("click", () => openURL2("/planner"));
+      const messagesButton = document.createElement("button");
+      messagesButton.textContent = "Berichten";
+      messagesButton.addEventListener("click", () => openURL2("/messages"));
+      actions.append(plannerButton, messagesButton);
+      return actions;
+    }
+    async createContent() {
+      const container = this.createShell();
+      const loading = document.createElement("p");
+      loading.classList.add("today-widget-empty");
+      loading.textContent = "Planning laden...";
+      container.appendChild(loading);
+      this.fetchTodayData().then((data2) => {
+        loading.remove();
+        if (!Array.isArray(data2)) {
+          container.appendChild(this.createEmptyState());
+          container.appendChild(this.createActions());
+          return;
+        }
+        const activeItems = data2.filter(
+          (item) => item.resolvedStatus !== "resolved"
+        );
+        const lessons = activeItems.filter((item) => !isAssignment(item)).sort(
+          (a5, b3) => new Date(a5.period.dateTimeFrom) - new Date(b3.period.dateTimeFrom)
+        );
+        const assignments = activeItems.filter(isAssignment);
+        const stats = document.createElement("div");
+        stats.classList.add("today-widget-stats");
+        stats.append(
+          createStat(lessons.length, "lessen"),
+          createStat(assignments.length, "taken")
+        );
+        container.append(stats);
+        if (activeItems.length === 0) {
+          container.appendChild(this.createEmptyState());
+        } else {
+          container.appendChild(this.createNextLesson(lessons));
+        }
+        container.appendChild(this.createActions());
+      });
+      return container;
+    }
+    async createPreview() {
+      const preview = document.createElement("div");
+      preview.classList.add("today-widget", "today-widget-preview");
+      const title = document.createElement("h2");
+      title.textContent = "Vandaag";
+      const stats = document.createElement("div");
+      stats.classList.add("today-widget-stats");
+      stats.append(createStat(4, "lessen"), createStat(2, "taken"));
+      preview.append(title, stats);
+      return preview;
+    }
+  };
+  registerWidget(new TodayWidget());
+
+  // src/widgets/notes.ts
+  var NotesWidget = class extends WidgetBase {
+    saveTimeout;
+    textarea;
+    status;
+    get category() {
+      return "other";
+    }
+    get name() {
+      return "NotesWidget";
+    }
+    defaultSettings() {
+      return {
+        text: ""
+      };
+    }
+    scheduleSave() {
+      clearTimeout(this.saveTimeout);
+      this.status.textContent = "Saving...";
+      this.saveTimeout = setTimeout(async () => {
+        await this.setSetting("text", this.textarea.value);
+        this.status.textContent = "Saved";
+      }, 350);
+    }
+    async createContent() {
+      const container = document.createElement("div");
+      container.classList.add("notes-widget");
+      const header = document.createElement("div");
+      header.classList.add("notes-widget-header");
+      const title = document.createElement("h2");
+      title.textContent = "Notes++";
+      this.status = document.createElement("span");
+      this.status.textContent = "Saved";
+      header.append(title, this.status);
+      this.textarea = document.createElement("textarea");
+      this.textarea.placeholder = "Quick notes, reminders, links...";
+      this.textarea.value = this.settings.text || "";
+      this.textarea.addEventListener("input", () => this.scheduleSave());
+      container.append(header, this.textarea);
+      return container;
+    }
+    async createPreview() {
+      const preview = document.createElement("div");
+      preview.classList.add("notes-widget", "notes-widget-preview");
+      const title = document.createElement("h2");
+      title.textContent = "Notes++";
+      const lines = document.createElement("div");
+      lines.classList.add("notes-preview-lines");
+      lines.innerHTML = "<span></span><span></span><span></span>";
+      preview.append(title, lines);
+      return preview;
+    }
+  };
+  registerWidget(new NotesWidget());
+
+  // src/widgets/focus-timer.ts
+  var MODES = {
+    focus: { label: "Focus", seconds: 25 * 60 },
+    short: { label: "Break", seconds: 5 * 60 },
+    long: { label: "Long break", seconds: 15 * 60 }
+  };
+  function formatSeconds(seconds) {
+    const minutes = Math.floor(seconds / 60);
+    const rest = seconds % 60;
+    return `${String(minutes).padStart(2, "0")}:${String(rest).padStart(2, "0")}`;
+  }
+  var FocusTimerWidget = class extends WidgetBase {
+    mode = "focus";
+    remaining = MODES.focus.seconds;
+    interval;
+    running = false;
+    timeElement;
+    modeElement;
+    startButton;
+    get category() {
+      return "other";
+    }
+    get name() {
+      return "FocusTimerWidget";
+    }
+    defaultSettings() {
+      return {
+        completedSessions: 0
+      };
+    }
+    syncDisplay() {
+      this.modeElement.textContent = MODES[this.mode].label;
+      this.timeElement.textContent = formatSeconds(this.remaining);
+      this.startButton.textContent = this.running ? "Pause" : "Start";
+    }
+    setMode(mode) {
+      this.stop();
+      this.mode = mode;
+      this.remaining = MODES[mode].seconds;
+      this.syncDisplay();
+    }
+    stop() {
+      clearInterval(this.interval);
+      this.interval = null;
+      this.running = false;
+    }
+    async complete() {
+      this.stop();
+      if (this.mode === "focus") {
+        await this.setSetting(
+          "completedSessions",
+          Number(this.settings.completedSessions || 0) + 1
+        );
+      }
+      this.setMode(this.mode === "focus" ? "short" : "focus");
+    }
+    toggle() {
+      if (this.running) {
+        this.stop();
+        this.syncDisplay();
+        return;
+      }
+      this.running = true;
+      this.interval = setInterval(() => {
+        this.remaining -= 1;
+        if (this.remaining <= 0) {
+          this.complete();
+          return;
+        }
+        this.syncDisplay();
+      }, 1e3);
+      this.syncDisplay();
+    }
+    createModeButton(mode) {
+      const button = document.createElement("button");
+      button.textContent = MODES[mode].label;
+      button.addEventListener("click", () => this.setMode(mode));
+      return button;
+    }
+    async createContent() {
+      const container = document.createElement("div");
+      container.classList.add("focus-timer-widget");
+      this.modeElement = document.createElement("span");
+      this.modeElement.classList.add("focus-timer-mode");
+      this.timeElement = document.createElement("strong");
+      this.timeElement.classList.add("focus-timer-time");
+      this.startButton = document.createElement("button");
+      this.startButton.classList.add("focus-timer-main-button");
+      this.startButton.addEventListener("click", () => this.toggle());
+      const modeButtons = document.createElement("div");
+      modeButtons.classList.add("focus-timer-mode-buttons");
+      modeButtons.append(
+        this.createModeButton("focus"),
+        this.createModeButton("short"),
+        this.createModeButton("long")
+      );
+      const sessions = document.createElement("span");
+      sessions.classList.add("focus-timer-sessions");
+      sessions.textContent = `${this.settings.completedSessions || 0} sessions`;
+      container.append(
+        this.modeElement,
+        this.timeElement,
+        this.startButton,
+        modeButtons,
+        sessions
+      );
+      this.syncDisplay();
+      return container;
+    }
+    async createPreview() {
+      const preview = document.createElement("div");
+      preview.classList.add("focus-timer-widget", "focus-timer-preview");
+      const title = document.createElement("span");
+      title.classList.add("focus-timer-mode");
+      title.textContent = "Focus Timer";
+      const time = document.createElement("strong");
+      time.classList.add("focus-timer-time");
+      time.textContent = "25:00";
+      preview.append(title, time);
+      return preview;
+    }
+    onRemove() {
+      this.stop();
+    }
+  };
+  registerWidget(new FocusTimerWidget());
+
   // src/widgets/assignments.ts
+  function getDueInfo(taskDate) {
+    const today = /* @__PURE__ */ new Date();
+    today.setHours(0, 0, 0, 0);
+    const dueDay = new Date(taskDate);
+    dueDay.setHours(0, 0, 0, 0);
+    const diffDays = Math.round((dueDay.getTime() - today.getTime()) / 864e5);
+    if (diffDays <= 0) return { label: "Due today", urgency: "urgent" };
+    if (diffDays === 1) return { label: "Due tomorrow", urgency: "soon" };
+    if (diffDays <= 7) return { label: `${diffDays} days`, urgency: "week" };
+    return { label: `${diffDays} days`, urgency: "later" };
+  }
   var TakenWidget = class extends WidgetBase {
     defaultSettings() {
       return {
-        maxAssignments: 5
+        maxAssignments: 5,
+        foresightDays: 28
       };
     }
     onSettingsChange() {
       this.element.appendChild(this.createContent());
     }
     createContent() {
-      const foresight = 28;
+      const foresight = Math.max(1, Number(this.settings.foresightDays) || 28);
       let userId = getUserId();
       if (DEBUG) {
         sendDebug("[AS]", "Debug mode enabled \u2705");
@@ -12315,7 +13059,7 @@ Your version: <b>${data2.plantVersion}</b> is not the newest available version`;
           if (!schoolName) {
             throw new Error("School name could not be determined.");
           }
-          const url = `https://${schoolName}.smartschool.be/planner/api/v1/planned-elements/user/${userId}?from=${getCurrentDate()}&to=${getFutureDate(
+          const url = `/planner/api/v1/planned-elements/user/${userId}?from=${getCurrentDate()}&to=${getFutureDate(
             foresight
           )}&types=planned-assignments,planned-to-dos`;
           sendDebug("[AS]", "Fetching planner data from:", url);
@@ -12329,7 +13073,10 @@ Your version: <b>${data2.plantVersion}</b> is not the newest available version`;
           sendDebug("[AS]", "Planner data:", data2);
           return data2;
         } catch (error) {
-          console.error("Fetch error:", error);
+          console.warn(
+            "SMPP: assignments planner data could not be loaded.",
+            error
+          );
           return null;
         }
       }
@@ -12345,14 +13092,14 @@ Your version: <b>${data2.plantVersion}</b> is not the newest available version`;
           return sendDebug("[AS]", "User ID not found.");
         }
         fetchPlannerData2().then(async (data2) => {
-          data2 = data2.filter((element) => element.resolvedStatus !== "resolved");
-          if (!data2) {
+          if (!Array.isArray(data2)) {
             TasksContainer.innerHTML = "Er is iets ernstig misgegaan :(";
             return console.error("No planner data, Did something go wrong?");
           } else if (DEBUG) {
             sendDebug("[AS]", "Planner data fetched successfully.");
           }
-          if (!Array.isArray(data2) || data2.length === 0) {
+          data2 = data2.filter((element) => element.resolvedStatus !== "resolved");
+          if (data2.length === 0) {
             let noDataContainer = document.createElement("div");
             noDataContainer.classList.add("blue-ghost-96");
             let noDataContainerTextContainer = document.createElement("div");
@@ -12399,10 +13146,12 @@ Your version: <b>${data2.plantVersion}</b> is not the newest available version`;
               lastDate = dateText;
             }
             const rowDiv = document.createElement("div");
+            const dueInfo = getDueInfo(taskDate);
             rowDiv.classList.add(
               "listview__row",
               "todo__row",
-              "assignment__item"
+              "assignment__item",
+              `assignment__item--${dueInfo.urgency}`
             );
             rowDiv.setAttribute("data-id", element.id);
             const abbreviationDiv = document.createElement("div");
@@ -12416,7 +13165,12 @@ Your version: <b>${data2.plantVersion}</b> is not the newest available version`;
               `c-${element.color.split("-")[0]}-combo--${element.color.split("-")[1]}`
               // LET HIM COOK
             );
-            sendDebug("[AS]", "Creating icon for assignment:", element, element.icon);
+            sendDebug(
+              "[AS]",
+              "Creating icon for assignment:",
+              element,
+              element.icon
+            );
             if (element.plannedElementType === "planned-to-dos") {
               fetch(
                 `https://${getSchoolName()}.smartschool.be/smsc/svg/${element.icon}/${element.icon}_16x16.svg`
@@ -12457,7 +13211,10 @@ Your version: <b>${data2.plantVersion}</b> is not the newest available version`;
               minute: "2-digit"
             })} \u2022 ${element.courses?.[0]?.name || "TODO "}`;
             metadataSpan.classList.add("task-description");
-            detailsDiv.append(titleSpan, metadataSpan);
+            const dueBadge = document.createElement("span");
+            dueBadge.classList.add("assignment-due-badge");
+            dueBadge.textContent = dueInfo.label;
+            detailsDiv.append(titleSpan, metadataSpan, dueBadge);
             rowDiv.append(abbreviationDiv, detailsDiv);
             rowDiv.addEventListener("click", () => {
               markAsFinished(element.id, element.courses?.[0]?.name);
@@ -13792,6 +14549,15 @@ ${code}`;
       header.appendChild(prevBtn);
       header.appendChild(title);
       header.appendChild(nextBtn);
+      const todayButton = document.createElement("button");
+      todayButton.className = "calendar-today-button";
+      todayButton.textContent = "Vandaag";
+      todayButton.addEventListener("click", () => {
+        this.currentDate = /* @__PURE__ */ new Date();
+        const parent = container.parentElement;
+        const newCalendar = this.generateCalendar();
+        parent?.replaceChild(newCalendar, container);
+      });
       const weekdays = document.createElement("div");
       weekdays.className = "calendar-weekdays";
       ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].forEach((day) => {
@@ -13816,6 +14582,7 @@ ${code}`;
         days.appendChild(dayEl);
       }
       container.appendChild(header);
+      container.appendChild(todayButton);
       container.appendChild(weekdays);
       container.appendChild(days);
       return container;
@@ -14200,6 +14967,7 @@ ${code}`;
       updateSplashText(other.splashText);
     keybinds = other.keybinds;
     other.performanceMode ? document.body.classList.remove("enableAnimations") : document.body.classList.add("enableAnimations");
+    document.body.classList.toggle("smpp-focus-mode", !!other.focusMode);
     if (onHomePage) updateDiscordPopup(other.discordButton);
   }
   function applyProfile(profile) {

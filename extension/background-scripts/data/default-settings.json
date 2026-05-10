@@ -46,6 +46,7 @@
   "quicks": [],
   "quickFavorites": [],
   "performanceMode": false,
+  "focusMode": false,
   "splashText": true,
   "discordButton": true,
   "dmenu": {

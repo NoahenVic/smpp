@@ -59,6 +59,7 @@ export type Settings = {
   other: {
     quicks: Quicks;
     performanceMode: boolean;
+    focusMode: boolean;
     splashText: boolean;
     discordButton: boolean;
     dmenu: {
@@ -543,6 +544,10 @@ export class SettingsWindow extends BaseWindow {
           "settings-page-max-assignments-slider",
           "TakenWidget.maxAssignments"
         );
+        await loadWidgetSettingSlider(
+          "settings-page-assignment-days-slider",
+          "TakenWidget.foresightDays"
+        );
 
         // Snake
         if (!liteMode) {
@@ -566,6 +571,14 @@ export class SettingsWindow extends BaseWindow {
         if (performanceModeButton) {
           (performanceModeButton as HTMLInputElement).checked =
             settings.other.performanceMode;
+        }
+
+        const focusModeButton = document.getElementById(
+          "settings-page-focus-mode-button"
+        );
+        if (focusModeButton) {
+          (focusModeButton as HTMLInputElement).checked =
+            settings.other.focusMode;
         }
 
         // Splash-text
@@ -820,6 +833,11 @@ export class SettingsWindow extends BaseWindow {
           "TakenWidget.maxAssignments",
           "number"
         );
+        await updateWidgetSetting(
+          "settings-page-assignment-days-slider",
+          "TakenWidget.foresightDays",
+          "number"
+        );
 
         // Snake
         if (!liteMode) {
@@ -836,6 +854,10 @@ export class SettingsWindow extends BaseWindow {
       case "other": {
         settings.other.performanceMode = getCheckboxValue(
           "settings-page-performance-mode-button"
+        );
+
+        settings.other.focusMode = getCheckboxValue(
+          "settings-page-focus-mode-button"
         );
 
         settings.other.splashText = getCheckboxValue(
@@ -1417,6 +1439,14 @@ export class SettingsWindow extends BaseWindow {
             "Max assignments"
           )
         );
+        this.settingsPage.appendChild(
+          createLabeledSlider(
+            "7",
+            "60",
+            "settings-page-assignment-days-slider",
+            "Days ahead"
+          )
+        );
 
         if (!liteMode) {
           this.settingsPage.appendChild(createMainTitle("Games"));
@@ -1447,6 +1477,12 @@ export class SettingsWindow extends BaseWindow {
           createSettingsButtonWithLabel(
             "settings-page-performance-mode-button",
             "Performance mode"
+          )
+        );
+        this.settingsPage.appendChild(
+          createSettingsButtonWithLabel(
+            "settings-page-focus-mode-button",
+            "Focus mode"
           )
         );
 

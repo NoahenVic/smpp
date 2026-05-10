@@ -5,6 +5,8 @@ import { clearAllData } from "../../fixes-utils/utils.js";
 import { openGlobalChat } from "../globalchat.js";
 import { resetPlant } from "../../widgets/plant.js";
 import { openURL, browser } from "../../common/utils.ts";
+import { Toast } from "../../fixes-utils/utils.js";
+import { updateTheme } from "../appearance/themes.js";
 
 let quicks = [];
 let links = [];
@@ -99,7 +101,11 @@ function quick_cmd_list() {
 }
 
 function add_quick(name, url, favorite = undefined) {
-  let quick = { name: name.toLowerCase(), url: url, favorite: favorite ?? false };
+  let quick = {
+    name: name.toLowerCase(),
+    url: url,
+    favorite: favorite ?? false,
+  };
   for (let i = 0; i < quicks.length; i++) {
     if (quicks[i].name == name) {
       quick.favorite = favorite ?? quicks[i].favorite ?? false;
@@ -144,7 +150,9 @@ export async function quickLoad() {
   const migratedFavoriteKeys = quicks
     .filter((quick) => quick.favorite)
     .map((quick) => makeFavoriteKey("quick", quick.name));
-  const mergedFavoriteKeys = [...new Set([...favoriteKeys, ...migratedFavoriteKeys])];
+  const mergedFavoriteKeys = [
+    ...new Set([...favoriteKeys, ...migratedFavoriteKeys]),
+  ];
   if (mergedFavoriteKeys.length !== favoriteKeys.length) {
     favoriteKeys = mergedFavoriteKeys;
     await saveFavoriteKeys();
@@ -260,6 +268,9 @@ export function unbloat() {
 
 export async function do_qm(opener = "") {
   await loadFavoriteKeys();
+  const settings = await browser.runtime.sendMessage({
+    action: "getSettingsData",
+  });
   let cmd_list = quick_cmd_list()
     .concat(
       goto_items.map((item) =>
@@ -278,6 +289,16 @@ export async function do_qm(opener = "") {
     )
     .concat([
       createQuickMenuItem("cmd", "home", "command"),
+      createQuickMenuItem("cmd", "planner", "command"),
+      createQuickMenuItem("cmd", "messages", "command"),
+      createQuickMenuItem("cmd", "results", "command"),
+      createQuickMenuItem("cmd", "assignments", "command"),
+      createQuickMenuItem("cmd", "today", "command"),
+      createQuickMenuItem("cmd", "focus", "command"),
+      createQuickMenuItem("cmd", "theme random", "command"),
+      createQuickMenuItem("cmd", "copy link", "command"),
+      createQuickMenuItem("cmd", "reload", "command"),
+      createQuickMenuItem("cmd", "top", "command"),
       createQuickMenuItem("cmd", "quick add", "command"),
       createQuickMenuItem("cmd", "quick remove", "command"),
       createQuickMenuItem("cmd", "unbloat", "command"),
@@ -335,8 +356,65 @@ export async function do_qm(opener = "") {
         case "home":
           openURL("/");
           return;
+        case "planner":
+          openURL("/planner");
+          return;
+        case "messages":
+          openURL("/messages");
+          return;
+        case "results":
+          openURL("/results");
+          return;
+        case "assignments":
+          openURL("/planner");
+          return;
+        case "today":
+          openURL("/");
+          return;
+        case "focus":
+          settings.other.focusMode = !settings.other.focusMode;
+          await browser.runtime.sendMessage({
+            action: "setSettingsData",
+            data: settings,
+          });
+          document.body.classList.toggle(
+            "smpp-focus-mode",
+            settings.other.focusMode
+          );
+          new Toast(
+            settings.other.focusMode
+              ? "Focus mode enabled"
+              : "Focus mode disabled",
+            "info"
+          ).render();
+          return;
         case "clearsettings":
           clearAllData();
+          return;
+        case "theme random":
+          {
+            const themes = await browser.runtime.sendMessage({
+              action: "getThemes",
+              categories: ["quickSettings"],
+              includeHidden: false,
+            });
+            const themeNames = Object.keys(themes);
+            if (themeNames.length === 0) return;
+            const nextTheme =
+              themeNames[Math.floor(Math.random() * themeNames.length)];
+            await updateTheme(nextTheme);
+            new Toast("Theme changed", "success").render();
+          }
+          return;
+        case "copy link":
+          await navigator.clipboard.writeText(window.location.href);
+          new Toast("Page link copied", "success").render();
+          return;
+        case "reload":
+          window.location.reload();
+          return;
+        case "top":
+          window.scrollTo({ top: 0, behavior: "smooth" });
           return;
         case "ridge":
           document.body.classList.add("ridge");

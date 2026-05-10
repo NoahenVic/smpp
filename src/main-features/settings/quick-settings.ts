@@ -354,6 +354,12 @@ async function storeQuickSettings() {
   if (performanceModeToggle) {
     data.other.performanceMode = performanceModeToggle.checked;
   }
+  const focusModeToggle = document.getElementById(
+    "focus-mode-toggle"
+  ) as HTMLInputElement;
+  if (focusModeToggle) {
+    data.other.focusMode = focusModeToggle.checked;
+  }
 
   await browser.runtime.sendMessage({ action: "setSettingsData", data });
   await loadQuickSettings();
@@ -383,11 +389,25 @@ export async function loadQuickSettings() {
   if (performanceModeToggle) {
     performanceModeToggle.checked = data.other.performanceMode;
   }
+  const focusModeToggle = document.getElementById(
+    "focus-mode-toggle"
+  ) as HTMLInputElement;
+  if (focusModeToggle) {
+    focusModeToggle.checked = data.other.focusMode;
+  }
 
   const performanceModeInfo = document.getElementById("performance-mode-info");
   if (performanceModeInfo) {
     performanceModeInfo.innerHTML = `Toggle performance mode ${
       data.other.performanceMode
+        ? "<span class='green-underline'>Enabled</span>"
+        : "<span class='red-underline'>Disabled</span>"
+    }`;
+  }
+  const focusModeInfo = document.getElementById("focus-mode-info");
+  if (focusModeInfo) {
+    focusModeInfo.innerHTML = `Toggle focus mode ${
+      data.other.focusMode
         ? "<span class='green-underline'>Enabled</span>"
         : "<span class='red-underline'>Disabled</span>"
     }`;
@@ -434,6 +454,20 @@ async function createQuickSettingsHTML(parent: HTMLDivElement) {
 
   const performanceModeInfo = document.createElement("span");
   performanceModeInfo.id = "performance-mode-info";
+
+  const focusModeLabel = document.createElement("label");
+  focusModeLabel.className = "performanceModeTooltipLabel";
+  focusModeLabel.id = "focusModeTooltipLabel";
+
+  const focusModeToggle = document.createElement("input");
+  focusModeToggle.type = "checkbox";
+  focusModeToggle.id = "focus-mode-toggle";
+
+  focusModeLabel.appendChild(focusModeToggle);
+  focusModeLabel.innerHTML += performanceModeSvg;
+
+  const focusModeInfo = document.createElement("span");
+  focusModeInfo.id = "focus-mode-info";
 
   const themeHeading = document.createElement("h3");
   themeHeading.className = "quick-settings-title";
@@ -487,9 +521,11 @@ async function createQuickSettingsHTML(parent: HTMLDivElement) {
   themeContainer.appendChild(themeHeading);
   themeContainer.appendChild(compactThemeSelector.element);
   parent.appendChild(performanceModeTooltipLabel);
+  parent.appendChild(focusModeLabel);
   parent.appendChild(themeContainer);
   parent.appendChild(wallpaperTopContainer);
   parent.appendChild(performanceModeInfo);
+  parent.appendChild(focusModeInfo);
   parent.appendChild(extraSettingsButton);
   return parent;
 }
@@ -520,6 +556,19 @@ export async function createQuickSettings() {
 
     tooltipLabel.addEventListener("mouseout", () => {
       tooltipInfo.style.opacity = "0";
+    });
+  }
+
+  const focusTooltipLabel = document.getElementById("focusModeTooltipLabel");
+  const focusTooltipInfo = document.getElementById("focus-mode-info");
+
+  if (focusTooltipLabel && focusTooltipInfo) {
+    focusTooltipLabel.addEventListener("mouseover", () => {
+      focusTooltipInfo.style.opacity = "1";
+    });
+
+    focusTooltipLabel.addEventListener("mouseout", () => {
+      focusTooltipInfo.style.opacity = "0";
     });
   }
 

@@ -60,6 +60,23 @@
   background-color: var(--color-base02);
 }
 
+.calendar-today-button {
+  width: 100%;
+  margin: -0.4rem 0 0.8rem;
+  padding: 0.45rem 0.75rem;
+  border: 2px solid var(--color-base02);
+  border-radius: 999px;
+  background: var(--color-base01);
+  color: var(--color-text);
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.calendar-today-button:hover {
+  border-color: var(--color-accent);
+  background: var(--color-base02);
+}
+
 .calendar-weekdays {
   display: grid;
   grid-template-columns: repeat(7, 1fr);

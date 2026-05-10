@@ -61,6 +61,16 @@ class CalendarWidget extends WidgetBase {
     header.appendChild(title);
     header.appendChild(nextBtn);
 
+    const todayButton = document.createElement("button");
+    todayButton.className = "calendar-today-button";
+    todayButton.textContent = "Vandaag";
+    todayButton.addEventListener("click", () => {
+      this.currentDate = new Date();
+      const parent = container.parentElement;
+      const newCalendar = this.generateCalendar();
+      parent?.replaceChild(newCalendar, container);
+    });
+
     const weekdays = document.createElement("div");
     weekdays.className = "calendar-weekdays";
     ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].forEach((day) => {
@@ -95,6 +105,7 @@ class CalendarWidget extends WidgetBase {
     }
 
     container.appendChild(header);
+    container.appendChild(todayButton);
     container.appendChild(weekdays);
     container.appendChild(days);
 

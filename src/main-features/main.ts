@@ -16,8 +16,13 @@ import "../games/snake.ts";
 import "../games/pong.ts";
 import "../games/tetris.ts";
 import "../games/space-invaders.ts";
+import "../games/reaction.ts";
+import "../games/memory.ts";
 // Widgets
 import "../widgets/tutorial-widget.ts";
+import "../widgets/today.ts";
+import "../widgets/notes.ts";
+import "../widgets/focus-timer.ts";
 import "../widgets/assignments.ts";
 import "../widgets/delijn.ts";
 import "../widgets/plant.ts";
@@ -283,6 +288,8 @@ export function applyOther(other: Settings["other"]) {
   other.performanceMode
     ? document.body.classList.remove("enableAnimations")
     : document.body.classList.add("enableAnimations");
+
+  document.body.classList.toggle("smpp-focus-mode", !!other.focusMode);
 
   if (onHomePage) updateDiscordPopup(other.discordButton);
 }

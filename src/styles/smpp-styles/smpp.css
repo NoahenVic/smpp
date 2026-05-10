@@ -276,3 +276,17 @@ body:has(.smsc-topnav) .smpp-background-image-container {
 .smpp-background-image.image-not-available {
   display: none;
 }
+
+.smpp-focus-mode #global_chat_button,
+.smpp-focus-mode #discord-link-container,
+.smpp-focus-mode .game-container {
+  display: none !important;
+}
+
+.smpp-focus-mode .smpp-widget:has(.game-container) {
+  min-height: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
