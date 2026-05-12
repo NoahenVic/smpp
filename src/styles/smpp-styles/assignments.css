@@ -21,6 +21,39 @@
   cursor: pointer;
 }
 
+.assignment__item--urgent {
+  box-shadow: inset 3px 0 0 var(--color-red);
+}
+
+.assignment__item--soon {
+  box-shadow: inset 3px 0 0 var(--color-yellow);
+}
+
+.assignment__item--week {
+  box-shadow: inset 3px 0 0 var(--color-accent);
+}
+
+.assignment-due-badge {
+  width: fit-content;
+  margin-top: 0.25rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: 999px;
+  background: var(--color-base01);
+  color: var(--color-text);
+  border: 1px solid var(--color-base02);
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.assignment__item--urgent .assignment-due-badge {
+  color: var(--color-red);
+}
+
+.assignment__item--soon .assignment-due-badge {
+  color: var(--color-yellow);
+}
+
 .abvr__div {
   max-width: fit-content;
   display: flex;

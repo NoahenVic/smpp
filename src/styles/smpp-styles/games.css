@@ -40,8 +40,7 @@
 
 .game-canvas {
   border-radius: 0.75rem;
-  width: 260px;
-  height: 260px;
+  width: 100%;
 }
 
 .game-button {
@@ -127,4 +126,108 @@
   cursor: pointer;
   transition: opacity 0.2s ease-in-out;
   appearance: none;
+}
+
+.reaction-game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  text-align: center;
+}
+
+.reaction-game-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 9rem;
+  aspect-ratio: 1;
+  border-radius: 999px;
+  border: 4px solid var(--color-base03);
+  background: var(--color-base02);
+  color: var(--color-text);
+  font-size: 1.25rem;
+  line-height: 1.15;
+  padding: 0.75rem;
+}
+
+.reaction-game[data-state="waiting"] .reaction-game-status {
+  background: var(--color-yellow);
+  color: var(--color-base00);
+}
+
+.reaction-game[data-state="ready"] .reaction-game-status {
+  background: var(--color-green);
+  color: var(--color-base00);
+}
+
+.reaction-game[data-state="early"] .reaction-game-status {
+  background: var(--color-red);
+  color: var(--color-base00);
+}
+
+.reaction-game[data-state="done"] .reaction-game-status {
+  border-color: var(--color-accent);
+}
+
+.reaction-preview {
+  min-height: 100%;
+}
+
+.memory-game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  text-align: center;
+  height: auto;
+  min-height: 260px;
+}
+
+.memory-stats {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  color: var(--color-text);
+  font-weight: 800;
+  opacity: 0.78;
+}
+
+.memory-board {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.45rem;
+  width: 100%;
+}
+
+.memory-card {
+  aspect-ratio: 1;
+  border: 2px solid var(--color-base02);
+  border-radius: 0.8rem;
+  background: var(--color-base01);
+  color: var(--color-text);
+  cursor: pointer;
+  font-size: 1.25rem;
+  font-weight: 900;
+}
+
+.memory-card.is-open {
+  border-color: var(--color-accent);
+  background: var(--color-base02);
+}
+
+.memory-card.is-matched {
+  background: var(--color-green);
+  color: var(--color-base00);
+  border-color: var(--color-green);
+}
+
+.memory-preview {
+  min-height: 100%;
+}
+
+.memory-preview .memory-board {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }

@@ -1,0 +1,61 @@
+.focus-timer-widget {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  text-align: center;
+}
+
+.focus-timer-mode,
+.focus-timer-sessions {
+  color: var(--color-text);
+  font-weight: 850;
+  opacity: 0.72;
+}
+
+.focus-timer-time {
+  color: var(--color-text);
+  font-size: 3.4rem;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.focus-timer-main-button,
+.focus-timer-mode-buttons button {
+  cursor: pointer;
+  border: 2px solid var(--color-base02);
+  background: var(--color-base01);
+  color: var(--color-text);
+  font-weight: 850;
+}
+
+.focus-timer-main-button {
+  width: 100%;
+  padding: 0.65rem;
+  border-radius: 999px;
+  font-size: 1.1rem;
+}
+
+.focus-timer-mode-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.4rem;
+  width: 100%;
+}
+
+.focus-timer-mode-buttons button {
+  min-width: 0;
+  padding: 0.45rem 0.35rem;
+  border-radius: 0.8rem;
+}
+
+.focus-timer-main-button:hover,
+.focus-timer-mode-buttons button:hover {
+  border-color: var(--color-accent);
+  background: var(--color-base02);
+}
+
+.focus-timer-preview {
+  min-height: 9rem;
+  justify-content: center;
+}

@@ -14,25 +14,40 @@ import { assignmentsSvg } from "../fixes-utils/svgs.js";
 // code for assignments list 📂
 // THANK YOU LDEVVVV 🫂🫂🫂
 
+function getDueInfo(taskDate: Date) {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const dueDay = new Date(taskDate);
+  dueDay.setHours(0, 0, 0, 0);
+
+  const diffDays = Math.round((dueDay.getTime() - today.getTime()) / 86400000);
+
+  if (diffDays <= 0) return { label: "Due today", urgency: "urgent" };
+  if (diffDays === 1) return { label: "Due tomorrow", urgency: "soon" };
+  if (diffDays <= 7) return { label: `${diffDays} days`, urgency: "week" };
+  return { label: `${diffDays} days`, urgency: "later" };
+}
+
 class TakenWidget extends WidgetBase {
-  defaultSettings() {
+  override defaultSettings() {
     return {
       maxAssignments: 5,
+      foresightDays: 28,
     };
   }
-  onSettingsChange() {
+  override onSettingsChange() {
     this.element.appendChild(this.createContent());
   }
-  createContent() {
-    const foresight = 28; // dagen in de toekomst dat het zoekt voor taken
+  override createContent() {
+    const foresight = Math.max(1, Number(this.settings.foresightDays) || 28); // dagen in de toekomst dat het zoekt voor taken
     let userId = getUserId();
 
     if (DEBUG) {
-      sendDebug("Debug mode enabled ✅");
-      sendDebug("User ID:", userId);
-      sendDebug("Current URL:", window.location.href);
-      sendDebug("Today's Date:", getCurrentDate());
-      sendDebug("Next Date:", getFutureDate(foresight));
+      sendDebug("[AS]", "Debug mode enabled ✅");
+      sendDebug("[AS]", "User ID:", userId);
+      sendDebug("[AS]", "Current URL:", window.location.href);
+      sendDebug("[AS]", "Today's Date:", getCurrentDate());
+      sendDebug("[AS]", "Next Date:", getFutureDate(foresight));
     }
     this.clearContent();
     async function fetchPlannerData() {
@@ -42,10 +57,10 @@ class TakenWidget extends WidgetBase {
           throw new Error("School name could not be determined.");
         }
 
-        const url = `https://${schoolName}.smartschool.be/planner/api/v1/planned-elements/user/${userId}?from=${getCurrentDate()}&to=${getFutureDate(
+        const url = `/planner/api/v1/planned-elements/user/${userId}?from=${getCurrentDate()}&to=${getFutureDate(
           foresight
         )}&types=planned-assignments,planned-to-dos`;
-        sendDebug("Fetching planner data from:", url);
+        sendDebug("[AS]", "Fetching planner data from:", url);
         const response = await fetch(url);
 
         if (!response.ok) {
@@ -54,10 +69,13 @@ class TakenWidget extends WidgetBase {
           );
         }
         const data = await response.json();
-        sendDebug("Planner data:", data);
+        sendDebug("[AS]", "Planner data:", data);
         return data;
       } catch (error) {
-        console.error("Fetch error:", error);
+        console.warn(
+          "SMPP: assignments planner data could not be loaded.",
+          error
+        );
         return null;
       }
     }
@@ -72,18 +90,18 @@ class TakenWidget extends WidgetBase {
       TasksContainer.append(TitleScreenDiv);
 
       if (!userId) {
-        return sendDebug("User ID not found.");
+        return sendDebug("[AS]", "User ID not found.");
       }
 
       fetchPlannerData().then(async (data) => {
-        data = data.filter((element) => element.resolvedStatus !== "resolved");
-        if (!data) {
+        if (!Array.isArray(data)) {
           TasksContainer.innerHTML = "Er is iets ernstig misgegaan :(";
           return console.error("No planner data, Did something go wrong?");
         } else if (DEBUG) {
-          sendDebug("Planner data fetched successfully.");
+          sendDebug("[AS]", "Planner data fetched successfully.");
         }
-        if (!Array.isArray(data) || data.length === 0) {
+        data = data.filter((element) => element.resolvedStatus !== "resolved");
+        if (data.length === 0) {
           let noDataContainer = document.createElement("div");
           noDataContainer.classList.add("blue-ghost-96");
           let noDataContainerTextContainer = document.createElement("div");
@@ -138,10 +156,12 @@ class TakenWidget extends WidgetBase {
           }
 
           const rowDiv = document.createElement("div");
+          const dueInfo = getDueInfo(taskDate);
           rowDiv.classList.add(
             "listview__row",
             "todo__row",
-            "assignment__item"
+            "assignment__item",
+            `assignment__item--${dueInfo.urgency}`
           );
           rowDiv.setAttribute("data-id", element.id);
 
@@ -160,7 +180,13 @@ class TakenWidget extends WidgetBase {
           );
 
           // make the litle icon cubes
-          if (element.icon) {
+          sendDebug(
+            "[AS]",
+            "Creating icon for assignment:",
+            element,
+            element.icon
+          );
+          if (element.plannedElementType === "planned-to-dos") {
             // dont try to understand, i dont either
             fetch(
               `https://${getSchoolName()}.smartschool.be/smsc/svg/${
@@ -210,7 +236,11 @@ class TakenWidget extends WidgetBase {
           })} • ${element.courses?.[0]?.name || "TODO "}`; // durf dit nog eens aan te passen en ik ga je pesten op het internet
           metadataSpan.classList.add("task-description");
 
-          detailsDiv.append(titleSpan, metadataSpan);
+          const dueBadge = document.createElement("span");
+          dueBadge.classList.add("assignment-due-badge");
+          dueBadge.textContent = dueInfo.label;
+
+          detailsDiv.append(titleSpan, metadataSpan, dueBadge);
           rowDiv.append(abbreviationDiv, detailsDiv);
 
           rowDiv.addEventListener("click", () => {
@@ -226,13 +256,13 @@ class TakenWidget extends WidgetBase {
           TasksContainer.append(rowDiv);
         });
 
-        return sendDebug("UI updated successfully.");
+        return sendDebug("[AS]", "UI updated successfully.");
       });
       return TasksContainer;
     };
     return initTaskList();
   }
-  async createPreview() {
+  override async createPreview() {
     const previewElement = document.createElement("div");
 
     const previewElementTitle = document.createElement("div");
@@ -283,7 +313,7 @@ async function markAsFinished(as_ID, name) {
       );
     }
 
-    sendDebug(`Assignment ${as_ID} marked as finished successfully.`);
+    sendDebug("[AS]", `Assignment ${as_ID} marked as finished successfully.`);
 
     // too lazy to code the rest of the cleanup thingy so ill let ai do it, haters gonna hate
 

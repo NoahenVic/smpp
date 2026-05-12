@@ -16,14 +16,21 @@ import "../games/flappy.ts";
 import "../games/snake.ts";
 import "../games/pong.ts";
 import "../games/tetris.ts";
+import "../games/space-invaders.ts";
+import "../games/reaction.ts";
+import "../games/memory.ts";
 // Widgets
 import "../widgets/tutorial-widget.ts";
+import "../widgets/today.ts";
+import "../widgets/notes.ts";
+import "../widgets/focus-timer.ts";
 import "../widgets/assignments.ts";
 import "../widgets/delijn.ts";
 import "../widgets/plant.ts";
 import "../widgets/planner.ts";
 import "../widgets/weather.ts";
 import "../widgets/clock.ts";
+import "../widgets/calendar.ts";
 
 import { browser, getExtensionImage, randomChance } from "../common/utils.js";
 import { getPfpLink } from "../fixes-utils/utils.js";
@@ -46,7 +53,6 @@ import {
 import { quickLoad } from "./quick-menu/quick.js";
 
 export var originalUsername: string;
-export var themes: any;
 export var onHomePage: boolean;
 export var onLoginPage: boolean;
 export var isGOSchool: boolean;
@@ -54,7 +60,7 @@ export var isFirefox: boolean;
 export var originalPfpUrl: string;
 export var keybinds: any;
 export var liteMode: boolean;
-export var customTheme: any;
+export const currentDataVersion = 6;
 
 import {
   discordSvg,
@@ -70,7 +76,11 @@ import { initWidgetEditMode } from "../widgets/widgets.js";
 import { applyUsername, applyProfilePicture } from "./profile.js";
 import { updateLoginPanel } from "../fixes-utils/login.js";
 import { buisStats } from "../fixes-utils/results.js";
-import { setTheme } from "./appearance/themes.js";
+import {
+  currentThemeName,
+  setTheme,
+  updateCurrentThemeName,
+} from "./appearance/themes.js";
 import { setBackground } from "./appearance/background-image.js";
 import { updateNews } from "../widgets/widgets.js";
 import { updateSplashText } from "../fixes-utils/login.js";
@@ -160,7 +170,9 @@ function updateTopNavIcons(data: Settings["topNav"]["icons"]) {
     startButton.innerHTML = "Start";
   }
 
-  const messageButton = document.querySelector(".js-btn-messages");
+  const messageButton = document.querySelector(
+    `a.topnav__btn[title="Berichten"]`
+  );
   if (messageButton && data.mail) {
     const textSpan = messageButton.querySelector("span");
     messageButton.innerHTML = messageSvg;
@@ -194,11 +206,7 @@ function updateTabLogo(logo: Settings["appearance"]["tabLogo"]) {
         "https://static4.smart-school.net/smsc/svg/favicon/favicon.svg";
       break;
     case "smpp":
-      iconElement.href = liteMode
-        ? "https://raw.githubusercontent.com/frickingbird8002/smpp-images/main/smpp_lite_logo128.png"
-        : "https://raw.githubusercontent.com/frickingbird8002/smpp-images/main/icon128.png";
-      break;
-    default:
+      iconElement.href = getExtensionImage("icons/smpp/128.png");
       break;
   }
 }
@@ -221,11 +229,7 @@ export function applyTopNav(data: Settings["topNav"]) {
   }
 }
 
-async function createStaticGlobals() {
-  themes = await browser.runtime.sendMessage({
-    action: "getThemes",
-  });
-
+async function createGlobals() {
   let originalUsernameElement = document.querySelector(
     ".js-btn-profile .hlp-vert-box span"
   ) as HTMLSpanElement;
@@ -262,7 +266,7 @@ export async function applyAppearance(appearance: Settings["appearance"]) {
   setGlobalGlass(appearance.glass);
 
   await setTheme(appearance.theme);
-  setBackground(appearance);
+  setBackground(appearance.theme);
   updateNews(appearance.news);
   updateTabLogo(appearance.tabLogo);
 
@@ -285,6 +289,8 @@ export function applyOther(other: Settings["other"]) {
   other.performanceMode
     ? document.body.classList.remove("enableAnimations")
     : document.body.classList.add("enableAnimations");
+
+  document.body.classList.toggle("smpp-focus-mode", !!other.focusMode);
 
   if (onHomePage) updateDiscordPopup(other.discordButton);
 }
@@ -310,7 +316,7 @@ function applyFixes() {
   ) as HTMLLabelElement;
   if (notifsToggleLabel) notifsToggleLabel.innerText = "Toon pop-ups";
 
-  if (window.location.pathname.startsWith("/results/main/results/")) {
+  if (window.location.pathname.startsWith("/results/main/results")) {
     buisStats();
   }
   if (document.querySelector(".login-app__left")) updateLoginPanel();
@@ -320,7 +326,9 @@ export async function apply() {
   const data = (await browser.runtime.sendMessage({
     action: "getSettingsData",
   })) as Settings;
+
   console.log("Applying with settings data: \n", data);
+  updateCurrentThemeName(data.appearance.theme);
 
   await reloadDMenuConfig(); // reload the dmenu config. (er is een object voor async raarheid te vermijden en dat wordt herladen door deze functie)
   if (onHomePage) setEditMode(false);
@@ -436,10 +444,10 @@ async function main() {
 
   document.body.classList.add("smpp"); // For modding
 
+  applyFixes();
   await migrate();
 
-  applyFixes();
-  await createStaticGlobals();
+  await createGlobals();
 
   await createWidgetSystem();
 

@@ -54,8 +54,7 @@
   color: var(--color-text) !important;
 }
 
-.glass .notification:hover,
-.glass .modern-message:hover {
+.glass .notification:hover {
   background-color: var(--color-base01) !important;
 }
 
@@ -140,4 +139,9 @@ ul.js-notifs-list.notifs__list {
   display: flex !important;
   flex-direction: column !important;
   gap: 3px !important;
+}
+
+.smsc-topnav .topnav__badge {
+  top: 0 !important;
+  margin-left: 2px !important;
 }

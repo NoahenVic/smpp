@@ -42,7 +42,9 @@
   },
   "other": {
     "quicks": "array",
+    "quickFavorites": "array",
     "performanceMode": "boolean",
+    "focusMode": "boolean",
     "splashText": "boolean",
     "discordButton": "boolean",
     "dmenu": {

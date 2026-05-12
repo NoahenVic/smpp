@@ -1850,6 +1850,315 @@
     return await response.json();
   }
 
+  // src/background-scripts/themes.ts
+  var nativeThemes;
+  var categories;
+  async function getAllThemes() {
+    if (!nativeThemes) {
+      nativeThemes = await loadJSON(
+        "background-scripts/data/themes.json"
+      );
+    }
+    let customThemes = await getAllCustomThemes();
+    let themes = { ...nativeThemes, ...customThemes };
+    return themes;
+  }
+  async function getThemeCategories(includeHidden = false) {
+    let allCategories = await getAllThemeCategories();
+    if (!includeHidden) {
+      const { hidden, ...rest } = allCategories;
+      allCategories = rest;
+    }
+    return allCategories;
+  }
+  async function getAllThemeCategories() {
+    if (!categories) {
+      categories = await loadJSON(
+        "background-scripts/data/theme-categories.json"
+      );
+    }
+    categories["quickSettings"] = await getQuickSettingsThemes();
+    categories["custom"] = await getCustomCategory();
+    return categories;
+  }
+  async function getFirstThemeInCategory(category, includeHidden) {
+    let themeNames = await getThemeCategory(category);
+    if (!themeNames) {
+      return "error";
+    }
+    if (!includeHidden) {
+      let hiddenThemeKeys = await getThemeCategory("hidden");
+      themeNames = themeNames.filter(
+        (themeKey) => !hiddenThemeKeys.includes(themeKey)
+      );
+    }
+    if (!themeNames[0]) return "error";
+    return themeNames[0];
+  }
+  async function getQuickSettingsThemes() {
+    let data = await getSettingsData();
+    return data.appearance.quickSettingsThemes;
+  }
+  async function getThemeCategory(category) {
+    let categories2 = await getAllThemeCategories();
+    return categories2[category];
+  }
+  async function getThemes(categorynames = ["all"], includeHidden = false, mustMatchAllCategories = false) {
+    let themes = await getAllThemes();
+    if (categorynames.includes("all")) return themes;
+    const categories2 = await Promise.all(
+      categorynames.map(
+        (category) => getThemeCategory(category)
+      )
+    );
+    const allThemeNames = categories2.flat();
+    let allowedThemeNames;
+    if (mustMatchAllCategories) {
+      allowedThemeNames = allThemeNames.filter(
+        (themeName) => categories2.every((cat) => cat.includes(themeName))
+      );
+    } else {
+      allowedThemeNames = allThemeNames;
+    }
+    if (!includeHidden) {
+      let hiddenThemeKeys = await getThemeCategory("hidden");
+      allowedThemeNames = allowedThemeNames.filter(
+        (themeKey) => !hiddenThemeKeys.includes(themeKey)
+      );
+    }
+    const filteredThemes = Object.fromEntries(
+      Object.entries(themes).filter(([key]) => allowedThemeNames.includes(key))
+    );
+    return filteredThemes;
+  }
+  async function getTheme(name) {
+    let allThemes = await getAllThemes();
+    let theme = allThemes[name];
+    if (theme != void 0) {
+      return theme;
+    } else {
+      console.error(`Invalid theme requested:"${name}", sent "error" theme`);
+      return allThemes["error"];
+    }
+  }
+  async function getSharedThemeId(shareId) {
+    const cache = await loadThemeShareCache();
+    for (let [theme, themeShareId] of Object.entries(cache)) {
+      if (themeShareId === shareId) {
+        return theme;
+      }
+    }
+    return null;
+  }
+  async function getSharedTheme(shareId) {
+    const id = await getSharedThemeId(shareId);
+    if (!id) {
+      return null;
+    }
+    return await getTheme(id);
+  }
+  async function getAllCustomThemes() {
+    const result = await browser.storage.local.get("customThemes");
+    return result.customThemes || {};
+  }
+  async function getCustomCategory() {
+    const customThemes = await getAllCustomThemes();
+    let customCategory = Object.keys(customThemes);
+    return customCategory;
+  }
+  async function saveCustomTheme(data, id = void 0) {
+    if (id === void 0) id = crypto.randomUUID();
+    const customThemes = await getAllCustomThemes();
+    customThemes[id] = data;
+    await browser.storage.local.set({ customThemes });
+    return id;
+  }
+  async function removeCustomTheme(id) {
+    await purgeThemeShareCache(id);
+    const customThemes = await getAllCustomThemes();
+    delete customThemes[id];
+    await removeImage(id);
+    await removeImage("compressed-" + id);
+    let data = await getSettingsData();
+    let quickSettingsThemes = data.appearance.quickSettingsThemes.filter(
+      (name) => {
+        return name != id;
+      }
+    );
+    setByPath(data, "appearance.quickSettingsThemes", quickSettingsThemes);
+    await setSettingsData(data);
+    await browser.storage.local.set({ customThemes });
+  }
+  async function installTheme(shareId) {
+    const resp = await fetch("https://theme.smpp.be/" + shareId, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
+    const json = await resp.json();
+    const theme = {
+      displayName: json.name,
+      cssProperties: json.css
+    };
+    let id = await saveCustomTheme(theme);
+    await updateThemeShareCache(id, shareId);
+    const settingsData = await getSettingsData();
+    settingsData.appearance.theme = id;
+    await setSettingsData(settingsData);
+    if (json.img_url) {
+      const resp2 = await fetch(json.img_url);
+      let filename = "ImportedFile.webp";
+      if (json.img_filename && json.img_filename.trim() != "") {
+        filename = json.img_filename.trim();
+      }
+      const base64 = await getBase64FromResponse(resp2);
+      if (base64 === null) {
+        throw new Error(
+          "Failed to fetch img_url returned by the server while trying to create base64."
+        );
+      }
+      const image = {
+        metaData: {
+          type: "file",
+          link: filename
+        },
+        imageData: base64
+      };
+      await setImage(id, image);
+    }
+    return;
+  }
+  async function fetchAsUnit8Array(url) {
+    try {
+      const resp = await fetch(url);
+      return new Uint8Array(await resp.arrayBuffer());
+    } catch (e2) {
+      return e2;
+    }
+  }
+  function shareUrlFromShareId(id) {
+    return "https://theme.smpp.be/" + id;
+  }
+  async function loadThemeShareCache() {
+    const cache = await browser.storage.local.get("themeShareCache");
+    if (!cache.themeShareCache) {
+      return {};
+    }
+    return cache.themeShareCache;
+  }
+  async function purgeThemeShareCache(themeId) {
+    const data = await loadThemeShareCache();
+    delete data[themeId];
+    await browser.storage.local.set({ themeShareCache: data });
+  }
+  async function getCachedShareId(themeId) {
+    const data = await loadThemeShareCache();
+    return data[themeId];
+  }
+  async function updateThemeShareCache(themeId, shareId) {
+    const data = await loadThemeShareCache();
+    data[themeId] = shareId;
+    await browser.storage.local.set({ themeShareCache: data });
+  }
+  async function shareTheme(id) {
+    const cachedShareId = await getCachedShareId(id);
+    if (cachedShareId) {
+      return shareUrlFromShareId(cachedShareId);
+    }
+    let theme = await getTheme(id);
+    let image = await getImage(id);
+    let hash = null;
+    let imageData = null;
+    if (image.imageData != "") {
+      const data = await fetchAsUnit8Array(image.imageData);
+      if (data instanceof Error) {
+        throw new Error(
+          "Failed to get image data while trying to sharing theme: " + data.message
+        );
+      }
+      imageData = data;
+      hash = fnv1aHash(imageData);
+    }
+    const apiTheme = {
+      name: theme.displayName,
+      css: theme.cssProperties,
+      img_upload_chksum: hash,
+      img_filename: image.metaData.link
+    };
+    const resp = await fetch("https://theme.smpp.be", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(apiTheme)
+    });
+    if (!resp.ok) {
+      return new Error(await resp.text());
+    }
+    const themeInfo = await resp.json();
+    if (themeInfo.needs_img && hash && imageData) {
+      const resp2 = await fetch(
+        "https://theme.smpp.be/" + themeInfo.id + "/image",
+        {
+          method: "POST",
+          headers: {
+            Authorization: "Bearer " + themeInfo.edit_key
+          },
+          body: imageData.buffer
+        }
+      );
+      if (!resp2.ok) {
+        return new Error(await resp2.text());
+      }
+    }
+    await updateThemeShareCache(id, themeInfo.id);
+    return shareUrlFromShareId(themeInfo.id);
+  }
+
+  // src/background-scripts/settings.ts
+  var settingsTemplate;
+  var defaultSettings;
+  async function getSettingsTemplate() {
+    if (!settingsTemplate) {
+      settingsTemplate = await loadJSON(
+        "background-scripts/data/settings-template.json"
+      );
+    }
+    settingsTemplate.appearance.theme = Object.keys(await getThemes());
+    return settingsTemplate;
+  }
+  async function getDefaultSettings() {
+    if (!defaultSettings) {
+      defaultSettings = await loadJSON(
+        "background-scripts/data/default-settings.json"
+      );
+    }
+    return defaultSettings;
+  }
+  async function getSettingsData() {
+    let data = (await browser.storage.local.get("settingsData")).settingsData;
+    data = fillObjectWithDefaults(data, await getDefaultSettings());
+    let categorized = {};
+    const template = await getSettingsTemplate();
+    for (const cat of Object.keys(template)) {
+      for (const fieldName of Object.keys(template[cat])) {
+        if (!categorized[cat]) {
+          categorized[cat] = {};
+        }
+        Object.assign(categorized[cat], { [fieldName]: data[fieldName] });
+      }
+    }
+    return categorized;
+  }
+  async function setSettingsData(data) {
+    const settings = {};
+    for (const category of Object.keys(data)) {
+      Object.assign(settings, data[category]);
+    }
+    await browser.storage.local.set({ settingsData: settings });
+  }
+
   // src/background-scripts/data-background-script.ts
   function getDefaultCustomThemeData() {
     return {
@@ -1936,7 +2245,17 @@
     await browser.storage.local.remove([customId]);
     await browser.storage.local.set({ images: imagesMetaData });
   }
-  async function getBase64(link) {
+  async function getBase64FromResponse(response) {
+    let blob = await response.blob();
+    let base64 = await new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onloadend = () => resolve(reader.result);
+      reader.onerror = reject;
+      reader.readAsDataURL(blob);
+    });
+    return base64;
+  }
+  async function getBase642(link) {
     try {
       let response = await fetch(link);
       if (!response.ok) {
@@ -1945,14 +2264,7 @@
         );
         return null;
       }
-      let blob = await response.blob();
-      let base64 = await new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onloadend = () => resolve(reader.result);
-        reader.onerror = reject;
-        reader.readAsDataURL(blob);
-      });
-      return base64;
+      return getBase64FromResponse(response);
     } catch (error) {
       console.error("Error converting image to base64:", error);
       return null;
@@ -1968,7 +2280,6 @@
       const filename = urlParts[urlParts.length - 1] || "image.jpg";
       return {
         arrayBuffer: Array.from(new Uint8Array(arrayBuffer)),
-        // Convert to regular array
         mimeType: blob.type || "image/jpeg",
         filename
       };
@@ -1977,292 +2288,54 @@
       return null;
     }
   }
-
-  // src/background-scripts/themes.ts
-  var nativeThemes;
-  var categories;
-  async function getAllThemes() {
-    if (!nativeThemes) {
-      nativeThemes = await loadJSON("background-scripts/data/themes.json");
-    }
-    let customThemes = await getAllCustomThemes();
-    let themes = { ...nativeThemes, ...customThemes };
-    return themes;
-  }
-  async function getThemeCategories(includeEmpty = false, includeHidden = false) {
-    let allCategories = await getAllThemeCategories();
-    if (!includeHidden) {
-      let hiddenThemeKeys = await getThemeCategory("hidden");
-      for (let [name, category] of Object.entries(allCategories)) {
-        allCategories[name] = category.filter((c2) => !hiddenThemeKeys.includes(c2));
-      }
-    }
-    if (!includeEmpty) {
-      Object.keys(allCategories).forEach((category) => {
-        if (!allCategories[category] || !allCategories[category][0])
-          delete allCategories[category];
-      });
-    }
-    return allCategories;
-  }
-  async function getAllThemeCategories() {
-    if (!categories) {
-      categories = await loadJSON(
-        "background-scripts/data/theme-categories.json"
-      );
-    }
-    categories["quickSettings"] = await getQuickSettingsThemes();
-    categories["custom"] = await getCustomCategory();
-    return categories;
-  }
-  async function getFirstThemeInCategory(category, includeHidden) {
-    let themeNames = await getThemeCategory(category);
-    if (!themeNames) {
-      return "error";
-    }
-    if (!themeNames[0]) return "error";
-    return themeNames[0];
-  }
-  async function getQuickSettingsThemes() {
-    let data = await getSettingsData();
-    return data.appearance.quickSettingsThemes;
-  }
-  async function getThemeCategory(category) {
-    let categories2 = await getAllThemeCategories();
-    return categories2[category];
-  }
-  async function getThemes(categorynames = ["all"], includeHidden = false, mustMatchAllCategories = false) {
-    let themes = await getAllThemes();
-    if (categorynames.includes("all")) return themes;
-    const categories2 = await Promise.all(
-      categorynames.map((category) => getThemeCategory(category))
-    );
-    const allThemeNames = categories2.flat();
-    let allowedThemeNames;
-    if (mustMatchAllCategories) {
-      allowedThemeNames = allThemeNames.filter(
-        (themeName) => categories2.every((cat) => cat.includes(themeName))
-      );
-    } else {
-      allowedThemeNames = allThemeNames;
-    }
-    if (!includeHidden) {
-      let hiddenThemeKeys = await getThemeCategory("hidden");
-      allowedThemeNames = allowedThemeNames.filter(
-        (themeKey) => !hiddenThemeKeys.includes(themeKey)
-      );
-    }
-    const filteredThemes = Object.fromEntries(
-      Object.entries(themes).filter(([key]) => allowedThemeNames.includes(key))
-    );
-    return filteredThemes;
-  }
-  async function getTheme(name) {
-    let allThemes = await getAllThemes();
-    let theme = allThemes[name];
-    if (theme != void 0) {
-      return theme;
-    } else {
-      console.error(`Invalid theme requested:"${name}", sent "error" theme`);
-      return allThemes["error"];
-    }
-  }
-  async function getSharedTheme(shareId) {
-    let themes = await getAllCustomThemes();
-    for (let theme of Object.values(themes)) {
-      console.log(theme.shareId);
-      if (theme.shareId === shareId) {
-        console.log("returing " + shareId);
-        return theme;
-      }
-    }
-    return null;
-  }
-  async function getCustomTheme(id) {
-    let themes = await getAllCustomThemes();
-    return themes[id];
-  }
-  async function getAllCustomThemes() {
-    const result = await browser.storage.local.get("customThemes");
-    return result.customThemes || {};
-  }
-  async function getCustomCategory() {
-    const customThemes = await getAllCustomThemes();
-    let customCategory = Object.keys(customThemes);
-    return customCategory;
-  }
-  async function saveCustomTheme(data, id = void 0) {
-    if (id === void 0) id = crypto.randomUUID();
-    const customThemes = await getAllCustomThemes();
-    customThemes[id] = data;
-    await browser.storage.local.set({ customThemes });
-    return id;
-  }
-  async function removeCustomTheme(id) {
-    const customThemes = await getAllCustomThemes();
-    delete customThemes[id];
-    await removeImage(id);
-    await removeImage("compressed-" + id);
-    let data = await getSettingsData();
-    let quickSettingsThemes = data.appearance.quickSettingsThemes.filter(
-      (name) => {
-        return name != id;
-      }
-    );
-    setByPath(data, "appearance.quickSettingsThemes", quickSettingsThemes);
-    await setSettingsData(data);
-    await browser.storage.local.set({ customThemes });
-  }
-  async function installTheme(shareId) {
-    const resp = await fetch("https://theme.smpp.be/api/" + shareId);
-    const json = await resp.json();
-    const theme = {
-      displayName: json.name,
-      cssProperties: json.css,
-      shareId
-    };
-    let id = await saveCustomTheme(theme);
-    const settingsData = await getSettingsData();
-    settingsData.appearance.theme = id;
-    await setSettingsData(settingsData);
-    if (json.img_url) {
-      const base64 = await getBase64("https://theme.smpp.be/api/" + shareId + "/image");
-      if (base64 === null) {
-        throw new Error("Failed to fetch img_url returned by the server while trying to create base64.");
-      }
-      const image = {
+  async function migrateImagesV6() {
+    let settings = await getSettingsData();
+    let images = (await browser.storage.local.get("images")).images || {};
+    if (images["profilePicture"]) {
+      let profileImage = {
         metaData: {
-          type: "file",
-          link: "ImportedFile.png"
+          type: images["profilePicture"].type,
+          link: images["profilePicture"].link
         },
-        imageData: base64
+        imageData: images["profilePicture"].imageData
       };
-      await setImage(id, image);
+      delete images["profilePicture"];
+      await browser.storage.local.set({ images });
+      await setImage("profilePicture", profileImage);
+      images = (await browser.storage.local.get("images")).images || {};
     }
-    return;
-  }
-  async function fetchAsUnit8Array(url) {
-    try {
-      const resp = await fetch(url);
-      return new Uint8Array(await resp.arrayBuffer());
-    } catch (e2) {
-      return e2;
-    }
-  }
-  function shareUrlFromShareId(id) {
-    return "https://theme.smpp.be/" + id;
-  }
-  var defaultThemeShareIdCache = {};
-  async function purgeThemeShareCache(themeId) {
-    if (defaultThemeShareIdCache[themeId] != void 0) {
-      delete defaultThemeShareIdCache[themeId];
-      return;
-    }
-    const theme = await getCustomTheme(themeId);
-    if (theme && theme.shareId !== null) {
-      theme.shareId = null;
-      await saveCustomTheme(theme, themeId);
-    }
-  }
-  async function shareTheme(id) {
-    if (defaultThemeShareIdCache[id] != void 0) {
-      return shareUrlFromShareId(defaultThemeShareIdCache[id]);
-    }
-    let theme = await getTheme(id);
-    if (theme.shareId != null) {
-      return shareUrlFromShareId(theme.shareId);
-    }
-    let image = await getImage(id);
-    let hash = null;
-    let imageData = null;
-    if (image.imageData != "") {
-      const data = await fetchAsUnit8Array(image.imageData);
-      if (data instanceof Error) {
-        throw new Error("Failed to get image data while trying to sharing theme: " + data.message);
-      }
-      imageData = data;
-      hash = fnv1aHash(imageData);
-    }
-    const apiTheme = {
-      name: theme.displayName,
-      css: theme.cssProperties,
-      img_upload_chksum: hash
-    };
-    const resp = await fetch("https://theme.smpp.be/api", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(apiTheme)
-    });
-    const themeInfo = await resp.json();
-    let isCustom = Object.keys(getAllCustomThemes()).includes(id);
-    if (isCustom) {
-      theme.shareId = themeInfo.id;
-      saveCustomTheme(theme, id);
-    } else {
-      defaultThemeShareIdCache[id] = themeInfo.id;
-    }
-    if (themeInfo.needs_img && hash && imageData) {
-      await fetch("https://theme.smpp.be/api/" + themeInfo.id + "/image", {
-        method: "POST",
-        headers: {
-          Authorization: "Bearer " + themeInfo.edit_key
+    if (images["backgroundImage"]) {
+      let backgroundImage = {
+        metaData: {
+          type: images["backgroundImage"].type,
+          link: images["backgroundImage"].link
         },
-        body: imageData.buffer
-      });
-    }
-    return shareUrlFromShareId(themeInfo.id);
-  }
-
-  // src/background-scripts/settings.ts
-  var settingsTemplate;
-  var defaultSettings;
-  async function getSettingsTemplate() {
-    if (!settingsTemplate) {
-      settingsTemplate = await loadJSON(
-        "background-scripts/data/settings-template.json"
-      );
-    }
-    settingsTemplate.appearance.theme = Object.keys(await getThemes());
-    return settingsTemplate;
-  }
-  async function getDefaultSettings() {
-    if (!defaultSettings) {
-      defaultSettings = await loadJSON(
-        "background-scripts/data/default-settings.json"
-      );
-    }
-    return defaultSettings;
-  }
-  async function getSettingsData() {
-    let data = (await browser.storage.local.get("settingsData")).settingsData;
-    data = fillObjectWithDefaults(data, await getDefaultSettings());
-    let categorized = {};
-    const template = await getSettingsTemplate();
-    for (const cat of Object.keys(template)) {
-      for (const fieldName of Object.keys(template[cat])) {
-        if (!categorized[cat]) {
-          categorized[cat] = {};
+        imageData: images["backgroundImage"].imageData
+      };
+      delete images["backgroundImage"];
+      await browser.storage.local.set({ images });
+      if (backgroundImage.metaData.type == "link") {
+        backgroundImage.imageData = await getBase642(
+          backgroundImage.metaData.link
+        );
+        if (backgroundImage.imageData != null) {
+          backgroundImage.metaData.type = "file";
+        } else {
+          backgroundImage.imageData = "";
+          backgroundImage.metaData.type = "default";
         }
-        Object.assign(categorized[cat], { [fieldName]: data[fieldName] });
       }
+      await setImage(settings.appearance.theme, backgroundImage);
     }
-    return categorized;
-  }
-  async function setSettingsData(data) {
-    const settings = {};
-    for (const category of Object.keys(data)) {
-      Object.assign(settings, data[category]);
-    }
-    await browser.storage.local.set({ settingsData: settings });
   }
 
   // src/background-scripts/index.ts
-  browser.runtime.onMessage.addListener((message, _sender, sendResponse) => {
-    handleMessage(message, sendResponse);
-    return true;
-  });
+  browser.runtime.onMessage.addListener(
+    (message, _sender, sendResponse) => {
+      handleMessage(message, sendResponse);
+      return true;
+    }
+  );
   async function handleMessage(message, sendResponse) {
     try {
       if (message.action === "clearLocalStorage") {
@@ -2288,20 +2361,19 @@
         console.log(`Theme ${message.name} sent.`);
       }
       if (message.action == "getThemeCategories") {
-        let categories2 = await getThemeCategories(
-          message.includeEmpty,
-          message.includeHidden
-        );
+        let categories2 = await getThemeCategories(message.includeHidden);
         sendResponse(categories2);
         console.log(`Theme categories sent: ${categories2}`);
       }
       if (message.action == "getFirstThemeInCategory") {
-        let categories2 = await getFirstThemeInCategory(
+        let themeName = await getFirstThemeInCategory(
           message.category,
           message.includeHidden
         );
-        sendResponse(categories2);
-        console.log(`Theme categories sent: ${categories2}`);
+        sendResponse(themeName);
+        console.log(
+          `First theme in category ${message.category} sent: ${themeName}`
+        );
       }
       if (message.action === "saveCustomTheme") {
         let id = await saveCustomTheme(message.data, message.id);
@@ -2328,19 +2400,13 @@
         sendResponse({ success: true });
       }
       if (message.action === "shareTheme") {
-        const url = await shareTheme(message.name);
-        console.log(`Theme ${message.name} was shared (url: ${url})`);
-        sendResponse({ shareUrl: url });
-      }
-      if (message.action === "getCustomThemeData") {
-        const customThemeData = await getCustomThemeData();
-        sendResponse(customThemeData);
-        console.log("Custom theme data data sent.");
-      }
-      if (message.action === "setCustomThemeData") {
-        await browser.storage.local.set({ customThemeData: message.data });
-        sendResponse({ success: true });
-        console.log("Custom theme data saved.");
+        const output = await shareTheme(message.name);
+        if (typeof output == "string") {
+          console.log(`Theme ${message.name} was shared (url: ${output})`);
+          sendResponse({ shareUrl: output });
+        } else {
+          sendResponse({ humanError: output.message });
+        }
       }
       if (message.action === "setImage") {
         await setImage(message.id, message.data);
@@ -2353,7 +2419,7 @@
         console.log(`Image with id:${message.id} sent.`);
       }
       if (message.action === "getBase64") {
-        const base64 = await getBase64(message.link);
+        const base64 = await getBase642(message.link);
         sendResponse(base64 || null);
         console.log(`Image with link:${message.link} converted to base64.`);
       }
@@ -2438,6 +2504,20 @@
         await browser.storage.local.set(data);
         sendResponse({ success: true });
       }
+      if (message.action === "getDataVersion") {
+        let dataVersion = await browser.storage.local.get("dataVersion");
+        console.log(dataVersion);
+        if (Object.keys(dataVersion).length == 0) {
+          await browser.storage.local.set({ dataVersion: 6 });
+          dataVersion = 6;
+        }
+        sendResponse(dataVersion.dataVersion);
+        console.log(`Data version ${dataVersion.dataVersion} sent.`);
+      }
+      if (message.action === "setDataVersion") {
+        await browser.storage.local.set({ dataVersion: message.version });
+        sendResponse({ success: true });
+      }
       if (message.action === "getDelijnAppData") {
         const delijnAppData = await browser.storage.local.get("delijnAppData");
         await browser.storage.local.remove("delijnAppData");
@@ -2466,6 +2546,16 @@
         console.log(message.data);
         await browser.storage.local.set({ settingsData: message.data });
         sendResponse({ success: true });
+      }
+      if (message.action === "migrateImagesV6") {
+        console.log("Migrating images to V6...");
+        await migrateImagesV6();
+        sendResponse({ success: true });
+      }
+      if (message.action === "getCustomThemeData") {
+        const customThemeData = await getCustomThemeData();
+        sendResponse(customThemeData);
+        console.log("Custom theme data data sent.");
       }
     } catch (err) {
       console.error("Service worker error:", err);

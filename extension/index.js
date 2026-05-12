@@ -260,32 +260,53 @@
 <path xmlns="http://www.w3.org/2000/svg" d="M8 12.3333L10.4615 15L16 9M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
   var warnSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
 <path xmlns="http://www.w3.org/2000/svg" d="M12 8V13M12 16H12.01M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"  stroke-width="2" stroke-linecap="round"/></svg>`;
+  var carSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+<path xmlns="http://www.w3.org/2000/svg" d="M3 8L5.72187 10.2682C5.90158 10.418 6.12811 10.5 6.36205 10.5H17.6379C17.8719 10.5 18.0984 10.418 18.2781 10.2682L21 8M6.5 14H6.51M17.5 14H17.51M8.16065 4.5H15.8394C16.5571 4.5 17.2198 4.88457 17.5758 5.50772L20.473 10.5777C20.8183 11.1821 21 11.8661 21 12.5623V18.5C21 19.0523 20.5523 19.5 20 19.5H19C18.4477 19.5 18 19.0523 18 18.5V17.5H6V18.5C6 19.0523 5.55228 19.5 5 19.5H4C3.44772 19.5 3 19.0523 3 18.5V12.5623C3 11.8661 3.18166 11.1821 3.52703 10.5777L6.42416 5.50772C6.78024 4.88457 7.44293 4.5 8.16065 4.5ZM7 14C7 14.2761 6.77614 14.5 6.5 14.5C6.22386 14.5 6 14.2761 6 14C6 13.7239 6.22386 13.5 6.5 13.5C6.77614 13.5 7 13.7239 7 14ZM18 14C18 14.2761 17.7761 14.5 17.5 14.5C17.2239 14.5 17 14.2761 17 14C17 13.7239 17.2239 13.5 17.5 13.5C17.7761 13.5 18 13.7239 18 14Z"  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+  var starSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+<path xmlns="http://www.w3.org/2000/svg" d="M11.2691 4.41115C11.5006 3.89177 11.6164 3.63208 11.7776 3.55211C11.9176 3.48263 12.082 3.48263 12.222 3.55211C12.3832 3.63208 12.499 3.89177 12.7305 4.41115L14.5745 8.54808C14.643 8.70162 14.6772 8.77839 14.7302 8.83718C14.777 8.8892 14.8343 8.93081 14.8982 8.95929C14.9705 8.99149 15.0541 9.00031 15.2213 9.01795L19.7256 9.49336C20.2911 9.55304 20.5738 9.58288 20.6997 9.71147C20.809 9.82316 20.8598 9.97956 20.837 10.1342C20.8108 10.3122 20.5996 10.5025 20.1772 10.8832L16.8125 13.9154C16.6877 14.0279 16.6252 14.0842 16.5857 14.1527C16.5507 14.2134 16.5288 14.2807 16.5215 14.3503C16.5132 14.429 16.5306 14.5112 16.5655 14.6757L17.5053 19.1064C17.6233 19.6627 17.6823 19.9408 17.5989 20.1002C17.5264 20.2388 17.3934 20.3354 17.2393 20.3615C17.0619 20.3915 16.8156 20.2495 16.323 19.9654L12.3995 17.7024C12.2539 17.6184 12.1811 17.5765 12.1037 17.56C12.0352 17.5455 11.9644 17.5455 11.8959 17.56C11.8185 17.5765 11.7457 17.6184 11.6001 17.7024L7.67662 19.9654C7.18404 20.2495 6.93775 20.3915 6.76034 20.3615C6.60623 20.3354 6.47319 20.2388 6.40075 20.1002C6.31736 19.9408 6.37635 19.6627 6.49434 19.1064L7.4341 14.6757C7.46898 14.5112 7.48642 14.429 7.47814 14.3503C7.47081 14.2807 7.44894 14.2134 7.41394 14.1527C7.37439 14.0842 7.31195 14.0279 7.18708 13.9154L3.82246 10.8832C3.40005 10.5025 3.18884 10.3122 3.16258 10.1342C3.13978 9.97956 3.19059 9.82316 3.29993 9.71147C3.42581 9.58288 3.70856 9.55304 4.27406 9.49336L8.77835 9.01795C8.94553 9.00031 9.02911 8.99149 9.10139 8.95929C9.16534 8.93081 9.2226 8.8892 9.26946 8.83718C9.32241 8.77839 9.35663 8.70162 9.42508 8.54808L11.2691 4.41115Z"  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+  var mountainSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+<path d="M13.4126 15L10.5421 10.9335C10.0849 10.2858 9.85636 9.96204 9.57524 9.85289C9.32941 9.75744 9.05583 9.76296 8.81405 9.86825C8.53756 9.98865 8.32224 10.3214 7.89161 10.9869L4.25737 16.6035C4.16197 16.7509 4.11427 16.8247 4.08048 16.9041C4.0505 16.9746 4.02872 17.0483 4.01557 17.1238C4.00075 17.2088 4.00073 17.2967 4.00068 17.4723L4 20H20.0008L20.0008 17.4604C20.0008 17.2891 20.0008 17.2035 19.9867 17.1204C19.9742 17.0467 19.9534 16.9746 19.9249 16.9055C19.8926 16.8276 19.8471 16.7551 19.7561 16.61L18.79 15.0702C17.9362 13.7095 17.5093 13.0291 16.9545 12.7811C16.4695 12.5642 15.9181 12.5492 15.4221 12.7395C14.8547 12.957 14.3915 13.6132 13.4651 14.9256L13.4126 15ZM13.4126 15L16.9545 20M20.0008 6C20.0008 7.10457 19.1054 8 18.0008 8C16.8962 8 16.0008 7.10457 16.0008 6C16.0008 4.89543 16.8962 4 18.0008 4C19.1054 4 20.0008 4.89543 20.0008 6Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+  var japanSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+<path xmlns="http://www.w3.org/2000/svg" d="M3 13H12M12 13H21M12 13V9M5 21V9M19 21V9M3 3.5V8.2C3 8.48003 3 8.62004 3.0545 8.727C3.10243 8.82108 3.17892 8.89757 3.273 8.9455C3.37996 9 3.51997 9 3.8 9H20.2C20.48 9 20.62 9 20.727 8.9455C20.8211 8.89757 20.8976 8.82108 20.9455 8.727C21 8.62004 21 8.48003 21 8.2V3.5C21 3.5 17 5 12 5C7 5 3 3.5 3 3.5Z"  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+  var catSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+<path xmlns="http://www.w3.org/2000/svg" d="M14 9V3L11 4H8L5 3V9L9.5 11L14 9ZM14 9L20 12L22 18L20 21H4L2 19L4 17L2 15L4 13M7 21V9.88889M11 15V21L16.0435 16H18M8 7L8.00707 7.00707M11 7L11.0071 7.00707"  stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 
   // src/fixes-utils/login.ts
   function updateLoginPanel() {
-    let login_app_left = document.querySelector(".login-app__left");
-    login_app_left.innerHTML = " ";
-    document.getElementsByClassName(
-      "login-app__platform-indicator"
-    )[0].innerHTML = '<h1 class="logintitle">Smartschool ++</h1>';
-    let loginSeperator = document.querySelector(".login-app__title--separator");
+    const loginAppLeft = document.querySelector(".login-app__left");
+    if (loginAppLeft) {
+      loginAppLeft.innerHTML = " ";
+    }
+    const platformIndicator = document.querySelector(
+      ".login-app__platform-indicator"
+    );
+    if (platformIndicator) {
+      platformIndicator.innerHTML = '<h1 class="logintitle">Smartschool ++</h1>';
+    }
+    const loginSeperator = document.querySelector(".login-app__title--separator");
     if (loginSeperator) {
       loginSeperator.innerHTML = '<button type="button" class="white_text_button" id="showmore">More</button>';
-      document.getElementById("showmore").addEventListener("click", () => {
-        document.documentElement.style.setProperty("--show-options", "flex");
-        document.getElementById("showmore").style.display = "none";
-      });
+      const showMoreButton = document.getElementById("showmore");
+      if (showMoreButton) {
+        showMoreButton.addEventListener("click", () => {
+          document.documentElement.style.setProperty("--show-options", "flex");
+          showMoreButton.style.display = "none";
+        });
+      }
     }
   }
   function addSplashText() {
-    var loginApp = document.querySelector(".login-app");
-    var splashTextContainer = document.createElement("div");
+    const loginApp = document.querySelector(".login-app");
+    if (!loginApp) {
+      return;
+    }
+    const splashTextContainer = document.createElement("div");
     loginApp.prepend(splashTextContainer);
     splashTextContainer.classList.add("splashtextcontainer");
     splashTextContainer.innerHTML = `<div class='splashtext'>${getSplashText()}</div>`;
   }
   function removeSplashText() {
-    document.querySelector("splashtextcontainer")?.remove();
+    document.querySelector(".splashtextcontainer")?.remove();
   }
   function updateSplashText(splashTextEnabled) {
     if (splashTextEnabled) {
@@ -2296,13 +2317,12 @@ Is it scaring you off?`,
       return null;
     }
   }
-  async function getCompressedData(file) {
+  async function getCompressedData(file, options = {
+    maxSizeMB: 0.01,
+    maxWidthOrHeight: 350,
+    useWebWorker: false
+  }) {
     try {
-      const options = {
-        maxSizeMB: 0.01,
-        maxWidthOrHeight: 350,
-        useWebWorker: false
-      };
       const compressedFile = await imageCompression(file, options);
       const dataUrl = await imageCompression.getDataUrlFromFile(compressedFile);
       return dataUrl;
@@ -2420,7 +2440,7 @@ Is it scaring you off?`,
           icon.innerHTML = infoSvg;
           toast.classList.add("smpp-info-toast");
           break;
-        case "succes":
+        case "success":
           title.innerText = "Succes";
           icon.innerHTML = succesSvg;
           toast.classList.add("smpp-succes-toast");
@@ -2465,33 +2485,35 @@ Is it scaring you off?`,
 
   // src/fixes-utils/results.ts
   function buisStats() {
-    setTimeout(function() {
-      const url = `https://${getSchoolName()}.smartschool.be/results/api/v1/evaluations/?itemsOnPage=1000`;
-      fetch(url).then((response) => response.json()).then((data2) => {
-        const categories = {
-          buis: 0,
-          voldoende: 0
-        };
+    setTimeout(() => {
+      const school = getSchoolName();
+      const url = `https://${school}.smartschool.be/results/api/v1/evaluations/?itemsOnPage=1000`;
+      fetch(url).then((response) => {
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        return response.json();
+      }).then((data2) => {
+        const categories = { buis: 0, voldoende: 0 };
+        if (!Array.isArray(data2)) return;
         data2.forEach((evaluation) => {
-          if (evaluation.graphic && evaluation.graphic.value !== void 0) {
-            const value = evaluation.graphic.value;
-            if (value < 50) {
-              categories.buis++;
-            } else {
-              categories.voldoende++;
-            }
+          const raw = evaluation?.graphic?.value;
+          const value = typeof raw === "string" ? parseFloat(raw) : raw;
+          if (typeof value === "number" && !Number.isNaN(value)) {
+            if (value < 50) categories.buis++;
+            else categories.voldoende++;
           }
         });
-        let newElement = document.createElement("div");
+        const container = document.getElementsByClassName("results-evaluations__filters")[0];
+        if (!container) return;
+        const newElement = document.createElement("div");
         newElement.id = "buis-stats";
-        document.getElementsByClassName("results-evaluations__filters")[0].appendChild(newElement);
+        container.appendChild(newElement);
         newElement.innerHTML = `<div class="buis-stats" id="buis_amount"></div><div class="buis-stats" id="voldoende_amount"></div>`;
-        document.getElementById(
-          "buis_amount"
-        ).innerHTML = `<div class="buis-stats-box"><span class="buis-stats-title">Onvoldoendes:</span><span class="buis-stats-value">${categories.buis}</span></div>`;
-        document.getElementById(
-          "voldoende_amount"
-        ).innerHTML = `<div class="buis-stats-box"><span class="buis-stats-title">Voldoendes:</span><span class="buis-stats-value">${categories.voldoende}</span></div>`;
+        const buisEl = document.getElementById("buis_amount");
+        const voldEl = document.getElementById("voldoende_amount");
+        if (buisEl)
+          buisEl.innerHTML = `<div class="buis-stats-box"><span class="buis-stats-title">Onvoldoendes:</span><span class="buis-stats-value">${categories.buis}</span></div>`;
+        if (voldEl)
+          voldEl.innerHTML = `<div class="buis-stats-box"><span class="buis-stats-title">Voldoendes:</span><span class="buis-stats-value">${categories.voldoende}</span></div>`;
       }).catch((error) => console.error("Error fetching:", error));
     }, 1e3);
   }
@@ -2501,17 +2523,20 @@ Is it scaring you off?`,
     id;
     hidden;
     element;
+    wrapper;
     _outsideClickHandler = null;
     _keydownHandler = null;
     constructor(id, hidden = true) {
       this.id = id;
       this.hidden = hidden;
       this.element = document.createElement("div");
+      this.wrapper = document.createElement("div");
     }
     async create() {
       this.element = await this.renderContent();
       this.element.id = this.id;
       this.element.classList.add("base-window");
+      this.wrapper.classList.add("window-wrapper");
       if (this.hidden) this.element.classList.add("hidden");
       const controls = document.createElement("div");
       controls.classList.add("window-controls");
@@ -2526,13 +2551,15 @@ Is it scaring you off?`,
       controls.appendChild(fullscreenBtn);
       controls.appendChild(closeBtn);
       this.element.appendChild(controls);
-      document.body.appendChild(this.element);
+      this.wrapper.appendChild(this.element);
+      document.body.appendChild(this.wrapper);
       fullscreenBtn.addEventListener("click", () => {
         this.onScreenSizeUpdate?.();
         this.element.classList.toggle("fullscreen-window");
         void this.element.offsetWidth;
       });
-      closeBtn.addEventListener("click", () => this.hide());
+      closeBtn.addEventListener("click", () => this.hide(true));
+      this.onCreate?.();
     }
     // Override this in subclass
     async renderContent() {
@@ -2549,12 +2576,29 @@ Is it scaring you off?`,
       const isKeyboardEvent = triggerEvent && (typeof KeyboardEvent !== "undefined" ? triggerEvent instanceof KeyboardEvent : String(triggerEvent.type).startsWith("key"));
       const openEventTarget = isKeyboardEvent ? null : triggerEvent?.target ?? null;
       this._outsideClickHandler = (e5) => {
-        if (openEventTarget && e5.target instanceof Node && (e5.target === openEventTarget || openEventTarget instanceof Node && openEventTarget.contains(e5.target))) {
+        const clickedElement = e5.target;
+        const isInsideDialog = this.element.contains(clickedElement);
+        if (isInsideDialog) {
           return;
         }
-        if (e5.target instanceof Node && !this.element.contains(e5.target)) {
-          this.hide();
+        const isInsideBaseDialog = clickedElement.closest(".base-dialog") !== null;
+        if (isInsideBaseDialog) {
+          return;
         }
+        const windowWrapper = clickedElement.closest(".window-wrapper");
+        const isInsideDialogWrapper = windowWrapper?.querySelector(".base-dialog") !== null;
+        const isOwnWrapper = clickedElement == this.wrapper;
+        if (isInsideDialogWrapper && !isOwnWrapper) {
+          return;
+        }
+        if (openEventTarget && clickedElement instanceof Node) {
+          const isOpenTrigger = clickedElement === openEventTarget;
+          const isInsideOpenTrigger = openEventTarget instanceof Node && openEventTarget.contains(clickedElement);
+          if (isOpenTrigger || isInsideOpenTrigger) {
+            return;
+          }
+        }
+        this.hide();
       };
       document.addEventListener("mousedown", this._outsideClickHandler, {
         capture: true
@@ -2562,7 +2606,7 @@ Is it scaring you off?`,
       if (!this._keydownHandler) {
         this._keydownHandler = (e5) => {
           if (e5.key === "Escape") {
-            this.hide();
+            this.hide(true);
           }
         };
         document.addEventListener("keydown", this._keydownHandler);
@@ -2577,7 +2621,7 @@ Is it scaring you off?`,
       }
       this.onOpened();
     }
-    hide() {
+    hide(realUserIntent = false) {
       if (this.hidden) return;
       this.hidden = true;
       this.element.classList.add("hidden");
@@ -2591,11 +2635,37 @@ Is it scaring you off?`,
         document.removeEventListener("keydown", this._keydownHandler);
         this._keydownHandler = null;
       }
-      this.onClosed?.();
+      console.log();
+      this.onClosed?.(realUserIntent);
     }
     remove() {
       this.element?.remove();
+      this.wrapper?.remove();
       this.hidden = true;
+    }
+  };
+  var Dialog = class extends BaseWindow {
+    constructor(id, hidden = true) {
+      super(id, hidden);
+    }
+    async create() {
+      this.element = await this.renderContent();
+      this.element.id = this.id;
+      this.element.classList.add("base-window", "base-dialog");
+      this.wrapper.classList.add("window-wrapper");
+      if (this.hidden) this.element.classList.add("hidden");
+      const controls = document.createElement("div");
+      controls.classList.add("window-controls");
+      const closeBtn = document.createElement("button");
+      closeBtn.classList.add("window-button", "window-close");
+      closeBtn.title = "Sluiten";
+      closeBtn.innerHTML = closeIconSVG;
+      controls.appendChild(closeBtn);
+      this.element.appendChild(controls);
+      this.wrapper.appendChild(this.element);
+      document.body.appendChild(this.wrapper);
+      closeBtn.addEventListener("click", () => this.hide(true));
+      this.onCreate?.();
     }
   };
 
@@ -2656,12 +2726,24 @@ Is it scaring you off?`,
   }
 
   // src/main-features/modules/images.ts
+  var ImageProcessingError = class extends Error {
+    constructor(message, toastType = "error", toastDuration) {
+      super(message);
+      this.message = message;
+      this.toastType = toastType;
+      this.toastDuration = toastDuration;
+      this.name = "ImageProcessingError";
+    }
+    message;
+    toastType;
+    toastDuration;
+  };
   var ImageSelector = class {
     name;
     isThemeImage;
     id = "";
     clearButton = document.createElement("button");
-    linkInput = createTextInput("", "Link");
+    linkInput = createTextInput("", "Link or paste");
     fileInput = document.createElement("input");
     fileInputButton = document.createElement("button");
     linkInputContainer = this.createLinkImageInputContainer();
@@ -2727,6 +2809,20 @@ Is it scaring you off?`,
         }
         await this.storeImage();
       });
+      this.linkInput.addEventListener("paste", async (e5) => {
+        const items = e5.clipboardData?.items;
+        if (!items) return;
+        for (const item of items) {
+          if (item.type.startsWith("image/")) {
+            e5.preventDefault();
+            const file = item.getAsFile();
+            if (file) {
+              this.linkInput.value = file.name;
+              await this.storeImage(file);
+            }
+          }
+        }
+      });
       this.linkInput.addEventListener("change", async () => {
         if ((this.linkInput.value || "").trim() !== "") {
           this.clearButton.classList.add("active");
@@ -2743,110 +2839,134 @@ Is it scaring you off?`,
         await this.storeImage();
       });
     }
-    async storeImage() {
+    async handleFileProcessing(file) {
+      await this.storeImage(file);
+    }
+    getDefaultImageData() {
+      return { imageData: "", metaData: { link: "", type: "default" } };
+    }
+    setButtonLoading(isLoading) {
+      if (isLoading) {
+        this.fileInputButton.innerHTML = loadingSpinnerSvg;
+        new Toast("Loading image...", "info").render();
+      } else {
+        this.fileInputButton.innerHTML = imageInputSvg;
+      }
+    }
+    async processLocalFile(file) {
+      if (!file.type.startsWith("image/")) {
+        throw new ImageProcessingError("That's not an image!", "error");
+      }
+      this.setButtonLoading(true);
+      const [originalDataUrl, compressedDataUrl] = await Promise.all([
+        getCompressedData(file, {
+          maxSizeMB: 3,
+          maxWidthOrHeight: 2560,
+          useWebWorker: false
+        }),
+        getCompressedData(file)
+      ]);
+      return {
+        original: {
+          imageData: originalDataUrl,
+          metaData: { link: file.name, type: "file" }
+        },
+        compressed: {
+          imageData: compressedDataUrl,
+          metaData: { link: file.name, type: "file" }
+        }
+      };
+    }
+    async processImageLink(url) {
+      if (!isAbsoluteUrl(url)) {
+        throw new ImageProcessingError("That's not a valid link!", "warning");
+      }
+      this.setButtonLoading(true);
+      const [file] = await Promise.all([
+        convertLinkToFile(url).catch(() => null)
+      ]);
+      if (!file) {
+        throw new ImageProcessingError(
+          "Failed to access image, try saving and uploading it",
+          "error",
+          5e3
+        );
+      }
+      if (!file.type.startsWith("image/")) {
+        throw new ImageProcessingError("That's not an image!", "error");
+      }
+      const compressedBase64 = await getCompressedData(file);
+      const base64 = await getCompressedData(file, {
+        maxSizeMB: 3,
+        maxWidthOrHeight: 2560,
+        useWebWorker: false
+      });
+      return {
+        original: { imageData: base64, metaData: { link: url, type: "file" } },
+        compressed: {
+          imageData: compressedBase64,
+          metaData: { link: url, type: "file" }
+        }
+      };
+    }
+    async saveToStorage(data2, compressedImage) {
+      const compressedId = `compressed-${this.id}`;
+      await browser.runtime.sendMessage({
+        action: "setImage",
+        id: this.id,
+        data: data2
+      });
+      await browser.runtime.sendMessage({
+        action: "setImage",
+        id: compressedId,
+        data: compressedImage
+      });
+      await this.loadImageData();
+      this.onStore();
+      if (this.isThemeImage) {
+        await browser.runtime.sendMessage({
+          action: "markThemeAsModified",
+          name: this.id
+        });
+      }
+    }
+    async storeImage(passedFile) {
+      let storedData = await browser.runtime.sendMessage({
+        action: "getImage",
+        id: this.id
+      });
+      let data2 = storedData ? storedData : this.getDefaultImageData();
+      let compressedImage = {
+        imageData: data2.imageData,
+        metaData: { ...data2.metaData }
+      };
       try {
-        let data2 = await browser.runtime.sendMessage({
-          action: "getImage",
-          id: this.id
-        });
-        if (!data2) {
-          data2 = { imageData: "", metaData: { link: "", type: "default" } };
-        }
-        const compressedId = `compressed-${this.id}`;
-        let compressedImage = {
-          imageData: data2.imageData,
-          metaData: { link: data2.metaData.link, type: data2.metaData.type }
-        };
-        const file = this.fileInput.files?.[0];
+        const file = passedFile || this.fileInput.files?.[0];
+        const linkValue = this.linkInput.value?.trim() || "";
         if (file) {
-          this.fileInputButton.innerHTML = loadingSpinnerSvg;
-          const [originalDataUrl, compressedDataUrl] = await Promise.all([
-            imageCompression.getDataUrlFromFile(file),
-            getCompressedData(file)
-          ]);
-          this.fileInputButton.innerHTML = imageInputSvg;
-          data2.imageData = originalDataUrl;
-          data2.metaData.link = file.name;
-          data2.metaData.type = "file";
-          compressedImage.imageData = compressedDataUrl;
-          compressedImage.metaData.link = file.name;
-          compressedImage.metaData.type = "file";
-          this.fileInput.value = "";
+          const result = await this.processLocalFile(file);
+          data2 = result.original;
+          compressedImage = result.compressed;
+        } else if (linkValue !== "") {
+          const result = await this.processImageLink(linkValue);
+          data2 = result.original;
+          compressedImage = result.compressed;
         } else {
-          const linkValue = this.linkInput.value?.trim() || "";
-          if (linkValue === "") {
-            data2.metaData.type = "default";
-            data2.metaData.link = "";
-            data2.imageData = "";
-            compressedImage.metaData.type = "default";
-            compressedImage.metaData.link = "";
-            compressedImage.imageData = "";
-          } else if (isAbsoluteUrl(linkValue)) {
-            this.fileInputButton.innerHTML = loadingSpinnerSvg;
-            let [base64, file2] = await Promise.all([
-              await convertLinkToBase64(linkValue),
-              await convertLinkToFile(linkValue)
-            ]);
-            this.fileInputButton.innerHTML = imageInputSvg;
-            if (base64 && file2) {
-              data2.metaData.type = "file";
-              data2.metaData.link = linkValue;
-              data2.imageData = base64;
-              this.fileInputButton.innerHTML = loadingSpinnerSvg;
-              let compressedBase64 = await getCompressedData(file2);
-              this.fileInputButton.innerHTML = imageInputSvg;
-              compressedImage.metaData.type = "file";
-              compressedImage.metaData.link = linkValue;
-              compressedImage.imageData = compressedBase64;
-            } else {
-              await this.loadImageData();
-              await new Toast(
-                "Failed to access image, try to upload it as a file",
-                "error",
-                5e3
-              ).render();
-              data2.metaData.type = "default";
-              data2.metaData.link = "";
-              data2.imageData = "";
-              compressedImage.metaData.type = "default";
-              compressedImage.metaData.link = "";
-              compressedImage.imageData = "";
-            }
-          } else {
-            await this.loadImageData();
-            await new Toast("That's not a valid link!", "warning").render();
-            data2.metaData.type = "default";
-            data2.metaData.link = "";
-            data2.imageData = "";
-            compressedImage.metaData.type = "default";
-            compressedImage.metaData.link = "";
-            compressedImage.imageData = "";
-          }
+          data2 = this.getDefaultImageData();
+          compressedImage = this.getDefaultImageData();
         }
-        await browser.runtime.sendMessage({
-          action: "setImage",
-          id: this.id,
-          data: data2
-        });
-        await browser.runtime.sendMessage({
-          action: "setImage",
-          id: compressedId,
-          data: compressedImage
-        });
-        await this.loadImageData();
-        this.onStore();
-        if (this.isThemeImage) {
-          await browser.runtime.sendMessage({
-            action: "markThemeAsModified",
-            name: this.id
-          });
-        }
-        if (data2.metaData.type == "file") {
-          new Toast("Image succesfully saved", "succes").render();
-        }
+        await this.saveToStorage(data2, compressedImage);
+        new Toast("Image successfully saved", "success").render();
       } catch (error) {
-        await new Toast("Failed to save image", "error", 5e3).render();
-        console.error("Failed to store image:", error);
+        if (error instanceof ImageProcessingError) {
+          new Toast(error.message, error.toastType, error.toastDuration).render();
+        } else {
+          new Toast("Failed to save image", "error", 5e3).render();
+          console.error("Failed to store image:", error);
+        }
+      } finally {
+        this.fileInput.value = "";
+        this.setButtonLoading(false);
       }
     }
     async loadImageData() {
@@ -2871,22 +2991,46 @@ Is it scaring you off?`,
   };
   async function getImageURL(id, onDefault, getCompressed) {
     let image;
+    let requestedImageId = id;
     if (getCompressed) {
-      id = "compressed-" + id;
+      requestedImageId = "compressed-" + id;
     }
     try {
       image = await browser.runtime.sendMessage({
         action: "getImage",
-        id
+        id: requestedImageId
       });
-      console.log(image);
-      console.log(id);
     } catch (err) {
       console.warn("[getImageURL] Failed to get image from background:", err);
       return { url: await onDefault(), type: null };
     }
+    if (getCompressed && image.imageData === "") {
+      let origImage = await browser.runtime.sendMessage({
+        action: "getImage",
+        id
+      });
+      if (origImage.imageData != "") {
+        const origImageFile = await imageCompression.getFilefromDataUrl(
+          origImage.imageData,
+          ""
+        );
+        const imageData = await getCompressedData(origImageFile);
+        const compressedImage = {
+          metaData: {
+            type: origImage.metaData.type,
+            link: origImage.metaData.link
+          },
+          imageData
+        };
+        await browser.runtime.sendMessage({
+          action: "setImage",
+          id: requestedImageId,
+          data: compressedImage
+        });
+        image = compressedImage;
+      }
+    }
     if (image.metaData.type === "default") {
-      console.log("why");
       return { url: await onDefault(), type: image.metaData.type };
     }
     if (isFirefox) {
@@ -2896,7 +3040,6 @@ Is it scaring you off?`,
       const res = await fetch(image.imageData);
       const blob = await res.blob();
       const objectURL = URL.createObjectURL(blob);
-      console.log("yes");
       return { url: objectURL, type: image.metaData.type };
     } catch (err) {
       console.warn("[getImageURL] Failed to create Blob URL:", err);
@@ -3039,6 +3182,9 @@ Is it scaring you off?`,
       if (row == void 0) {
         row = this.itemListEl.childNodes[this.selectedIndex];
       }
+      if (row?.dataset?.header == "true") {
+        return;
+      }
       let content = this.inputEl.value;
       if (row != void 0 && !row.classList.contains("hidden")) {
         content = row.dataset.content;
@@ -3093,21 +3239,45 @@ Is it scaring you off?`,
       this.selectedIndex = 0;
       let searchq = this.inputEl.value.trim();
       let items = [];
+      let itemIndex = 0;
       for (let node of this.itemListEl.childNodes) {
+        const isHeader = node.dataset.header == "true";
+        const isFavorite = node.dataset.favorite == "true";
+        if (isHeader) {
+          items.push({
+            score: Number.MAX_SAFE_INTEGER,
+            htmlNode: node,
+            header: true,
+            favorite: true,
+            index: itemIndex
+          });
+          itemIndex += 1;
+          continue;
+        }
         let score = this.#matchScore(node.dataset.content, searchq);
         if (score == 0 && searchq != "") {
           node.classList.add("hidden");
         } else {
           node.classList.remove("hidden");
         }
-        items.push({ score, htmlNode: node });
+        items.push({
+          score,
+          htmlNode: node,
+          favorite: isFavorite,
+          index: itemIndex
+        });
+        itemIndex += 1;
         if (dmenuConfig.itemScore) {
           node.getElementsByClassName("dmenu-score")[0].innerText = score;
         }
       }
       let sortedItems = items.sort(function(a5, b3) {
+        if (a5.header != b3.header) return a5.header ? -1 : 1;
+        if (a5.favorite != b3.favorite) return a5.favorite ? -1 : 1;
         if (a5.score < b3.score) return 1;
         if (a5.score > b3.score) return -1;
+        if (a5.index < b3.index) return -1;
+        if (a5.index > b3.index) return 1;
         return 0;
       });
       for (let i5 = 0; i5 < sortedItems.length; i5++) {
@@ -3161,19 +3331,47 @@ Is it scaring you off?`,
       }
       let row = document.createElement("div");
       row.classList.add("dmenu-row");
-      row.innerHTML = '<div class="dmenu-content"></div><div class="dmenu-meta"></div><div class="dmenu-score"></div>';
+      row.innerHTML = '<div class="dmenu-content"></div><div class="dmenu-meta"></div><div class="dmenu-score"></div><div class="dmenu-favorite"></div>';
       row.getElementsByClassName("dmenu-content")[0].innerText = cmd;
+      if (item.header) {
+        row.classList.add("dmenu-category");
+        row.dataset.header = "true";
+      }
       row.dataset.content = cmd;
+      row.dataset.favorite = item.favorite == true ? "true" : "false";
       if (meta != void 0) {
         row.getElementsByClassName("dmenu-meta")[0].innerText = meta;
+      }
+      const favoriteContainer = row.getElementsByClassName("dmenu-favorite")[0];
+      if (typeof item.onFavoriteToggle == "function") {
+        const favoriteButton = document.createElement("button");
+        favoriteButton.type = "button";
+        favoriteButton.classList.add("dmenu-favorite-button");
+        favoriteButton.innerText = item.favorite == true ? "\u2605" : "\u2606";
+        favoriteButton.addEventListener("click", (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+          const nextFavorite = row.dataset.favorite != "true";
+          row.dataset.favorite = nextFavorite ? "true" : "false";
+          favoriteButton.innerText = nextFavorite ? "\u2605" : "\u2606";
+          item.onFavoriteToggle(nextFavorite);
+          klass.#sort();
+        });
+        favoriteContainer.appendChild(favoriteButton);
       }
       if (dmenuConfig.itemScore) {
         row.getElementsByClassName("dmenu-score")[0].innerText = "0";
       }
       let klass = this;
-      row.addEventListener("click", function(e5) {
-        klass.#accept(row);
-      });
+      if (item.header) {
+        row.addEventListener("click", function() {
+          return;
+        });
+      } else {
+        row.addEventListener("click", function(e5) {
+          klass.#accept(row);
+        });
+      }
       parent.appendChild(row);
       return row;
     }
@@ -3208,9 +3406,17 @@ Is it scaring you off?`,
       let first = true;
       for (let item of itemList) {
         let row = this.#mkRow(item, this.itemListEl);
-        if (first) {
+        if (first && row.dataset.header != "true") {
           row.classList.add("dmenu-selected");
           first = false;
+        }
+      }
+      if (first) {
+        const selectable = Array.from(this.itemListEl.childNodes).find(
+          (node) => node.dataset?.header != "true"
+        );
+        if (selectable) {
+          selectable.classList.add("dmenu-selected");
         }
       }
       document.body.appendChild(this.menuEl);
@@ -4943,8 +5149,276 @@ Is it scaring you off?`,
   }
 
   // src/main-features/settings/quick-settings.ts
+  var NoThemesOption = class {
+    element = document.createElement("div");
+    createText() {
+      let text = document.createElement("div");
+      text.classList.add("compact-theme-option-text");
+      text.innerHTML = brokenHeartSvg;
+      let span = document.createElement("span");
+      span.innerText = "No themes";
+      text.appendChild(span);
+      return text;
+    }
+    createImageContainer() {
+      let imageContainer = document.createElement("div");
+      imageContainer.classList.add("compact-theme-option-image-container");
+      return imageContainer;
+    }
+    render() {
+      this.element.innerHTML = "";
+      this.element.classList.add("compact-theme-option", "no-themes");
+      this.element.appendChild(this.createText());
+      this.element.appendChild(this.createImageContainer());
+      return this.element;
+    }
+  };
+  var CompactThemeOption = class {
+    element = document.createElement("div");
+    name;
+    currentTheme;
+    constructor(name2, theme) {
+      this.name = name2;
+      this.currentTheme = theme;
+    }
+    createText() {
+      let text = document.createElement("div");
+      text.classList.add("compact-theme-option-text");
+      let span = document.createElement("span");
+      span.innerText = this.currentTheme.displayName;
+      text.appendChild(span);
+      return text;
+    }
+    render() {
+      this.element.innerHTML = "";
+      this.element.classList.add("compact-theme-option");
+      this.element.dataset["name"] = this.name;
+      this.element.addEventListener("click", () => this.click());
+      this.element.appendChild(this.createText());
+      this.element.appendChild(this.createImageContainer());
+      this.update();
+      return this.element;
+    }
+    createImageContainer() {
+      const imageContainer = document.createElement("div");
+      imageContainer.classList.add("compact-theme-option-image-container");
+      return imageContainer;
+    }
+    async updateImage(forceReload = false) {
+      if (this.name !== currentThemeName && !forceReload) return;
+      const imageURL = await getImageURL(
+        this.name,
+        async () => {
+          return await getExtensionImage(
+            "theme-backgrounds/compressed/" + this.name + ".jpg"
+          );
+        },
+        true
+      );
+      const container = this.element.querySelector(
+        ".compact-theme-option-image-container"
+      );
+      if (!container) return;
+      if (!await isValidImage(imageURL.url)) {
+        container.classList.add("no-image");
+        container.innerHTML = "";
+        return;
+      }
+      container.classList.remove("no-image");
+      const existingImg = container.querySelector("img");
+      const img = existingImg || document.createElement("img");
+      if (imageURL?.url) {
+        img.src = imageURL.url;
+      }
+      if (!existingImg) {
+        container.appendChild(img);
+      }
+    }
+    updateElement() {
+      Object.keys(this.currentTheme.cssProperties).forEach((key) => {
+        this.element.style.setProperty(
+          `${key}-local`,
+          this.currentTheme.cssProperties[key]
+        );
+      });
+    }
+    async click() {
+      await updateTheme(this.name);
+      await this.onClick();
+      this.element.classList.add("is-selected");
+    }
+    async onClick() {
+    }
+    async updateSelection() {
+      const container = this.element.querySelector(
+        ".compact-theme-option-image-container"
+      );
+      if (this.name === currentThemeName) {
+        this.element.classList.add("is-selected");
+        await this.updateImage(true);
+      } else {
+        this.element.classList.remove("is-selected");
+        if (container instanceof HTMLImageElement) {
+          container.src = "";
+          const placeholder = this.createImageContainer();
+          container.replaceWith(placeholder);
+        }
+      }
+    }
+    async update() {
+      this.currentTheme = await getTheme(this.name);
+      this.updateSelection();
+      this.updateElement();
+    }
+  };
+  var CompactThemeSelector = class {
+    element = document.createElement("div");
+    input = document.createElement("div");
+    selector = document.createElement("div");
+    selectorIsOpen = false;
+    themeOptions = [];
+    noThemesOption = new NoThemesOption();
+    async createThemeOption(name2, theme) {
+      let option = new CompactThemeOption(name2, theme);
+      option.onClick = async () => {
+        this.updateInput();
+        if (settingsWindow) {
+          await settingsWindow.loadPage();
+        }
+        await loadQuickSettings();
+      };
+      this.themeOptions.push(option);
+      return option;
+    }
+    async createThemeOptions(themes) {
+      Object.entries(themes).forEach((theme) => {
+        this.createThemeOption(theme[0], theme[1]);
+      });
+    }
+    async renderThemeOptions() {
+      this.selector.innerHTML = "";
+      if (this.themeOptions.length === 0) {
+        const noThemesElement = this.noThemesOption.render();
+        this.selector.appendChild(noThemesElement);
+        this.selector.style.height = this.calculateHeight(1) + "px";
+        return;
+      }
+      for (let i5 = 1; i5 <= this.themeOptions.length; i5++) {
+        const option = this.themeOptions[i5 - 1];
+        if (!option) break;
+        option.render();
+        this.selector.style.height = this.calculateHeight(i5) + "px";
+        this.selector.appendChild(option.element);
+        if (document.body.classList.contains("enableAnimations"))
+          await delay(200 / this.themeOptions.length);
+      }
+    }
+    async updateThemeOptions() {
+      let themes = await browser.runtime.sendMessage({
+        action: "getThemes",
+        categories: ["quickSettings"],
+        includeHidden: false
+      });
+      let themeOptionNames = this.themeOptions.map((option) => {
+        return option.name;
+      });
+      let themeNames = Object.keys(themes);
+      let missingThemeOptionNames = themeNames.filter((name2) => {
+        return !themeOptionNames.includes(name2);
+      });
+      missingThemeOptionNames.forEach(async (name2) => {
+        if (!themes[name2]) {
+          return;
+        }
+        let option = await this.createThemeOption(name2, themes[name2]);
+        option.render();
+        this.selector.appendChild(option.element);
+      });
+      let extraThemeOptionNames = themeOptionNames.filter((name2) => {
+        return !themeNames.includes(name2);
+      });
+      this.themeOptions.forEach((option) => {
+        if (extraThemeOptionNames.includes(option.name)) {
+          option.element.remove();
+        }
+      });
+      this.themeOptions = this.themeOptions.filter((option) => {
+        return !extraThemeOptionNames.includes(option.name);
+      });
+      this.themeOptions.forEach((option) => {
+        option.updateSelection();
+      });
+      if (this.selectorIsOpen) {
+        this.renderThemeOptions();
+      }
+    }
+    createInput() {
+      this.input.classList.add("theme-selector-input");
+      this.updateInput();
+    }
+    async updateInput() {
+      let currentOption = new CompactThemeOption(
+        currentThemeName,
+        await getTheme(currentThemeName)
+      );
+      currentOption.onClick = async () => {
+        this.selectorIsOpen = !this.selectorIsOpen;
+        this.updateSelectorStatus();
+      };
+      currentOption.render();
+      currentOption.element.classList.add("is-selected");
+      this.input.innerHTML = "";
+      this.input.appendChild(currentOption.element);
+    }
+    async updateSelectorStatus() {
+      if (this.selectorIsOpen) {
+        this.selector.innerHTML = "";
+        this.selector.classList.add("visible");
+        this.selector.style.overflowY = "hidden";
+        await this.updateThemeOptions();
+        await delay(500);
+        this.selector.style.overflowY = "auto";
+      } else {
+        this.selector.style.overflowY = "hidden";
+        this.selector.style.height = "0px";
+        this.selector.classList.remove("visible");
+      }
+    }
+    calculateHeight(themeOptionsCount) {
+      const TOP_MARGIN = 7;
+      const CONTENT_HEIGHT = themeOptionsCount * (36 + 3);
+      return TOP_MARGIN + CONTENT_HEIGHT;
+    }
+    async render() {
+      this.element.classList.add("compact-theme-selector");
+      let themes = await browser.runtime.sendMessage({
+        action: "getThemes",
+        categories: ["quickSettings"],
+        includeHidden: false
+      });
+      this.themeOptions = [];
+      this.createThemeOptions(themes);
+      this.updateThemeOptions();
+      this.createInput();
+      document.addEventListener("click", (e5) => {
+        if (e5.target instanceof HTMLElement) {
+          if (e5.target == this.input || this.input.contains(e5.target)) return;
+          this.selectorIsOpen = false;
+          this.updateSelectorStatus();
+        }
+      });
+      this.element.appendChild(this.input);
+      this.element.appendChild(this.selector);
+      this.selector.classList.add("compact-theme-options");
+      return this.element;
+    }
+  };
+  var compactThemeSelector = new CompactThemeSelector();
   var quickSettingsWindowIsHidden = true;
-  var quickSettingsBackgroundImageSelector = new ImageSelector("backgroundImage", true);
+  var quickSettingsBackgroundImageSelector = new ImageSelector(
+    "backgroundImage",
+    true
+  );
   async function storeQuickSettings() {
     const oldData = await browser.runtime.sendMessage({
       action: "getSettingsData"
@@ -4961,6 +5435,12 @@ Is it scaring you off?`,
     );
     if (performanceModeToggle) {
       data2.other.performanceMode = performanceModeToggle.checked;
+    }
+    const focusModeToggle = document.getElementById(
+      "focus-mode-toggle"
+    );
+    if (focusModeToggle) {
+      data2.other.focusMode = focusModeToggle.checked;
     }
     await browser.runtime.sendMessage({ action: "setSettingsData", data: data2 });
     await loadQuickSettings();
@@ -4988,10 +5468,21 @@ Is it scaring you off?`,
     if (performanceModeToggle) {
       performanceModeToggle.checked = data2.other.performanceMode;
     }
+    const focusModeToggle = document.getElementById(
+      "focus-mode-toggle"
+    );
+    if (focusModeToggle) {
+      focusModeToggle.checked = data2.other.focusMode;
+    }
     const performanceModeInfo = document.getElementById("performance-mode-info");
     if (performanceModeInfo) {
       performanceModeInfo.innerHTML = `Toggle performance mode ${data2.other.performanceMode ? "<span class='green-underline'>Enabled</span>" : "<span class='red-underline'>Disabled</span>"}`;
     }
+    const focusModeInfo = document.getElementById("focus-mode-info");
+    if (focusModeInfo) {
+      focusModeInfo.innerHTML = `Toggle focus mode ${data2.other.focusMode ? "<span class='green-underline'>Enabled</span>" : "<span class='red-underline'>Disabled</span>"}`;
+    }
+    await compactThemeSelector.updateInput();
   }
   function toggleQuickSettings() {
     let win = document.getElementById("quickSettings");
@@ -5015,7 +5506,7 @@ Is it scaring you off?`,
     }
     quickSettingsWindowIsHidden = true;
   }
-  function createQuickSettingsHTML(parent) {
+  async function createQuickSettingsHTML(parent) {
     const performanceModeTooltipLabel = document.createElement("label");
     performanceModeTooltipLabel.className = "performanceModeTooltipLabel";
     performanceModeTooltipLabel.id = "performanceModeTooltipLabel";
@@ -5026,7 +5517,19 @@ Is it scaring you off?`,
     performanceModeTooltipLabel.innerHTML += performanceModeSvg;
     const performanceModeInfo = document.createElement("span");
     performanceModeInfo.id = "performance-mode-info";
-    const compactThemeSelector = new CompactThemeSelector();
+    const focusModeLabel = document.createElement("label");
+    focusModeLabel.className = "performanceModeTooltipLabel";
+    focusModeLabel.id = "focusModeTooltipLabel";
+    const focusModeToggle = document.createElement("input");
+    focusModeToggle.type = "checkbox";
+    focusModeToggle.id = "focus-mode-toggle";
+    focusModeLabel.appendChild(focusModeToggle);
+    focusModeLabel.innerHTML += performanceModeSvg;
+    const focusModeInfo = document.createElement("span");
+    focusModeInfo.id = "focus-mode-info";
+    const themeHeading = document.createElement("h3");
+    themeHeading.className = "quick-settings-title";
+    themeHeading.textContent = "Theme:";
     const wallpaperTopContainer = document.createElement("div");
     const wallpaperHeading = document.createElement("h3");
     wallpaperHeading.className = "quick-settings-title";
@@ -5059,21 +5562,28 @@ Is it scaring you off?`,
     extraSettingsButton.innerHTML += "More Settings";
     extraSettingsButton.innerHTML += settingsIconSvg;
     extraSettingsButton.addEventListener("click", (e5) => openSettingsWindow(e5));
+    let themeContainer = document.createElement("div");
+    themeContainer.classList.add("quick-settings-theme-container");
+    await compactThemeSelector.render();
+    themeContainer.appendChild(themeHeading);
+    themeContainer.appendChild(compactThemeSelector.element);
     parent.appendChild(performanceModeTooltipLabel);
-    parent.appendChild(compactThemeSelector.render());
+    parent.appendChild(focusModeLabel);
+    parent.appendChild(themeContainer);
     parent.appendChild(wallpaperTopContainer);
     parent.appendChild(performanceModeInfo);
+    parent.appendChild(focusModeInfo);
     parent.appendChild(extraSettingsButton);
     return parent;
   }
-  function createQuickSettings() {
+  async function createQuickSettings() {
     let quickSettingsWindow = document.createElement("div");
     quickSettingsWindow.id = "quickSettings";
     quickSettingsWindow.addEventListener("change", storeQuickSettings);
     quickSettingsBackgroundImageSelector.onStore = () => {
       storeQuickSettings();
     };
-    quickSettingsWindow = createQuickSettingsHTML(quickSettingsWindow);
+    quickSettingsWindow = await createQuickSettingsHTML(quickSettingsWindow);
     const quickSettingsButton = document.getElementById("quickSettingsButton");
     if (quickSettingsButton) {
       quickSettingsButton.insertAdjacentElement("afterend", quickSettingsWindow);
@@ -5083,11 +5593,19 @@ Is it scaring you off?`,
     if (tooltipLabel && tooltipInfo) {
       tooltipLabel.addEventListener("mouseover", () => {
         tooltipInfo.style.opacity = "1";
-        tooltipInfo.style.zIndex = "2";
       });
       tooltipLabel.addEventListener("mouseout", () => {
         tooltipInfo.style.opacity = "0";
-        tooltipInfo.style.zIndex = "-1";
+      });
+    }
+    const focusTooltipLabel = document.getElementById("focusModeTooltipLabel");
+    const focusTooltipInfo = document.getElementById("focus-mode-info");
+    if (focusTooltipLabel && focusTooltipInfo) {
+      focusTooltipLabel.addEventListener("mouseover", () => {
+        focusTooltipInfo.style.opacity = "1";
+      });
+      focusTooltipLabel.addEventListener("mouseout", () => {
+        focusTooltipInfo.style.opacity = "0";
       });
     }
     document.addEventListener("click", (e5) => {
@@ -5118,58 +5636,6 @@ Is it scaring you off?`,
     quickSettingsButtonWrapper.appendChild(quickSettingsButton);
     return quickSettingsButtonWrapper;
   }
-  var ThemeOptiony = class {
-    element = document.createElement("div");
-    name;
-    constructor(name2) {
-      this.name = name2;
-    }
-    createImageContainer() {
-      let imageContainer = document.createElement("div");
-      imageContainer.classList.add("image-container");
-      return imageContainer;
-    }
-    async imageIsOutdated() {
-    }
-    async updateImage(forceReload = false) {
-      let data2 = await browser.runtime.sendMessage({
-        action: "getSettingsData"
-      });
-      if (this.name == data2.appearance.theme || forceReload) {
-        let imageURL = await getImageURL(
-          this.name,
-          async () => {
-            return await getExtensionImage(
-              "theme-backgrounds/" + this.name + ".jpg"
-            );
-          },
-          true
-        );
-        this.element.style.setProperty(
-          "--background-image-local",
-          `url(${await imageURL.url})`
-        );
-      }
-    }
-    async render() {
-      this.element.classList.add("lethal-compact-theme-option");
-      let theme = await getTheme(this.name);
-      Object.keys(theme.cssProperties).forEach((key) => {
-        this.element.style.setProperty(
-          `${key}-local`,
-          theme.cssProperties[key]
-        );
-      });
-      return this.element;
-    }
-  };
-  var CompactThemeSelector = class {
-    element = document.createElement("div");
-    render() {
-      let ThemeOptionyStalker = new ThemeOptiony("stalker");
-      return this.element;
-    }
-  };
 
   // src/main-features/settings/main-settings.ts
   var SettingsWindow = class extends BaseWindow {
@@ -5411,29 +5877,31 @@ Is it scaring you off?`,
               settings.appearance.background.blur * 10
             );
           }
-          document.querySelectorAll(".settings-page-weather-overlay-container input").forEach((input) => {
-            const inputElement = input;
-            if (inputElement.id) {
-              inputElement.checked = inputElement.id.includes(
-                settings.appearance.weatherOverlay.type
+          if (!liteMode) {
+            document.querySelectorAll(".settings-page-weather-overlay-container input").forEach((input) => {
+              const inputElement = input;
+              if (inputElement.id) {
+                inputElement.checked = inputElement.id.includes(
+                  settings.appearance.weatherOverlay.type
+                );
+              }
+            });
+            const weatherOverlaySlider = document.getElementById(
+              "settings-page-weather-overlay-slider"
+            );
+            if (weatherOverlaySlider) {
+              weatherOverlaySlider.value = String(
+                settings.appearance.weatherOverlay.amount
               );
             }
-          });
-          const weatherOverlaySlider = document.getElementById(
-            "settings-page-weather-overlay-slider"
-          );
-          if (weatherOverlaySlider) {
-            weatherOverlaySlider.value = String(
-              settings.appearance.weatherOverlay.amount
+            const weatherOpacitySlider = document.getElementById(
+              "settings-page-weather-overlay-opacity-slider"
             );
-          }
-          const weatherOpacitySlider = document.getElementById(
-            "settings-page-weather-overlay-opacity-slider"
-          );
-          if (weatherOpacitySlider) {
-            weatherOpacitySlider.value = String(
-              settings.appearance.weatherOverlay.opacity * 100
-            );
+            if (weatherOpacitySlider) {
+              weatherOpacitySlider.value = String(
+                settings.appearance.weatherOverlay.opacity * 100
+              );
+            }
           }
           const defaultIconButton = document.getElementById(
             "settings-page-default-icon-button"
@@ -5529,6 +5997,10 @@ Is it scaring you off?`,
             "settings-page-max-assignments-slider",
             "TakenWidget.maxAssignments"
           );
+          await loadWidgetSettingSlider(
+            "settings-page-assignment-days-slider",
+            "TakenWidget.foresightDays"
+          );
           if (!liteMode) {
             const showSnakeGridButton = document.getElementById(
               "settings-page-show-snake-grid-button"
@@ -5551,6 +6023,12 @@ Is it scaring you off?`,
           );
           if (performanceModeButton) {
             performanceModeButton.checked = settings.other.performanceMode;
+          }
+          const focusModeButton = document.getElementById(
+            "settings-page-focus-mode-button"
+          );
+          if (focusModeButton) {
+            focusModeButton.checked = settings.other.focusMode;
           }
           const splashTextButton = document.getElementById(
             "settings-page-splash-text-button"
@@ -5630,24 +6108,26 @@ Is it scaring you off?`,
             settings.appearance.theme = selectedTheme.dataset["theme"];
           }
           settings.appearance.background.blur = getSliderValue("settings-page-blur-slider") / 10;
-          const chosenWeather = document.querySelector(
-            ".settings-page-weather-overlay-container input:checked"
-          );
-          if (chosenWeather) {
-            const weatherContainer = chosenWeather.closest(
-              "[data-weather]"
+          if (!liteMode) {
+            const chosenWeather = document.querySelector(
+              ".settings-page-weather-overlay-container input:checked"
             );
-            if (weatherContainer?.dataset["weather"]) {
-              const weatherType = weatherContainer.dataset["weather"];
-              if (weatherType === "realtime" || weatherType === "rain" || weatherType === "snow") {
-                settings.appearance.weatherOverlay.type = weatherType;
+            if (chosenWeather) {
+              const weatherContainer = chosenWeather.closest(
+                "[data-weather]"
+              );
+              if (weatherContainer?.dataset["weather"]) {
+                const weatherType = weatherContainer.dataset["weather"];
+                if (weatherType === "realtime" || weatherType === "rain" || weatherType === "snow") {
+                  settings.appearance.weatherOverlay.type = weatherType;
+                }
               }
             }
+            settings.appearance.weatherOverlay.amount = getSliderValue(
+              "settings-page-weather-overlay-slider"
+            );
+            settings.appearance.weatherOverlay.opacity = getSliderValue("settings-page-weather-overlay-opacity-slider") / 100;
           }
-          settings.appearance.weatherOverlay.amount = getSliderValue(
-            "settings-page-weather-overlay-slider"
-          );
-          settings.appearance.weatherOverlay.opacity = getSliderValue("settings-page-weather-overlay-opacity-slider") / 100;
           const smppIconChecked = getCheckboxValue(
             "settings-page-smpp-icon-button"
           );
@@ -5726,6 +6206,11 @@ Is it scaring you off?`,
             "TakenWidget.maxAssignments",
             "number"
           );
+          await updateWidgetSetting(
+            "settings-page-assignment-days-slider",
+            "TakenWidget.foresightDays",
+            "number"
+          );
           if (!liteMode) {
             await updateWidgetSetting(
               "settings-page-show-snake-grid-button",
@@ -5738,6 +6223,9 @@ Is it scaring you off?`,
         case "other": {
           settings.other.performanceMode = getCheckboxValue(
             "settings-page-performance-mode-button"
+          );
+          settings.other.focusMode = getCheckboxValue(
+            "settings-page-focus-mode-button"
           );
           settings.other.splashText = getCheckboxValue(
             "settings-page-splash-text-button"
@@ -6022,64 +6510,66 @@ Is it scaring you off?`,
           blurredImageContainer.appendChild(blurredImage);
           blurPreviewContainer.appendChild(blurredImageContainer);
           this.settingsPage.appendChild(blurPreviewContainer);
-          this.settingsPage.appendChild(createSectionTitle("Weather overlay"));
-          this.settingsPage.appendChild(
-            createDescription("Add dynamic weather visuals.")
-          );
-          let weatherIconsContainer = document.createElement("div");
-          weatherIconsContainer.classList.add(
-            "settings-page-icons-container",
-            "settings-page-weather-overlay-container"
-          );
-          let rainBtn = createImageButtonWithLabel(
-            "icons/weather-overlay/raindropfancy.svg",
-            "Rain",
-            "5rem",
-            "5rem",
-            "weather",
-            "settings-page-raindrop-button"
-          );
-          rainBtn.dataset["weather"] = "rain";
-          weatherIconsContainer.appendChild(rainBtn);
-          let realtimeBtn = createImageButtonWithLabel(
-            "icons/weather-overlay/realtimefancy.svg",
-            "Realtime",
-            "5rem",
-            "5rem",
-            "weather",
-            "settings-page-realtime-button"
-          );
-          realtimeBtn.dataset["weather"] = "realtime";
-          weatherIconsContainer.appendChild(realtimeBtn);
-          let snowBtn = createImageButtonWithLabel(
-            "icons/weather-overlay/snowflakefancy.svg",
-            "Snow",
-            "5rem",
-            "5rem",
-            "weather",
-            "settings-page-snow-button"
-          );
-          snowBtn.dataset["weather"] = "snow";
-          weatherIconsContainer.appendChild(snowBtn);
-          this.settingsPage.appendChild(weatherIconsContainer);
-          this.settingsPage.appendChild(
-            createLabeledSlider(
-              "0",
-              "500",
-              "settings-page-weather-overlay-slider",
-              "Amount",
-              false
-            )
-          );
-          this.settingsPage.appendChild(
-            createLabeledSlider(
-              "0",
-              "100",
-              "settings-page-weather-overlay-opacity-slider",
-              "Opacity",
-              false
-            )
-          );
+          if (!liteMode) {
+            this.settingsPage.appendChild(createSectionTitle("Weather overlay"));
+            this.settingsPage.appendChild(
+              createDescription("Add dynamic weather visuals.")
+            );
+            let weatherIconsContainer = document.createElement("div");
+            weatherIconsContainer.classList.add(
+              "settings-page-icons-container",
+              "settings-page-weather-overlay-container"
+            );
+            let rainBtn = createImageButtonWithLabel(
+              "icons/weather-overlay/raindropfancy.svg",
+              "Rain",
+              "5rem",
+              "5rem",
+              "weather",
+              "settings-page-raindrop-button"
+            );
+            rainBtn.dataset["weather"] = "rain";
+            weatherIconsContainer.appendChild(rainBtn);
+            let realtimeBtn = createImageButtonWithLabel(
+              "icons/weather-overlay/realtimefancy.svg",
+              "Realtime",
+              "5rem",
+              "5rem",
+              "weather",
+              "settings-page-realtime-button"
+            );
+            realtimeBtn.dataset["weather"] = "realtime";
+            weatherIconsContainer.appendChild(realtimeBtn);
+            let snowBtn = createImageButtonWithLabel(
+              "icons/weather-overlay/snowflakefancy.svg",
+              "Snow",
+              "5rem",
+              "5rem",
+              "weather",
+              "settings-page-snow-button"
+            );
+            snowBtn.dataset["weather"] = "snow";
+            weatherIconsContainer.appendChild(snowBtn);
+            this.settingsPage.appendChild(weatherIconsContainer);
+            this.settingsPage.appendChild(
+              createLabeledSlider(
+                "0",
+                "500",
+                "settings-page-weather-overlay-slider",
+                "Amount",
+                false
+              )
+            );
+            this.settingsPage.appendChild(
+              createLabeledSlider(
+                "0",
+                "100",
+                "settings-page-weather-overlay-opacity-slider",
+                "Opacity",
+                false
+              )
+            );
+          }
           this.settingsPage.appendChild(createSectionTitle("Icon"));
           this.settingsPage.appendChild(
             createDescription("Choose the icon displayed in your browser tab.")
@@ -6214,6 +6704,14 @@ Is it scaring you off?`,
               "Max assignments"
             )
           );
+          this.settingsPage.appendChild(
+            createLabeledSlider(
+              "7",
+              "60",
+              "settings-page-assignment-days-slider",
+              "Days ahead"
+            )
+          );
           if (!liteMode) {
             this.settingsPage.appendChild(createMainTitle("Games"));
             this.settingsPage.appendChild(createSectionTitle("Snake"));
@@ -6240,6 +6738,12 @@ Is it scaring you off?`,
             createSettingsButtonWithLabel(
               "settings-page-performance-mode-button",
               "Performance mode"
+            )
+          );
+          this.settingsPage.appendChild(
+            createSettingsButtonWithLabel(
+              "settings-page-focus-mode-button",
+              "Focus mode"
             )
           );
           this.settingsPage.appendChild(createSectionTitle("Login"));
@@ -6315,6 +6819,7 @@ Is it scaring you off?`,
   }
   async function openSettingsWindow(event) {
     settingsWindow.show(event);
+    settingsWindow.themeSelector.updateThemeTiles();
     let updateHeight = () => {
       settingsWindow.themeSelector.updateSizes();
       settingsWindow.themeSelector.updateContentHeight();
@@ -7110,6 +7615,47 @@ Is it scaring you off?`,
     return btn;
   }
 
+  // src/main-features/appearance/background-image.ts
+  async function setBackground(themeName) {
+    function displayBackgroundImage(imageSrc) {
+      document.documentElement.style.setProperty(
+        "--background-color",
+        `transparent`
+      );
+      let imgContainer = document.getElementById(
+        "smpp-background-image-container"
+      ) || document.createElement("div");
+      imgContainer.id = "smpp-background-image-container";
+      imgContainer.classList.add("smpp-background-image-container");
+      let img = document.getElementById("smpp-background-image") || document.createElement("img");
+      img.id = "smpp-background-image";
+      img.classList.add("smpp-background-image");
+      if (imageSrc) {
+        img.classList.remove("image-not-available");
+        img.src = imageSrc;
+      } else {
+        img.classList.add("image-not-available");
+        img.src = "";
+      }
+      if (!document.getElementById("smpp-background-image") && !document.getElementById("tinymce")) {
+        document.body.appendChild(imgContainer);
+        imgContainer.appendChild(img);
+      }
+    }
+    let imageURL = await getImageURL(
+      themeName,
+      async () => {
+        return await getExtensionImage("theme-backgrounds/" + themeName + ".jpg");
+      },
+      false
+    );
+    if (await isValidImage(imageURL.url)) {
+      displayBackgroundImage(imageURL.url);
+    } else {
+      displayBackgroundImage(null);
+    }
+  }
+
   // src/main-features/appearance/themes.ts
   k([lch_default, mix_default]);
   var currentThemeName;
@@ -7130,6 +7676,9 @@ Is it scaring you off?`,
     });
     await widgetSystemNotifyThemeChange();
     recreateGlobalChat();
+  }
+  function updateCurrentThemeName(themeName) {
+    currentThemeName = themeName;
   }
   function getThemeQueryString(theme) {
     let query = "";
@@ -7188,7 +7737,7 @@ Is it scaring you off?`,
       this.element.style.top = `${this.yPos}%`;
     }
   };
-  var ColorPicker2 = class {
+  var ColorPicker = class {
     currentColor = w("#72b6c0ff");
     width;
     element = document.createElement("div");
@@ -7355,37 +7904,38 @@ Is it scaring you off?`,
     async createContent() {
     }
   };
-  var ThemeTile2 = class extends Tile {
+  var ThemeTile = class extends Tile {
     name;
     isFavorite;
     isCustom;
     currentCategory;
     titleElement = document.createElement("span");
-    constructor(name2, currentCategory, isFavorite, isCustom = false) {
+    theme;
+    constructor(name2, currentCategory, isFavorite, isCustom = false, theme) {
       super();
       this.name = name2;
       this.currentCategory = currentCategory;
       this.isFavorite = isFavorite;
       this.isCustom = isCustom;
+      this.theme = theme;
     }
-    async updateCSS() {
-      let theme = await getTheme(this.name);
-      Object.keys(theme.cssProperties).forEach((key) => {
+    async updateCSS(theme) {
+      this.theme = theme;
+      Object.keys(this.theme.cssProperties).forEach((key) => {
         this.element.style.setProperty(
           `${key}-local`,
-          theme.cssProperties[key]
+          this.theme.cssProperties[key]
         );
       });
     }
     async updateTitle() {
-      let theme = await getTheme(this.name);
-      this.titleElement.innerText = theme.displayName;
+      this.titleElement.innerText = this.theme.displayName;
     }
     async createContent() {
       this.element.appendChild(this.createImageContainer());
       this.element.appendChild(this.getBottomContainer());
       await this.updateTitle();
-      await this.updateCSS();
+      await this.updateCSS(this.theme);
     }
     getBottomContainer() {
       let bottomContainer = document.createElement("div");
@@ -7459,28 +8009,18 @@ Is it scaring you off?`,
         } else {
           this.element.style.setProperty("--background-image-local", `url()`);
         }
-        if (isFirefox && imageURL.type == "file") {
-          let imageContainer = this.element.querySelector(".image-container");
-          if (!imageContainer) return;
-          let stupidImageContainer = document.createElement("img");
-          stupidImageContainer.classList.add(
-            "image-container",
-            "firefox-container"
-          );
-          if (await isValidImage(imageURL.url)) {
-            stupidImageContainer.src = imageURL.url;
-          } else {
-            stupidImageContainer.src = "";
-          }
-          let bottomContainer = this.element.querySelector(".theme-tile-bottom");
-          if (!bottomContainer) return;
-          imageContainer.remove();
-          this.element.prepend(stupidImageContainer);
+        if (isFirefox && imageURL.type === "file") {
+          let oldImageContainer = this.element.querySelector(".image-container");
+          if (!oldImageContainer) return;
+          let newImageContainer = document.createElement("img");
+          newImageContainer.classList.add("image-container", "firefox-container");
+          newImageContainer.src = await isValidImage(imageURL.url) ? imageURL.url : "";
+          oldImageContainer.replaceWith(newImageContainer);
         } else if (isFirefox) {
           let firefoxImageContainer = this.element.querySelector(".firefox-container");
           if (firefoxImageContainer) {
-            firefoxImageContainer.remove();
-            this.element.prepend(this.createImageContainer());
+            let replacement = this.createImageContainer();
+            firefoxImageContainer.replaceWith(replacement);
             await this.updateImage(currentTheme2, forceReload);
           }
         }
@@ -7488,12 +8028,13 @@ Is it scaring you off?`,
     }
     async onClick(e5) {
       if (e5.target instanceof HTMLElement) {
-        const targetElement = e5.target;
-        if (targetElement.classList.contains("heart-icon")) return;
+        const target = e5.target;
+        if (target.classList.contains("theme-tile-title") || target.classList.contains("image-container") || target.classList.contains("theme-tile")) {
+          await updateTheme(this.name);
+          await settingsWindow.loadPage(false);
+          await loadQuickSettings();
+        }
       }
-      await updateTheme(this.name);
-      await settingsWindow.loadPage(false);
-      await loadQuickSettings();
     }
     async favoriteToggle() {
       this.isFavorite = !this.isFavorite;
@@ -7526,12 +8067,16 @@ Is it scaring you off?`,
       }
     }
     async edit() {
+      await updateTheme(this.name);
+      Promise.all([settingsWindow.loadPage(false), loadQuickSettings()]);
       startCustomThemeCreator(await getTheme(this.name), this.name);
     }
     async duplicate() {
+      let copiedTheme = this.theme;
+      copiedTheme.displayName += " copy";
       let newThemeName = await browser.runtime.sendMessage({
         action: "saveCustomTheme",
-        data: await getTheme(this.name)
+        data: copiedTheme
       });
       let result = await browser.runtime.sendMessage({
         action: "getImage",
@@ -7574,20 +8119,159 @@ Is it scaring you off?`,
         });
       }
       this.onDuplicate(newThemeName);
-      new Toast("Theme succesfully duplicated", "succes").render();
+      new Toast("Theme succesfully duplicated", "success").render();
     }
     async share() {
-      console.log("Started sharing");
+      let shareDialog = new Dialog("themeSharing", true);
+      shareDialog.onClosed = () => {
+        shareDialog.remove();
+      };
+      let linkOutput = document.createElement("a");
+      linkOutput.classList.add("link-output");
+      linkOutput.target = "_blank";
+      let copyToClipboardButton = document.createElement("button");
+      copyToClipboardButton.classList.add("copy-hex-button");
+      copyToClipboardButton.classList.add("copy-link-button");
+      const copyToClipboard = () => {
+        if (shareUrl) {
+          navigator.clipboard.writeText(shareUrl);
+          let svg = copyToClipboardButton.querySelector("svg");
+          if (!svg) return;
+          svg.style.fill = "var(--color-text)";
+          copyToClipboardButton.innerHTML = doneSvg;
+          setTimeout(() => {
+            svg.style.fill = "none";
+            copyToClipboardButton.innerHTML = copySvg;
+          }, 1e3);
+          new Toast("Theme link copied to clipboard", "success").render();
+        } else {
+          new Toast("Theme link is not ready yet", "error").render();
+        }
+      };
+      copyToClipboardButton.addEventListener("click", copyToClipboard);
+      copyToClipboardButton.innerHTML = loadingSpinnerSvg;
+      let shareUrl = null;
+      shareDialog.renderContent = async () => {
+        function getEditableValues(cssProperties) {
+          let nonEditableValues = [
+            "--color-homepage-sidebars-bg",
+            "--darken-background",
+            "--color-splashtext"
+          ];
+          let editableValues = Object.keys(cssProperties).filter((property) => {
+            return !nonEditableValues.includes(property);
+          });
+          return editableValues;
+        }
+        function createColorPreview(name2) {
+          let colorPreview = document.createElement("div");
+          colorPreview.classList.add("color-preview-bubble");
+          if (theme.cssProperties[name2]) {
+            colorPreview.style.setProperty(
+              "--current-color",
+              theme.cssProperties[name2]
+            );
+          }
+          return colorPreview;
+        }
+        function generateColorPreviews(editableValues) {
+          let colorPreviews = editableValues.map((colorName) => {
+            let colorPreview = {};
+            colorPreview[colorName] = createColorPreview(colorName);
+            return colorPreview;
+          });
+          return colorPreviews;
+        }
+        let element = document.createElement("div");
+        element.classList.add("share-dialog-content");
+        let title = document.createElement("h1");
+        title.innerText = (await getTheme(this.name)).displayName;
+        let subTitle = document.createElement("h2");
+        subTitle.innerText = "Share theme:";
+        linkOutput.innerText = "Loading...";
+        linkOutput.style.pointerEvents = "none";
+        let copyContainer = document.createElement("div");
+        copyContainer.classList.add("copy-container");
+        let tile = document.createElement("div");
+        tile.classList.add("sharing-tile");
+        let theme = await getTheme(this.name);
+        Object.keys(theme.cssProperties).forEach((key) => {
+          element.style.setProperty(
+            `${key}-local`,
+            theme.cssProperties[key]
+          );
+        });
+        let imageContainer = document.createElement("div");
+        imageContainer.classList.add("sharing-image-container");
+        let imageURL = await getImageURL(
+          this.name,
+          async () => {
+            return await getExtensionImage(
+              "theme-backgrounds/compressed/" + this.name + ".jpg"
+            );
+          },
+          false
+        );
+        let image = document.createElement("img");
+        image.classList.add("sharing-image");
+        if (await isValidImage(imageURL.url)) {
+          imageContainer.appendChild(image);
+        }
+        image.src = imageURL.url;
+        const displayNameLength = title.innerText.length;
+        if (displayNameLength < 20) {
+          title.style.fontSize = "2.5rem";
+        } else if (displayNameLength < 25) {
+          title.style.fontSize = "2rem";
+        } else if (displayNameLength < 30) {
+          title.style.fontSize = "1.5rem";
+        } else {
+          title.style.fontSize = "1.2rem";
+          title.innerText = title.innerText.slice(0, 30) + "\u2026";
+        }
+        imageContainer.appendChild(title);
+        tile.appendChild(imageContainer);
+        let colorPreviewsContainer = document.createElement("div");
+        colorPreviewsContainer.classList.add("sharing-color-previews");
+        Object.values(
+          generateColorPreviews(getEditableValues(theme.cssProperties))
+        ).forEach((preview) => {
+          let actualPreview = Object.values(preview)[0];
+          if (actualPreview) colorPreviewsContainer.appendChild(actualPreview);
+        });
+        tile.appendChild(colorPreviewsContainer);
+        copyContainer.appendChild(linkOutput);
+        copyContainer.appendChild(copyToClipboardButton);
+        element.appendChild(subTitle);
+        tile.appendChild(copyContainer);
+        element.appendChild(tile);
+        return element;
+      };
+      await shareDialog.create();
+      shareDialog.show();
+      new Toast("Uploading theme...", "info").render();
       const resp = await browser.runtime.sendMessage({
         action: "shareTheme",
         name: this.name
       });
-      if (resp.error) {
-        console.error("Failed to share theme", resp.error);
+      if (resp.error || resp.humanError) {
+        let humanError = "Failed to share theme";
+        if (resp.humanError) {
+          humanError = resp.humanError;
+        }
+        console.error("Failed to share theme", resp.error, resp.humanError);
+        linkOutput.innerText = humanError;
+        shareDialog.element.classList.add("error-theme-sharing");
+        copyToClipboardButton.innerHTML = errorSvg;
+        copyToClipboardButton.style.pointerEvents = "none";
         new Toast("Failed to share theme", "error").render();
       } else {
-        navigator.clipboard.writeText(resp.shareUrl);
-        new Toast("Theme link copied to clipboard", "succes").render();
+        shareUrl = resp.shareUrl;
+        linkOutput.innerText = resp.shareUrl.toString();
+        linkOutput.style.pointerEvents = "all";
+        linkOutput.addEventListener("click", copyToClipboard);
+        copyToClipboardButton.innerHTML = copySvg;
+        new Toast("Theme uploaded", "success").render();
       }
       this.onShare();
     }
@@ -7607,10 +8291,7 @@ Is it scaring you off?`,
       name: "appearance.theme",
       data: name2
     });
-    let data2 = await browser.runtime.sendMessage({
-      action: "getSettingsData"
-    });
-    applyAppearance(data2.appearance);
+    Promise.all([setTheme(name2), setBackground(name2)]);
   }
   var ThemeFolder = class extends Tile {
     category;
@@ -7622,7 +8303,7 @@ Is it scaring you off?`,
       let firstThemeInCategory = await browser.runtime.sendMessage({
         action: "getFirstThemeInCategory",
         category: this.category,
-        includeHidden: true
+        includeHidden: false
       });
       if (!firstThemeInCategory) return;
       let theme = await browser.runtime.sendMessage({
@@ -7670,6 +8351,21 @@ Is it scaring you off?`,
         case "seasonal":
           svg = pineSvg;
           break;
+        case "mountain":
+          svg = mountainSvg;
+          break;
+        case "car":
+          svg = carSvg;
+          break;
+        case "space":
+          svg = starSvg;
+          break;
+        case "japan":
+          svg = japanSvg;
+          break;
+        case "animal":
+          svg = catSvg;
+          break;
         case "custom":
           svg = editIconSvg;
           break;
@@ -7704,15 +8400,16 @@ Is it scaring you off?`,
       return bottomContainer;
     }
     async onClick() {
+      let defaultTheme = await getTheme("defaultCustom");
       let newTheme = await browser.runtime.sendMessage({
         action: "saveCustomTheme",
-        data: await getTheme("defaultCustom")
+        data: defaultTheme
       });
       await settingsWindow.themeSelector.updateSelectorContent();
       await settingsWindow.loadPage(false);
-      await loadQuickSettings();
       await updateTheme(newTheme);
-      startCustomThemeCreator(await getTheme("defaultCustom"), newTheme);
+      startCustomThemeCreator(defaultTheme, newTheme);
+      await new Toast(`Created new custom theme`, "success").render();
     }
     async createContent() {
       this.element.classList.add("use-default-colors");
@@ -7798,10 +8495,11 @@ Is it scaring you off?`,
       this.updateImages();
     }
     async updateThemeTiles() {
-      let themes2 = await browser.runtime.sendMessage({
+      if (this.currentCategory == "all") return;
+      let themes = await browser.runtime.sendMessage({
         action: "getThemes",
         categories: [this.currentCategory],
-        includeHidden: true
+        includeHidden: false
       });
       let data2 = await browser.runtime.sendMessage({
         action: "getSettingsData"
@@ -7812,24 +8510,25 @@ Is it scaring you off?`,
         visibleThemeTilesArray.push(element);
       });
       let visibleThemeNames = visibleThemeTilesArray.map((element) => {
-        if (element.dataset["name"]) return element.dataset["name"];
+        return element.dataset["name"];
       });
-      let correctThemeNames = Object.keys(themes2).map((themeName) => {
+      let correctThemeNames = Object.keys(themes).map((themeName) => {
         return themeName;
       });
       let addMissingTiles = async (visibleThemeNames2, correctThemeNames2) => {
         let customThemes = await browser.runtime.sendMessage({
           action: "getThemes",
-          categories: ["custom"],
-          includeHidden: true
+          categories: ["custom"]
         });
         correctThemeNames2.forEach(async (themeName) => {
           if (!visibleThemeNames2.includes(themeName)) {
             let isFavorite = data2.appearance.quickSettingsThemes.includes(themeName);
-            let newTile = this.createThemeTile(
+            if (!themes[themeName]) return;
+            let newTile = await this.createThemeTile(
               themeName,
               isFavorite,
-              Object.keys(customThemes).includes(themeName)
+              Object.keys(customThemes).includes(themeName),
+              themes[themeName]
             );
             let createThemeButton = this.content.querySelector(
               ".create-theme-button"
@@ -7852,27 +8551,30 @@ Is it scaring you off?`,
           if (!correctThemeNames2.includes(themeName)) {
             let element = visibleThemeTilesArray.find((element2) => {
               if (element2.dataset["name"] == themeName) return element2;
+              return false;
             });
             if (!element) return;
             if (element.classList.contains("create-theme-button")) return;
             this.content.removeChild(element);
             this.currentTiles = this.currentTiles.filter((tile) => {
               if (tile instanceof AddCustomTheme) return true;
-              if (tile instanceof ThemeTile2) return tile.name != themeName;
+              if (tile instanceof ThemeTile) return tile.name != themeName;
+              return false;
             });
           }
           this.updateContentHeight();
         });
       };
       let updateLocalCSS = async () => {
-        this.currentTiles.forEach((tile) => {
+        this.currentTiles.forEach(async (tile) => {
           if (tile.name == currentThemeName) {
-            tile.updateCSS();
+            tile.theme = await getTheme(currentThemeName);
+            tile.updateCSS(tile.theme);
             tile.updateTitle();
           }
         });
       };
-      if (Object.keys(themes2).length == 0 && this.currentCategory != "custom") {
+      if (Object.keys(themes).length == 0 && this.currentCategory != "custom") {
         this.currentTiles.push(new noThemes());
         await this.renderTiles(this.currentTiles);
       }
@@ -7897,25 +8599,30 @@ Is it scaring you off?`,
       this.topContainer.appendChild(title);
     }
     async renderTiles(tiles) {
-      const renderedElements = await Promise.all(
-        tiles.map((tile) => tile.render())
-      );
-      const fragment = document.createDocumentFragment();
-      renderedElements.forEach((element) => {
-        fragment.appendChild(element);
-      });
-      this.content.appendChild(fragment);
+      function getTileDelay(number) {
+        return 200 / number;
+      }
+      this.content.style.height = this.calculateContentHeight(tiles.length) + "px";
+      const delayAmount = getTileDelay(tiles.length);
+      for (let i5 = 1; i5 <= tiles.length; i5++) {
+        const tile = tiles[i5 - 1];
+        if (!tile) break;
+        await tile.render();
+        this.content.appendChild(tile.element);
+        tile.updateImage(currentThemeName, true);
+        if (document.body.classList.contains("enableAnimations"))
+          await delay(delayAmount);
+      }
     }
     createContentContainer() {
       this.content = document.createElement("div");
       this.content.classList.add("theme-tiles");
     }
-    calculateContentHeight(tiles) {
-      const TILE_HEIGHT = parseFloat(tiles[0]?.element.style.height || "0");
-      const TILE_WIDTH = parseFloat(tiles[0]?.element.style.width || "0");
+    calculateContentHeight(tileAmount) {
+      const TILE_HEIGHT = 104;
+      const TILE_WIDTH = 168;
       const GAP = 6;
       const totalWidth = this.contentWidth;
-      const tileAmount = tiles.length;
       const tilesPerRow = Math.floor((totalWidth + GAP) / (TILE_WIDTH + GAP));
       const numRows = Math.ceil(tileAmount / tilesPerRow);
       const totalHeight = numRows * TILE_HEIGHT + (numRows - 1) * GAP;
@@ -7924,8 +8631,7 @@ Is it scaring you off?`,
     async renderFolderTiles() {
       let categories = await browser.runtime.sendMessage({
         action: "getThemeCategories",
-        includeEmpty: true,
-        includeHidden: true
+        includeHidden: false
       });
       let tiles = Object.keys(categories).map((category) => {
         let tile = new ThemeFolder(category);
@@ -7938,10 +8644,16 @@ Is it scaring you off?`,
       await this.renderTiles(tiles);
     }
     updateContentHeight() {
-      this.content.style.height = String(this.calculateContentHeight(this.currentTiles)) + "px";
+      this.content.style.height = String(this.calculateContentHeight(this.currentTiles.length)) + "px";
     }
-    createThemeTile(name2, isFavorite, isCustom) {
-      let tile = new ThemeTile2(name2, this.currentCategory, isFavorite, isCustom);
+    async createThemeTile(name2, isFavorite, isCustom, theme) {
+      let tile = new ThemeTile(
+        name2,
+        this.currentCategory,
+        isFavorite,
+        isCustom,
+        theme
+      );
       tile.element.dataset["name"] = name2;
       tile.onDuplicate = async (newThemeName) => {
         if (isCustom) {
@@ -7949,7 +8661,7 @@ Is it scaring you off?`,
         }
         await updateTheme(newThemeName);
         await this.changeCategory("custom");
-        Promise.all([settingsWindow.loadPage(false), loadQuickSettings()]);
+        Promise.all([settingsWindow.loadPage(false)]);
         startCustomThemeCreator(await getTheme(newThemeName), newThemeName);
       };
       tile.onFavoriteToggle = async () => {
@@ -7962,33 +8674,35 @@ Is it scaring you off?`,
       return tile;
     }
     async renderThemeTiles() {
-      let themes2 = await browser.runtime.sendMessage({
+      let themes = await browser.runtime.sendMessage({
         action: "getThemes",
         categories: [this.currentCategory],
-        includeHidden: true
+        includeHidden: false
       });
       let customThemes = await browser.runtime.sendMessage({
         action: "getThemes",
-        categories: ["custom"],
-        includeHidden: true
+        categories: ["custom"]
       });
       let data2 = await browser.runtime.sendMessage({
         action: "getSettingsData"
       });
-      let tiles = Object.keys(themes2).map((name2) => {
-        let isFavorite = data2.appearance.quickSettingsThemes.includes(name2);
-        let isCustom = Object.keys(customThemes).includes(name2);
-        return this.createThemeTile(name2, isFavorite, isCustom);
-      });
+      let tiles = await Promise.all(
+        Object.keys(themes).map(async (name2) => {
+          let isFavorite = data2.appearance.quickSettingsThemes.includes(name2);
+          let isCustom = Object.keys(customThemes).includes(name2);
+          if (themes[name2])
+            return this.createThemeTile(name2, isFavorite, isCustom, themes[name2]);
+          return;
+        })
+      );
       if (this.currentCategory == "custom") {
         tiles.push(new AddCustomTheme());
       }
       this.currentTiles = tiles;
-      if (Object.keys(themes2).length == 0 && this.currentCategory != "custom") {
+      if (Object.keys(themes).length == 0 && this.currentCategory != "custom") {
         this.currentTiles.push(new noThemes());
       }
       await this.renderTiles(this.currentTiles);
-      await this.updateImages(true);
     }
     async changeCategory(category) {
       this.currentCategory = category;
@@ -8017,7 +8731,7 @@ Is it scaring you off?`,
     };
     return colordPalette;
   }
-  var CustomThemeCreator = class extends BaseWindow {
+  var CustomThemeCreator = class extends Dialog {
     theme;
     name;
     editableValues;
@@ -8092,16 +8806,16 @@ Is it scaring you off?`,
       this.backgroundImageInput = new ImageSelector(this.name, true);
       this.backgroundImageInput.id = this.name;
       this.imagePreviewContainer = document.createElement("div");
+      this.backgroundImagePreview = this.createBackgroundImagePreview();
       this.backgroundImageInput.onStore = async () => {
         updateTheme(this.name);
         this.updateBackgroundImagePreview();
       };
-      this.backgroundImagePreview = this.createBackgroundImagePreview();
     }
     content = document.createElement("div");
     displayNameInput = document.createElement("input");
     openColorPicker(name2, colorPreview, e5) {
-      let colorPicker = new ColorPicker2();
+      let colorPicker = new ColorPicker();
       colorPicker.element.style.position = "absolute";
       colorPicker.element.classList.add("floating-picker");
       let _docEventHandler = (docEvent) => {
@@ -8131,7 +8845,10 @@ Is it scaring you off?`,
       colorPreview.parentElement?.appendChild(colorPicker.render());
     }
     async saveThemeData() {
-      this.theme.shareId = null;
+      await browser.runtime.sendMessage({
+        action: "markThemeAsModified",
+        name: this.name
+      });
       this.colorPreviews.forEach((preview) => {
         let colorPreview = Object.values(preview)[0];
         if (!colorPreview) return;
@@ -8306,9 +9023,12 @@ Is it scaring you off?`,
           "--darken-background": darkenColor.toHex(),
           "--color-homepage-sidebars-bg": darkenColor.alpha(0.1).toHex(),
           "--color-splashtext": textcolor.toHex()
-        },
-        shareId: null
+        }
       };
+      await browser.runtime.sendMessage({
+        action: "markThemeAsModified",
+        name: this.name
+      });
       await browser.runtime.sendMessage({
         action: "saveCustomTheme",
         data: this.theme,
@@ -8476,21 +9196,24 @@ Is it scaring you off?`,
       this.content.appendChild(this.createFileInputContainer());
       this.content.appendChild(this.createColorPickers());
       this.content.appendChild(this.createRemoveButton());
-      await this.updateBackgroundImagePreview();
-      this.load(this.theme);
       this.element.appendChild(this.content);
       return this.element;
     }
+    async onCreate() {
+      await this.load(this.theme);
+      await this.updateBackgroundImagePreview();
+    }
     async load(theme) {
       this.displayNameInput.value = theme.displayName;
-      this.updateColorPreviews();
       await this.backgroundImageInput.loadImageData();
+      this.updateColorPreviews();
     }
-    onClosed() {
-      document.body.removeChild(this.element);
+    onClosed(realUserIntent) {
+      document.body.removeChild(this.wrapper);
       settingsWindow.themeSelector.updateSelectorContent();
       settingsWindow.loadPage();
       loadQuickSettings();
+      if (!realUserIntent) return;
       openSettingsWindow(null);
     }
     async onRemoveTheme() {
@@ -8501,7 +9224,8 @@ Is it scaring you off?`,
       await updateTheme("default");
       await settingsWindow.loadPage(true);
       await loadQuickSettings();
-      this.hide();
+      this.hide(true);
+      await new Toast(`Removed "${this.theme.displayName}"`, "success").render();
     }
   };
 
@@ -9432,7 +10156,6 @@ Your version: <b>${data2.plantVersion}</b> is not the newest available version`;
       super("global_chat_window", hidden);
     }
     async renderContent() {
-      console.log("rendering gc window");
       this.gcContent = document.createElement("div");
       const queryString = getThemeQueryString(currentTheme);
       this.iframe = document.createElement("iframe");
@@ -9531,6 +10254,63 @@ Your version: <b>${data2.plantVersion}</b> is not the newest available version`;
   var links = [];
   var vakken = [];
   var goto_items = [];
+  var favoriteKeys = [];
+  function normalizeQuick(quick) {
+    return {
+      name: quick.name.toLowerCase(),
+      url: quick.url,
+      favorite: quick.favorite ?? false
+    };
+  }
+  function makeFavoriteKey(kind, value) {
+    return `${kind}:${value.toLowerCase()}`;
+  }
+  function isFavoriteKey(favoriteKey) {
+    return favoriteKeys.includes(favoriteKey);
+  }
+  async function loadFavoriteKeys() {
+    const loadedFavoriteKeys = await browser.runtime.sendMessage({
+      action: "getSetting",
+      name: "other.quickFavorites"
+    });
+    favoriteKeys = Array.isArray(loadedFavoriteKeys) ? loadedFavoriteKeys.map((key) => String(key).toLowerCase()) : [];
+  }
+  async function saveFavoriteKeys() {
+    await browser.runtime.sendMessage({
+      action: "setSetting",
+      name: "other.quickFavorites",
+      data: favoriteKeys
+    });
+  }
+  function setFavoriteKey(favoriteKey, nextFavorite) {
+    const normalizedKey = favoriteKey.toLowerCase();
+    const hasKey = favoriteKeys.includes(normalizedKey);
+    if (nextFavorite && !hasKey) {
+      favoriteKeys.push(normalizedKey);
+    }
+    if (!nextFavorite && hasKey) {
+      favoriteKeys = favoriteKeys.filter((key) => key != normalizedKey);
+    }
+    void saveFavoriteKeys();
+  }
+  function createQuickMenuItem(kind, value, meta, extra = {}) {
+    const favoriteKey = makeFavoriteKey(kind, value);
+    const favorite = isFavoriteKey(favoriteKey);
+    const extraFavoriteToggle = extra.onFavoriteToggle;
+    return {
+      ...extra,
+      value,
+      meta,
+      favorite,
+      favoriteKey,
+      onFavoriteToggle: (nextFavorite) => {
+        setFavoriteKey(favoriteKey, nextFavorite);
+        if (typeof extraFavoriteToggle == "function") {
+          extraFavoriteToggle(nextFavorite);
+        }
+      }
+    };
+  }
   if (document.querySelector(".topnav")) {
     fetch_links();
     fetch_vakken();
@@ -9538,15 +10318,24 @@ Your version: <b>${data2.plantVersion}</b> is not the newest available version`;
   }
   function quick_cmd_list() {
     let cmd_list = [];
-    for (let i5 = 0; i5 < quicks.length; i5++) {
-      cmd_list.push({ value: quicks[i5].name, meta: "quick: " + quicks[i5].url });
+    for (let quick of quicks) {
+      cmd_list.push(
+        createQuickMenuItem("quick", quick.name, "quick", {
+          url: quick.url
+        })
+      );
     }
     return cmd_list;
   }
-  function add_quick(name2, url) {
-    let quick = { name: name2.toLowerCase(), url };
+  function add_quick(name2, url, favorite = void 0) {
+    let quick = {
+      name: name2.toLowerCase(),
+      url,
+      favorite: favorite ?? false
+    };
     for (let i5 = 0; i5 < quicks.length; i5++) {
       if (quicks[i5].name == name2) {
+        quick.favorite = favorite ?? quicks[i5].favorite ?? false;
         quicks[i5] = quick;
         quick_save();
         return;
@@ -9565,14 +10354,29 @@ Your version: <b>${data2.plantVersion}</b> is not the newest available version`;
     }
   }
   async function quickLoad() {
-    const quicks2 = await browser.runtime.sendMessage({
+    await loadFavoriteKeys();
+    const loadedQuicks = await browser.runtime.sendMessage({
       action: "getSetting",
       name: "other.quicks"
     });
-    if (!quicks2) {
+    if (!loadedQuicks) {
+      quicks = [];
       return [];
     }
-    return quicks2;
+    quicks = loadedQuicks.map(normalizeQuick);
+    const migratedFavoriteKeys = quicks.filter((quick) => quick.favorite).map((quick) => makeFavoriteKey("quick", quick.name));
+    const mergedFavoriteKeys = [
+      .../* @__PURE__ */ new Set([...favoriteKeys, ...migratedFavoriteKeys])
+    ];
+    if (mergedFavoriteKeys.length !== favoriteKeys.length) {
+      favoriteKeys = mergedFavoriteKeys;
+      await saveFavoriteKeys();
+    }
+    quicks = quicks.map((quick) => ({
+      ...quick,
+      favorite: isFavoriteKey(makeFavoriteKey("quick", quick.name))
+    }));
+    return quicks;
   }
   async function quick_save() {
     await browser.runtime.sendMessage({
@@ -9586,7 +10390,7 @@ Your version: <b>${data2.plantVersion}</b> is not the newest available version`;
     dmenu(
       cmd_list,
       function(name2, shift) {
-        value_list = [];
+        let value_list = [];
         for (let i5 = 0; i5 < quicks.length; i5++) {
           if (quicks[i5].name == name2) {
             value_list = [{ value: quicks[i5].url }];
@@ -9656,9 +10460,7 @@ Your version: <b>${data2.plantVersion}</b> is not the newest available version`;
   }
   function scrape_goto() {
     goto_items = [];
-    let goto_items_html = document.querySelectorAll(
-      ".js-shortcuts-container > a"
-    );
+    let goto_items_html = document.querySelectorAll(".js-shortcuts-container a");
     for (let i5 = 0; i5 < goto_items_html.length; i5++) {
       const item = goto_items_html[i5];
       goto_items.push({
@@ -9672,24 +10474,48 @@ Your version: <b>${data2.plantVersion}</b> is not the newest available version`;
     document.body.innerHTML = "";
   }
   async function do_qm(opener = "") {
-    let cmd_list = quick_cmd_list().concat(goto_items).concat(vakken).concat(links).concat([
-      "home",
-      "quick add",
-      "quick remove",
-      "unbloat",
-      "config",
-      "clearsettings",
-      "discord",
-      "toggle performance mode",
-      "dizzy",
-      "breakdmenu",
-      "glass",
-      "ridge",
-      "reset plant",
-      "remove current theme",
-      "test cats",
-      "posh text",
-      "funny text"
+    await loadFavoriteKeys();
+    const settings = await browser.runtime.sendMessage({
+      action: "getSettingsData"
+    });
+    let cmd_list = quick_cmd_list().concat(
+      goto_items.map(
+        (item) => createQuickMenuItem("goto", item.value, item.meta, { url: item.url })
+      )
+    ).concat(
+      vakken.map(
+        (item) => createQuickMenuItem("vak", item.value, item.meta, { url: item.url })
+      )
+    ).concat(
+      links.map(
+        (item) => createQuickMenuItem("link", item.value, item.meta, { url: item.url })
+      )
+    ).concat([
+      createQuickMenuItem("cmd", "home", "command"),
+      createQuickMenuItem("cmd", "planner", "command"),
+      createQuickMenuItem("cmd", "messages", "command"),
+      createQuickMenuItem("cmd", "results", "command"),
+      createQuickMenuItem("cmd", "assignments", "command"),
+      createQuickMenuItem("cmd", "today", "command"),
+      createQuickMenuItem("cmd", "focus", "command"),
+      createQuickMenuItem("cmd", "theme random", "command"),
+      createQuickMenuItem("cmd", "copy link", "command"),
+      createQuickMenuItem("cmd", "reload", "command"),
+      createQuickMenuItem("cmd", "top", "command"),
+      createQuickMenuItem("cmd", "quick add", "command"),
+      createQuickMenuItem("cmd", "quick remove", "command"),
+      createQuickMenuItem("cmd", "unbloat", "command"),
+      createQuickMenuItem("cmd", "config", "command"),
+      createQuickMenuItem("cmd", "clearsettings", "command"),
+      createQuickMenuItem("cmd", "discord", "command"),
+      createQuickMenuItem("cmd", "dizzy", "command"),
+      createQuickMenuItem("cmd", "breakdmenu", "command"),
+      createQuickMenuItem("cmd", "glass", "command"),
+      createQuickMenuItem("cmd", "ridge", "command"),
+      createQuickMenuItem("cmd", "reset plant", "command"),
+      createQuickMenuItem("cmd", "remove current theme", "command"),
+      createQuickMenuItem("cmd", "posh text", "command"),
+      createQuickMenuItem("cmd", "funny text", "command")
     ]);
     if (dmenuConfig.toplevelConfig) {
       cmd_list = cmd_list.concat(await getDMenuOptionsForSettings(true));
@@ -9731,15 +10557,68 @@ Your version: <b>${data2.plantVersion}</b> is not the newest available version`;
           case "home":
             openURL2("/");
             return;
+          case "planner":
+            openURL2("/planner");
+            return;
+          case "messages":
+            openURL2("/messages");
+            return;
+          case "results":
+            openURL2("/results");
+            return;
+          case "assignments":
+            openURL2("/planner");
+            return;
+          case "today":
+            openURL2("/");
+            return;
+          case "focus":
+            settings.other.focusMode = !settings.other.focusMode;
+            await browser.runtime.sendMessage({
+              action: "setSettingsData",
+              data: settings
+            });
+            document.body.classList.toggle(
+              "smpp-focus-mode",
+              settings.other.focusMode
+            );
+            new Toast(
+              settings.other.focusMode ? "Focus mode enabled" : "Focus mode disabled",
+              "info"
+            ).render();
+            return;
           case "clearsettings":
             clearAllData();
+            return;
+          case "theme random":
+            {
+              const themes = await browser.runtime.sendMessage({
+                action: "getThemes",
+                categories: ["quickSettings"],
+                includeHidden: false
+              });
+              const themeNames = Object.keys(themes);
+              if (themeNames.length === 0) return;
+              const nextTheme = themeNames[Math.floor(Math.random() * themeNames.length)];
+              await updateTheme(nextTheme);
+              new Toast("Theme changed", "success").render();
+            }
+            return;
+          case "copy link":
+            await navigator.clipboard.writeText(window.location.href);
+            new Toast("Page link copied", "success").render();
+            return;
+          case "reload":
+            window.location.reload();
+            return;
+          case "top":
+            window.scrollTo({ top: 0, behavior: "smooth" });
             return;
           case "ridge":
             document.body.classList.add("ridge");
             return;
           case "gcbeta":
             openGlobalChat(null, true);
-            console.log("a");
             return;
           case "dizzy":
             const styleEl = document.createElement("style");
@@ -9755,12 +10634,6 @@ Your version: <b>${data2.plantVersion}</b> is not the newest available version`;
           case "reset plant":
             resetPlant();
             return;
-          case "plant data":
-            console.log(
-              await browser.runtime.sendMessage({
-                action: "getPlantAppData"
-              })
-            );
           case "remove current theme":
             let data2 = await browser.runtime.sendMessage({
               action: "getSettingsData"
@@ -9770,13 +10643,6 @@ Your version: <b>${data2.plantVersion}</b> is not the newest available version`;
               id: data2.appearance.theme
             });
             break;
-          case "test cats":
-            let themes2 = await browser.runtime.sendMessage({
-              action: "getThemes",
-              categories: ["quickSettings"],
-              includeHidden: true
-            });
-            console.log(themes2);
           case "posh text":
             document.body.style.setProperty(
               "--font-family",
@@ -9857,52 +10723,6 @@ Your version: <b>${data2.plantVersion}</b> is not the newest available version`;
         break;
     }
   });
-
-  // src/main-features/appearance/background-image.ts
-  async function setBackground(appearance) {
-    function displayBackgroundImage(imageSrc) {
-      document.documentElement.style.setProperty(
-        "--background-color",
-        `transparent`
-      );
-      let imgContainer = document.getElementById(
-        "smpp-background-image-container"
-      ) || document.createElement("div");
-      imgContainer.id = "smpp-background-image-container";
-      imgContainer.classList.add("smpp-background-image-container");
-      let img = document.getElementById("smpp-background-image") || document.createElement("img");
-      img.id = "smpp-background-image";
-      img.classList.add("smpp-background-image");
-      if (imageSrc) {
-        img.classList.remove("image-not-available");
-        img.src = imageSrc;
-      } else {
-        img.classList.add("image-not-available");
-        img.src = "";
-      }
-      if (!document.getElementById("smpp-background-image") && !document.getElementById("tinymce")) {
-        document.body.appendChild(imgContainer);
-        imgContainer.appendChild(img);
-      }
-    }
-    let imageURL = await getImageURL(
-      appearance.theme,
-      async () => {
-        return await getExtensionImage(
-          "theme-backgrounds/" + appearance.theme + ".jpg"
-        );
-      },
-      false
-    );
-    console.log(imageURL.url);
-    if (await isValidImage(imageURL.url)) {
-      console.log("valid");
-      displayBackgroundImage(imageURL.url);
-    } else {
-      console.log("not valid");
-      displayBackgroundImage(null);
-    }
-  }
 
   // src/games/games.ts
   var GAME_OPTION_TYPE_SLIDER = 0;
@@ -11278,6 +12098,473 @@ Your version: <b>${data2.plantVersion}</b> is not the newest available version`;
   };
   registerWidget(new TetrisWidget());
 
+  // src/games/space-invaders.ts
+  var PLAYER_WIDTH = 36;
+  var PLAYER_HEIGHT = 8;
+  var PLAYER_MARGIN_BOTTOM = 18;
+  var BULLET_WIDTH = 3;
+  var BULLET_HEIGHT = 8;
+  var ENEMY_WIDTH = 16;
+  var ENEMY_HEIGHT = 10;
+  var ENEMY_PADDING_X = 12;
+  var ENEMY_PADDING_Y = 10;
+  var MAX_BULLETS_ON_SCREEN = 2;
+  var SpaceInvadersWidget = class extends GameBase {
+    #playerX;
+    #leftPressed;
+    #rightPressed;
+    #bullets;
+    #enemies;
+    #enemyDir;
+    #enemyMoveTimer;
+    #enemyMoveDelay;
+    #shotCooldown;
+    #autoShotTimer;
+    #autoShotInterval;
+    #rowCount;
+    #colCount;
+    get title() {
+      return "Space Invaders++";
+    }
+    get options() {
+      return [GameOption.slider("speed", "Speed:", 10, 300, 100)];
+    }
+    async onGameStart() {
+      this.#leftPressed = false;
+      this.#rightPressed = false;
+      this.#shotCooldown = 0;
+      this.#autoShotTimer = 0;
+      this.#enemyMoveTimer = 0;
+      this.#playerX = (this.canvas.width - PLAYER_WIDTH) / 2;
+      this.#bullets = [];
+      this.#rowCount = 4;
+      this.#colCount = 7;
+      this.#enemyDir = 1;
+      this.#autoShotInterval = this.#getAutoShotInterval();
+      this.#spawnWave();
+      this.#updateEnemyDelay();
+    }
+    #getAutoShotInterval() {
+      const speed = this.getOpt("speed") * 0.01;
+      return Math.max(260, Math.min(520, 430 / Math.max(0.5, speed)));
+    }
+    #spawnWave() {
+      this.#enemies = [];
+      const totalWidth = this.#colCount * ENEMY_WIDTH + (this.#colCount - 1) * ENEMY_PADDING_X;
+      const startX = (this.canvas.width - totalWidth) / 2;
+      const startY = 24;
+      for (let row = 0; row < this.#rowCount; row++) {
+        for (let col = 0; col < this.#colCount; col++) {
+          this.#enemies.push({
+            x: startX + col * (ENEMY_WIDTH + ENEMY_PADDING_X),
+            y: startY + row * (ENEMY_HEIGHT + ENEMY_PADDING_Y),
+            alive: true
+          });
+        }
+      }
+    }
+    #updateEnemyDelay() {
+      const speed = this.getOpt("speed") * 0.01;
+      const aliveCount = this.#aliveEnemies().length;
+      const waveSize = this.#rowCount * this.#colCount;
+      const waveProgress = 1 - aliveCount / waveSize;
+      const base = 460 / Math.max(0.4, speed);
+      this.#enemyMoveDelay = Math.max(60, base * (1 - 0.55 * waveProgress));
+    }
+    #aliveEnemies() {
+      return this.#enemies.filter((enemy) => enemy.alive);
+    }
+    #shoot() {
+      if (this.#shotCooldown > 0 || this.#bullets.length >= MAX_BULLETS_ON_SCREEN) {
+        return;
+      }
+      this.#bullets.push({
+        x: this.#playerX + PLAYER_WIDTH / 2 - BULLET_WIDTH / 2,
+        y: this.canvas.height - PLAYER_MARGIN_BOTTOM - PLAYER_HEIGHT - BULLET_HEIGHT,
+        width: BULLET_WIDTH,
+        height: BULLET_HEIGHT
+      });
+      this.#shotCooldown = 260;
+    }
+    #moveEnemiesOneStep() {
+      const aliveEnemies = this.#aliveEnemies();
+      if (!aliveEnemies.length) {
+        this.#rowCount = Math.min(6, this.#rowCount + 1);
+        this.#spawnWave();
+        this.#updateEnemyDelay();
+        return;
+      }
+      let minX = Infinity;
+      let maxX = -Infinity;
+      for (const enemy of aliveEnemies) {
+        minX = Math.min(minX, enemy.x);
+        maxX = Math.max(maxX, enemy.x + ENEMY_WIDTH);
+      }
+      const horizontalStep = 8;
+      const verticalStep = 12;
+      const nextMinX = minX + horizontalStep * this.#enemyDir;
+      const nextMaxX = maxX + horizontalStep * this.#enemyDir;
+      if (nextMinX < 8 || nextMaxX > this.canvas.width - 8) {
+        this.#enemyDir *= -1;
+        for (const enemy of aliveEnemies) {
+          enemy.y += verticalStep;
+        }
+      } else {
+        for (const enemy of aliveEnemies) {
+          enemy.x += horizontalStep * this.#enemyDir;
+        }
+      }
+    }
+    #checkCollisionsAndState() {
+      const aliveEnemies = this.#aliveEnemies();
+      for (const enemy of aliveEnemies) {
+        if (enemy.y + ENEMY_HEIGHT >= this.canvas.height - PLAYER_MARGIN_BOTTOM - PLAYER_HEIGHT) {
+          this.stopGame();
+          return;
+        }
+      }
+      for (let i5 = this.#bullets.length - 1; i5 >= 0; i5--) {
+        const bullet = this.#bullets[i5];
+        let hit = false;
+        for (const enemy of aliveEnemies) {
+          if (!enemy.alive) {
+            continue;
+          }
+          if (bullet.x < enemy.x + ENEMY_WIDTH && bullet.x + bullet.width > enemy.x && bullet.y < enemy.y + ENEMY_HEIGHT && bullet.y + bullet.height > enemy.y) {
+            enemy.alive = false;
+            hit = true;
+            this.score += 1;
+            break;
+          }
+        }
+        if (hit) {
+          this.#bullets.splice(i5, 1);
+        }
+      }
+      this.#updateEnemyDelay();
+    }
+    onGameDraw(ctx, dt) {
+      const speedScale = this.getOpt("speed") * 0.01;
+      if (this.#leftPressed) {
+        this.#playerX -= 0.22 * speedScale * dt;
+      }
+      if (this.#rightPressed) {
+        this.#playerX += 0.22 * speedScale * dt;
+      }
+      this.#playerX = Math.max(8, Math.min(this.canvas.width - PLAYER_WIDTH - 8, this.#playerX));
+      this.#shotCooldown = Math.max(0, this.#shotCooldown - dt);
+      this.#autoShotTimer += dt;
+      this.#autoShotInterval = this.#getAutoShotInterval();
+      if (this.#autoShotTimer >= this.#autoShotInterval) {
+        this.#autoShotTimer = 0;
+        this.#shoot();
+      }
+      for (let i5 = this.#bullets.length - 1; i5 >= 0; i5--) {
+        const bullet = this.#bullets[i5];
+        bullet.y -= 0.42 * speedScale * dt;
+        if (bullet.y + bullet.height < 0) {
+          this.#bullets.splice(i5, 1);
+        }
+      }
+      this.#enemyMoveTimer += dt;
+      if (this.#enemyMoveTimer >= this.#enemyMoveDelay) {
+        this.#enemyMoveTimer = 0;
+        this.#moveEnemiesOneStep();
+      }
+      this.#checkCollisionsAndState();
+      ctx.fillStyle = getThemeVar("--color-base01");
+      ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+      ctx.fillStyle = `${getThemeVar("--color-base03")}44`;
+      ctx.fillRect(0, this.canvas.height - 40, this.canvas.width, 1);
+      const playerY = this.canvas.height - PLAYER_MARGIN_BOTTOM - PLAYER_HEIGHT;
+      ctx.fillStyle = getThemeVar("--color-text");
+      ctx.beginPath();
+      ctx.roundRect(this.#playerX, playerY, PLAYER_WIDTH, PLAYER_HEIGHT, PLAYER_HEIGHT / 2);
+      ctx.fill();
+      ctx.beginPath();
+      ctx.roundRect(this.#playerX + PLAYER_WIDTH / 2 - 3, playerY - 5, 6, 6, 3);
+      ctx.fill();
+      ctx.fillStyle = getThemeVar("--color-accent");
+      for (const enemy of this.#aliveEnemies()) {
+        ctx.fillRect(enemy.x, enemy.y, ENEMY_WIDTH, ENEMY_HEIGHT);
+        ctx.fillRect(enemy.x + 3, enemy.y + ENEMY_HEIGHT, 3, 3);
+        ctx.fillRect(enemy.x + ENEMY_WIDTH - 6, enemy.y + ENEMY_HEIGHT, 3, 3);
+      }
+      ctx.fillStyle = getThemeVar("--color-text");
+      for (const bullet of this.#bullets) {
+        ctx.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
+      }
+    }
+    onKeyDown(e5) {
+      if (e5.code === "ArrowLeft") {
+        this.#leftPressed = true;
+      } else if (e5.code === "ArrowRight") {
+        this.#rightPressed = true;
+      }
+    }
+    onKeyUp(e5) {
+      if (e5.code === "ArrowLeft") {
+        this.#leftPressed = false;
+      } else if (e5.code === "ArrowRight") {
+        this.#rightPressed = false;
+      }
+    }
+  };
+  registerWidget(new SpaceInvadersWidget());
+
+  // src/games/reaction.ts
+  var ReactionWidget = class extends WidgetBase {
+    timeoutId;
+    startedAt;
+    state = "idle";
+    root;
+    status;
+    score;
+    button;
+    get category() {
+      return "games";
+    }
+    get name() {
+      return "ReactionWidget";
+    }
+    defaultSettings() {
+      return {
+        bestTime: null
+      };
+    }
+    clearPendingRound() {
+      if (this.timeoutId) {
+        clearTimeout(this.timeoutId);
+        this.timeoutId = null;
+      }
+    }
+    setState(state) {
+      this.state = state;
+      this.root.dataset.state = state;
+    }
+    renderScore() {
+      this.score.textContent = this.settings.bestTime ? `Best: ${this.settings.bestTime} ms` : "Best: --";
+    }
+    armRound() {
+      this.clearPendingRound();
+      this.setState("waiting");
+      this.status.textContent = "Wait for green...";
+      this.button.textContent = "Wait";
+      const delay2 = 1200 + Math.random() * 2800;
+      this.timeoutId = setTimeout(() => {
+        this.startedAt = performance.now();
+        this.setState("ready");
+        this.status.textContent = "Click now!";
+        this.button.textContent = "Click";
+      }, delay2);
+    }
+    async finishRound() {
+      const reactionTime = Math.round(performance.now() - this.startedAt);
+      this.setState("done");
+      this.status.textContent = `${reactionTime} ms`;
+      this.button.textContent = "Play again";
+      if (!this.settings.bestTime || reactionTime < this.settings.bestTime) {
+        await this.setSetting("bestTime", reactionTime);
+        this.status.textContent = `${reactionTime} ms - new best`;
+      }
+      this.renderScore();
+    }
+    async handlePress() {
+      if (this.state === "idle" || this.state === "done" || this.state === "early") {
+        this.armRound();
+        return;
+      }
+      if (this.state === "waiting") {
+        this.clearPendingRound();
+        this.setState("early");
+        this.status.textContent = "Too soon";
+        this.button.textContent = "Try again";
+        return;
+      }
+      if (this.state === "ready") {
+        await this.finishRound();
+      }
+    }
+    async createContent() {
+      this.root = document.createElement("div");
+      this.root.classList.add("game-container", "reaction-game");
+      this.root.dataset.state = "idle";
+      const title = document.createElement("h2");
+      title.classList.add("game-title");
+      title.textContent = "Reaction++";
+      this.score = document.createElement("span");
+      this.score.classList.add("game-score");
+      this.status = document.createElement("strong");
+      this.status.classList.add("reaction-game-status");
+      this.status.textContent = "Ready?";
+      this.button = document.createElement("button");
+      this.button.classList.add("game-button");
+      this.button.textContent = "Play";
+      this.button.addEventListener("click", () => this.handlePress());
+      this.root.append(title, this.score, this.status, this.button);
+      this.renderScore();
+      return this.root;
+    }
+    async createPreview() {
+      const preview = document.createElement("div");
+      preview.classList.add(
+        "game-container",
+        "reaction-game",
+        "reaction-preview"
+      );
+      const title = document.createElement("h2");
+      title.classList.add("game-title");
+      title.textContent = "Reaction++";
+      const status = document.createElement("strong");
+      status.classList.add("reaction-game-status");
+      status.textContent = "Click fast";
+      preview.append(title, status);
+      return preview;
+    }
+    onRemove() {
+      this.clearPendingRound();
+    }
+  };
+  registerWidget(new ReactionWidget());
+
+  // src/games/memory.ts
+  var SYMBOLS = ["A", "B", "C", "D", "E", "F"];
+  function shuffle(values) {
+    const items = [...values];
+    for (let i5 = items.length - 1; i5 > 0; i5--) {
+      const j2 = Math.floor(Math.random() * (i5 + 1));
+      [items[i5], items[j2]] = [items[j2], items[i5]];
+    }
+    return items;
+  }
+  var MemoryWidget = class extends WidgetBase {
+    cards = [];
+    selected = [];
+    locked = false;
+    moves = 0;
+    matches = 0;
+    movesElement;
+    bestElement;
+    board;
+    get category() {
+      return "games";
+    }
+    get name() {
+      return "MemoryWidget";
+    }
+    defaultSettings() {
+      return {
+        bestMoves: null
+      };
+    }
+    renderStats() {
+      this.movesElement.textContent = `${this.moves} moves`;
+      this.bestElement.textContent = this.settings.bestMoves ? `Best: ${this.settings.bestMoves}` : "Best: --";
+    }
+    createCard(symbol, index) {
+      const card = document.createElement("button");
+      card.classList.add("memory-card");
+      card.type = "button";
+      card.dataset.symbol = symbol;
+      card.dataset.index = String(index);
+      card.textContent = "?";
+      card.addEventListener("click", () => this.pickCard(card));
+      return card;
+    }
+    resetGame() {
+      this.moves = 0;
+      this.matches = 0;
+      this.selected = [];
+      this.locked = false;
+      this.cards = shuffle([...SYMBOLS, ...SYMBOLS]);
+      this.board.innerHTML = "";
+      this.cards.forEach((symbol, index) => {
+        this.board.appendChild(this.createCard(symbol, index));
+      });
+      this.renderStats();
+    }
+    reveal(card) {
+      card.classList.add("is-open");
+      card.textContent = card.dataset.symbol;
+    }
+    hide(card) {
+      card.classList.remove("is-open");
+      card.textContent = "?";
+    }
+    async finishIfDone() {
+      if (this.matches !== SYMBOLS.length) return;
+      if (!this.settings.bestMoves || this.moves < this.settings.bestMoves) {
+        await this.setSetting("bestMoves", this.moves);
+      }
+      this.renderStats();
+    }
+    async pickCard(card) {
+      if (this.locked || card.classList.contains("is-open") || card.classList.contains("is-matched")) {
+        return;
+      }
+      this.reveal(card);
+      this.selected.push(card);
+      if (this.selected.length !== 2) return;
+      this.moves += 1;
+      this.renderStats();
+      const [first, second] = this.selected;
+      if (first.dataset.symbol === second.dataset.symbol) {
+        first.classList.add("is-matched");
+        second.classList.add("is-matched");
+        this.selected = [];
+        this.matches += 1;
+        await this.finishIfDone();
+        return;
+      }
+      this.locked = true;
+      setTimeout(() => {
+        this.hide(first);
+        this.hide(second);
+        this.selected = [];
+        this.locked = false;
+      }, 650);
+    }
+    async createContent() {
+      const container = document.createElement("div");
+      container.classList.add("memory-game", "game-container");
+      const title = document.createElement("h2");
+      title.classList.add("game-title");
+      title.textContent = "Memory++";
+      const stats = document.createElement("div");
+      stats.classList.add("memory-stats");
+      this.movesElement = document.createElement("span");
+      this.bestElement = document.createElement("span");
+      stats.append(this.movesElement, this.bestElement);
+      this.board = document.createElement("div");
+      this.board.classList.add("memory-board");
+      const resetButton = document.createElement("button");
+      resetButton.classList.add("game-button");
+      resetButton.textContent = "New game";
+      resetButton.addEventListener("click", () => this.resetGame());
+      container.append(title, stats, this.board, resetButton);
+      this.resetGame();
+      return container;
+    }
+    async createPreview() {
+      const preview = document.createElement("div");
+      preview.classList.add("memory-game", "game-container", "memory-preview");
+      const title = document.createElement("h2");
+      title.classList.add("game-title");
+      title.textContent = "Memory++";
+      const board = document.createElement("div");
+      board.classList.add("memory-board");
+      for (let i5 = 0; i5 < 6; i5++) {
+        const card = document.createElement("div");
+        card.classList.add("memory-card");
+        card.textContent = "?";
+        board.appendChild(card);
+      }
+      preview.append(title, board);
+      return preview;
+    }
+  };
+  registerWidget(new MemoryWidget());
+
   // src/widgets/tutorial-widget.ts
   var TutorialWidget = class extends WidgetBase {
     constructor() {
@@ -11399,25 +12686,371 @@ Your version: <b>${data2.plantVersion}</b> is not the newest available version`;
   };
   registerWidget(new TutorialWidget());
 
+  // src/widgets/today.ts
+  function formatTime(dateString) {
+    return new Date(dateString).toLocaleTimeString("nl-NL", {
+      hour: "2-digit",
+      minute: "2-digit"
+    });
+  }
+  function isAssignment(element) {
+    return ["planned-assignments", "planned-to-dos"].includes(
+      element.plannedElementType
+    );
+  }
+  function createStat(value, label) {
+    const stat = document.createElement("div");
+    stat.classList.add("today-widget-stat");
+    const valueElement = document.createElement("strong");
+    valueElement.textContent = String(value);
+    const labelElement = document.createElement("span");
+    labelElement.textContent = label;
+    stat.append(valueElement, labelElement);
+    return stat;
+  }
+  var TodayWidget = class extends WidgetBase {
+    get category() {
+      return "other";
+    }
+    get name() {
+      return "TodayWidget";
+    }
+    async fetchTodayData() {
+      const schoolName = getSchoolName();
+      const userId = getUserId();
+      if (!schoolName || !userId) return null;
+      try {
+        const date = getCurrentDate();
+        const response = await fetch(
+          `/planner/api/v1/planned-elements/user/${userId}?from=${date}&to=${date}`
+        );
+        if (!response.ok) return null;
+        return await response.json();
+      } catch (error) {
+        console.warn("SMPP: today planner data could not be loaded.", error);
+        return null;
+      }
+    }
+    createShell() {
+      const container = document.createElement("div");
+      container.classList.add("today-widget");
+      const title = document.createElement("h2");
+      title.textContent = "Vandaag";
+      const subtitle = document.createElement("p");
+      subtitle.classList.add("today-widget-date");
+      subtitle.textContent = (/* @__PURE__ */ new Date()).toLocaleDateString("nl-NL", {
+        weekday: "long",
+        day: "numeric",
+        month: "long"
+      });
+      container.append(title, subtitle);
+      return container;
+    }
+    createEmptyState() {
+      const empty = document.createElement("p");
+      empty.classList.add("today-widget-empty");
+      empty.textContent = "Geen planning voor vandaag.";
+      return empty;
+    }
+    createNextLesson(lessons) {
+      const now = /* @__PURE__ */ new Date();
+      const nextLesson = lessons.find(
+        (lesson) => new Date(lesson.period.dateTimeTo) > now
+      );
+      const block = document.createElement("div");
+      block.classList.add("today-widget-next");
+      const label = document.createElement("span");
+      label.textContent = "Volgende";
+      const value = document.createElement("strong");
+      if (!nextLesson) {
+        value.textContent = "Geen lessen meer";
+        block.append(label, value);
+        return block;
+      }
+      const course = nextLesson.courses?.[0]?.name || nextLesson.name || "Les";
+      value.textContent = course;
+      const time = document.createElement("span");
+      time.textContent = `${formatTime(
+        nextLesson.period.dateTimeFrom
+      )} - ${formatTime(nextLesson.period.dateTimeTo)}`;
+      block.append(label, value, time);
+      return block;
+    }
+    createActions() {
+      const actions = document.createElement("div");
+      actions.classList.add("today-widget-actions");
+      const plannerButton = document.createElement("button");
+      plannerButton.textContent = "Planner";
+      plannerButton.addEventListener("click", () => openURL2("/planner"));
+      const messagesButton = document.createElement("button");
+      messagesButton.textContent = "Berichten";
+      messagesButton.addEventListener("click", () => openURL2("/messages"));
+      actions.append(plannerButton, messagesButton);
+      return actions;
+    }
+    async createContent() {
+      const container = this.createShell();
+      const loading = document.createElement("p");
+      loading.classList.add("today-widget-empty");
+      loading.textContent = "Planning laden...";
+      container.appendChild(loading);
+      this.fetchTodayData().then((data2) => {
+        loading.remove();
+        if (!Array.isArray(data2)) {
+          container.appendChild(this.createEmptyState());
+          container.appendChild(this.createActions());
+          return;
+        }
+        const activeItems = data2.filter(
+          (item) => item.resolvedStatus !== "resolved"
+        );
+        const lessons = activeItems.filter((item) => !isAssignment(item)).sort(
+          (a5, b3) => new Date(a5.period.dateTimeFrom) - new Date(b3.period.dateTimeFrom)
+        );
+        const assignments = activeItems.filter(isAssignment);
+        const stats = document.createElement("div");
+        stats.classList.add("today-widget-stats");
+        stats.append(
+          createStat(lessons.length, "lessen"),
+          createStat(assignments.length, "taken")
+        );
+        container.append(stats);
+        if (activeItems.length === 0) {
+          container.appendChild(this.createEmptyState());
+        } else {
+          container.appendChild(this.createNextLesson(lessons));
+        }
+        container.appendChild(this.createActions());
+      });
+      return container;
+    }
+    async createPreview() {
+      const preview = document.createElement("div");
+      preview.classList.add("today-widget", "today-widget-preview");
+      const title = document.createElement("h2");
+      title.textContent = "Vandaag";
+      const stats = document.createElement("div");
+      stats.classList.add("today-widget-stats");
+      stats.append(createStat(4, "lessen"), createStat(2, "taken"));
+      preview.append(title, stats);
+      return preview;
+    }
+  };
+  registerWidget(new TodayWidget());
+
+  // src/widgets/notes.ts
+  var NotesWidget = class extends WidgetBase {
+    saveTimeout;
+    textarea;
+    status;
+    get category() {
+      return "other";
+    }
+    get name() {
+      return "NotesWidget";
+    }
+    defaultSettings() {
+      return {
+        text: ""
+      };
+    }
+    scheduleSave() {
+      clearTimeout(this.saveTimeout);
+      this.status.textContent = "Saving...";
+      this.saveTimeout = setTimeout(async () => {
+        await this.setSetting("text", this.textarea.value);
+        this.status.textContent = "Saved";
+      }, 350);
+    }
+    async createContent() {
+      const container = document.createElement("div");
+      container.classList.add("notes-widget");
+      const header = document.createElement("div");
+      header.classList.add("notes-widget-header");
+      const title = document.createElement("h2");
+      title.textContent = "Notes++";
+      this.status = document.createElement("span");
+      this.status.textContent = "Saved";
+      header.append(title, this.status);
+      this.textarea = document.createElement("textarea");
+      this.textarea.placeholder = "Quick notes, reminders, links...";
+      this.textarea.value = this.settings.text || "";
+      this.textarea.addEventListener("input", () => this.scheduleSave());
+      container.append(header, this.textarea);
+      return container;
+    }
+    async createPreview() {
+      const preview = document.createElement("div");
+      preview.classList.add("notes-widget", "notes-widget-preview");
+      const title = document.createElement("h2");
+      title.textContent = "Notes++";
+      const lines = document.createElement("div");
+      lines.classList.add("notes-preview-lines");
+      lines.innerHTML = "<span></span><span></span><span></span>";
+      preview.append(title, lines);
+      return preview;
+    }
+  };
+  registerWidget(new NotesWidget());
+
+  // src/widgets/focus-timer.ts
+  var MODES = {
+    focus: { label: "Focus", seconds: 25 * 60 },
+    short: { label: "Break", seconds: 5 * 60 },
+    long: { label: "Long break", seconds: 15 * 60 }
+  };
+  function formatSeconds(seconds) {
+    const minutes = Math.floor(seconds / 60);
+    const rest = seconds % 60;
+    return `${String(minutes).padStart(2, "0")}:${String(rest).padStart(2, "0")}`;
+  }
+  var FocusTimerWidget = class extends WidgetBase {
+    mode = "focus";
+    remaining = MODES.focus.seconds;
+    interval;
+    running = false;
+    timeElement;
+    modeElement;
+    startButton;
+    get category() {
+      return "other";
+    }
+    get name() {
+      return "FocusTimerWidget";
+    }
+    defaultSettings() {
+      return {
+        completedSessions: 0
+      };
+    }
+    syncDisplay() {
+      this.modeElement.textContent = MODES[this.mode].label;
+      this.timeElement.textContent = formatSeconds(this.remaining);
+      this.startButton.textContent = this.running ? "Pause" : "Start";
+    }
+    setMode(mode) {
+      this.stop();
+      this.mode = mode;
+      this.remaining = MODES[mode].seconds;
+      this.syncDisplay();
+    }
+    stop() {
+      clearInterval(this.interval);
+      this.interval = null;
+      this.running = false;
+    }
+    async complete() {
+      this.stop();
+      if (this.mode === "focus") {
+        await this.setSetting(
+          "completedSessions",
+          Number(this.settings.completedSessions || 0) + 1
+        );
+      }
+      this.setMode(this.mode === "focus" ? "short" : "focus");
+    }
+    toggle() {
+      if (this.running) {
+        this.stop();
+        this.syncDisplay();
+        return;
+      }
+      this.running = true;
+      this.interval = setInterval(() => {
+        this.remaining -= 1;
+        if (this.remaining <= 0) {
+          this.complete();
+          return;
+        }
+        this.syncDisplay();
+      }, 1e3);
+      this.syncDisplay();
+    }
+    createModeButton(mode) {
+      const button = document.createElement("button");
+      button.textContent = MODES[mode].label;
+      button.addEventListener("click", () => this.setMode(mode));
+      return button;
+    }
+    async createContent() {
+      const container = document.createElement("div");
+      container.classList.add("focus-timer-widget");
+      this.modeElement = document.createElement("span");
+      this.modeElement.classList.add("focus-timer-mode");
+      this.timeElement = document.createElement("strong");
+      this.timeElement.classList.add("focus-timer-time");
+      this.startButton = document.createElement("button");
+      this.startButton.classList.add("focus-timer-main-button");
+      this.startButton.addEventListener("click", () => this.toggle());
+      const modeButtons = document.createElement("div");
+      modeButtons.classList.add("focus-timer-mode-buttons");
+      modeButtons.append(
+        this.createModeButton("focus"),
+        this.createModeButton("short"),
+        this.createModeButton("long")
+      );
+      const sessions = document.createElement("span");
+      sessions.classList.add("focus-timer-sessions");
+      sessions.textContent = `${this.settings.completedSessions || 0} sessions`;
+      container.append(
+        this.modeElement,
+        this.timeElement,
+        this.startButton,
+        modeButtons,
+        sessions
+      );
+      this.syncDisplay();
+      return container;
+    }
+    async createPreview() {
+      const preview = document.createElement("div");
+      preview.classList.add("focus-timer-widget", "focus-timer-preview");
+      const title = document.createElement("span");
+      title.classList.add("focus-timer-mode");
+      title.textContent = "Focus Timer";
+      const time = document.createElement("strong");
+      time.classList.add("focus-timer-time");
+      time.textContent = "25:00";
+      preview.append(title, time);
+      return preview;
+    }
+    onRemove() {
+      this.stop();
+    }
+  };
+  registerWidget(new FocusTimerWidget());
+
   // src/widgets/assignments.ts
+  function getDueInfo(taskDate) {
+    const today = /* @__PURE__ */ new Date();
+    today.setHours(0, 0, 0, 0);
+    const dueDay = new Date(taskDate);
+    dueDay.setHours(0, 0, 0, 0);
+    const diffDays = Math.round((dueDay.getTime() - today.getTime()) / 864e5);
+    if (diffDays <= 0) return { label: "Due today", urgency: "urgent" };
+    if (diffDays === 1) return { label: "Due tomorrow", urgency: "soon" };
+    if (diffDays <= 7) return { label: `${diffDays} days`, urgency: "week" };
+    return { label: `${diffDays} days`, urgency: "later" };
+  }
   var TakenWidget = class extends WidgetBase {
     defaultSettings() {
       return {
-        maxAssignments: 5
+        maxAssignments: 5,
+        foresightDays: 28
       };
     }
     onSettingsChange() {
       this.element.appendChild(this.createContent());
     }
     createContent() {
-      const foresight = 28;
+      const foresight = Math.max(1, Number(this.settings.foresightDays) || 28);
       let userId = getUserId();
       if (DEBUG) {
-        sendDebug("Debug mode enabled \u2705");
-        sendDebug("User ID:", userId);
-        sendDebug("Current URL:", window.location.href);
-        sendDebug("Today's Date:", getCurrentDate());
-        sendDebug("Next Date:", getFutureDate(foresight));
+        sendDebug("[AS]", "Debug mode enabled \u2705");
+        sendDebug("[AS]", "User ID:", userId);
+        sendDebug("[AS]", "Current URL:", window.location.href);
+        sendDebug("[AS]", "Today's Date:", getCurrentDate());
+        sendDebug("[AS]", "Next Date:", getFutureDate(foresight));
       }
       this.clearContent();
       async function fetchPlannerData2() {
@@ -11426,10 +13059,10 @@ Your version: <b>${data2.plantVersion}</b> is not the newest available version`;
           if (!schoolName) {
             throw new Error("School name could not be determined.");
           }
-          const url = `https://${schoolName}.smartschool.be/planner/api/v1/planned-elements/user/${userId}?from=${getCurrentDate()}&to=${getFutureDate(
+          const url = `/planner/api/v1/planned-elements/user/${userId}?from=${getCurrentDate()}&to=${getFutureDate(
             foresight
           )}&types=planned-assignments,planned-to-dos`;
-          sendDebug("Fetching planner data from:", url);
+          sendDebug("[AS]", "Fetching planner data from:", url);
           const response = await fetch(url);
           if (!response.ok) {
             throw new Error(
@@ -11437,10 +13070,13 @@ Your version: <b>${data2.plantVersion}</b> is not the newest available version`;
             );
           }
           const data2 = await response.json();
-          sendDebug("Planner data:", data2);
+          sendDebug("[AS]", "Planner data:", data2);
           return data2;
         } catch (error) {
-          console.error("Fetch error:", error);
+          console.warn(
+            "SMPP: assignments planner data could not be loaded.",
+            error
+          );
           return null;
         }
       }
@@ -11453,17 +13089,17 @@ Your version: <b>${data2.plantVersion}</b> is not the newest available version`;
         TitleScreenDiv.append(TitleScreenText);
         TasksContainer.append(TitleScreenDiv);
         if (!userId) {
-          return sendDebug("User ID not found.");
+          return sendDebug("[AS]", "User ID not found.");
         }
         fetchPlannerData2().then(async (data2) => {
-          data2 = data2.filter((element) => element.resolvedStatus !== "resolved");
-          if (!data2) {
+          if (!Array.isArray(data2)) {
             TasksContainer.innerHTML = "Er is iets ernstig misgegaan :(";
             return console.error("No planner data, Did something go wrong?");
           } else if (DEBUG) {
-            sendDebug("Planner data fetched successfully.");
+            sendDebug("[AS]", "Planner data fetched successfully.");
           }
-          if (!Array.isArray(data2) || data2.length === 0) {
+          data2 = data2.filter((element) => element.resolvedStatus !== "resolved");
+          if (data2.length === 0) {
             let noDataContainer = document.createElement("div");
             noDataContainer.classList.add("blue-ghost-96");
             let noDataContainerTextContainer = document.createElement("div");
@@ -11510,10 +13146,12 @@ Your version: <b>${data2.plantVersion}</b> is not the newest available version`;
               lastDate = dateText;
             }
             const rowDiv = document.createElement("div");
+            const dueInfo = getDueInfo(taskDate);
             rowDiv.classList.add(
               "listview__row",
               "todo__row",
-              "assignment__item"
+              "assignment__item",
+              `assignment__item--${dueInfo.urgency}`
             );
             rowDiv.setAttribute("data-id", element.id);
             const abbreviationDiv = document.createElement("div");
@@ -11527,7 +13165,13 @@ Your version: <b>${data2.plantVersion}</b> is not the newest available version`;
               `c-${element.color.split("-")[0]}-combo--${element.color.split("-")[1]}`
               // LET HIM COOK
             );
-            if (element.icon) {
+            sendDebug(
+              "[AS]",
+              "Creating icon for assignment:",
+              element,
+              element.icon
+            );
+            if (element.plannedElementType === "planned-to-dos") {
               fetch(
                 `https://${getSchoolName()}.smartschool.be/smsc/svg/${element.icon}/${element.icon}_16x16.svg`
               ).then((response) => response.blob()).then((blob) => {
@@ -11567,7 +13211,10 @@ Your version: <b>${data2.plantVersion}</b> is not the newest available version`;
               minute: "2-digit"
             })} \u2022 ${element.courses?.[0]?.name || "TODO "}`;
             metadataSpan.classList.add("task-description");
-            detailsDiv.append(titleSpan, metadataSpan);
+            const dueBadge = document.createElement("span");
+            dueBadge.classList.add("assignment-due-badge");
+            dueBadge.textContent = dueInfo.label;
+            detailsDiv.append(titleSpan, metadataSpan, dueBadge);
             rowDiv.append(abbreviationDiv, detailsDiv);
             rowDiv.addEventListener("click", () => {
               markAsFinished(element.id, element.courses?.[0]?.name);
@@ -11580,7 +13227,7 @@ Your version: <b>${data2.plantVersion}</b> is not the newest available version`;
             });
             TasksContainer.append(rowDiv);
           });
-          return sendDebug("UI updated successfully.");
+          return sendDebug("[AS]", "UI updated successfully.");
         });
         return TasksContainer;
       };
@@ -11628,7 +13275,7 @@ Your version: <b>${data2.plantVersion}</b> is not the newest available version`;
           `Failed to mark assignment ${as_ID} as finished: ${response.status} ${response.statusText}. Response: ${errorData}`
         );
       }
-      sendDebug(`Assignment ${as_ID} marked as finished successfully.`);
+      sendDebug("[AS]", `Assignment ${as_ID} marked as finished successfully.`);
       const assignmentElement = document.querySelector(`[data-id="${as_ID}"]`);
       if (assignmentElement) {
         const parentContainer = assignmentElement.parentElement;
@@ -12552,7 +14199,6 @@ Your version: <b>${data2.plantVersion}</b> is not the newest available version`;
         return container;
       }
       if (weatherData.cod != 200) {
-        console.log(weatherData.cod);
         container.appendChild(createNotFoundContent(weatherData.cod));
         return container;
       }
@@ -12856,134 +14502,201 @@ ${code}`;
   };
   registerWidget(new ClockWidget());
 
+  // src/widgets/calendar.ts
+  var CalendarWidget = class extends WidgetBase {
+    get category() {
+      return "other";
+    }
+    get name() {
+      return "CalendarWidget";
+    }
+    defaultSettings() {
+      return {};
+    }
+    currentDate = /* @__PURE__ */ new Date();
+    generateCalendar() {
+      const year = this.currentDate.getFullYear();
+      const month = this.currentDate.getMonth();
+      const monthName = new Intl.DateTimeFormat("en-US", {
+        month: "long"
+      }).format(this.currentDate);
+      const firstDay = new Date(year, month, 1).getDay();
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+      const container = document.createElement("div");
+      container.className = "calendar-widget";
+      const header = document.createElement("div");
+      header.className = "calendar-header";
+      const prevBtn = document.createElement("button");
+      prevBtn.className = "calendar-prev";
+      prevBtn.innerHTML = chevronLeftSvg;
+      prevBtn.addEventListener("click", () => {
+        this.currentDate.setMonth(this.currentDate.getMonth() - 1);
+        const parent = container.parentElement;
+        const newCalendar = this.generateCalendar();
+        parent?.replaceChild(newCalendar, container);
+      });
+      const title = document.createElement("h3");
+      title.textContent = `${monthName} ${year}`;
+      const nextBtn = document.createElement("button");
+      nextBtn.className = "calendar-next";
+      nextBtn.innerHTML = chevronLeftSvg;
+      nextBtn.addEventListener("click", () => {
+        this.currentDate.setMonth(this.currentDate.getMonth() + 1);
+        const parent = container.parentElement;
+        const newCalendar = this.generateCalendar();
+        parent?.replaceChild(newCalendar, container);
+      });
+      header.appendChild(prevBtn);
+      header.appendChild(title);
+      header.appendChild(nextBtn);
+      const todayButton = document.createElement("button");
+      todayButton.className = "calendar-today-button";
+      todayButton.textContent = "Vandaag";
+      todayButton.addEventListener("click", () => {
+        this.currentDate = /* @__PURE__ */ new Date();
+        const parent = container.parentElement;
+        const newCalendar = this.generateCalendar();
+        parent?.replaceChild(newCalendar, container);
+      });
+      const weekdays = document.createElement("div");
+      weekdays.className = "calendar-weekdays";
+      ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].forEach((day) => {
+        const dayEl = document.createElement("div");
+        dayEl.className = "calendar-weekday";
+        dayEl.textContent = day;
+        weekdays.appendChild(dayEl);
+      });
+      const days = document.createElement("div");
+      days.className = "calendar-days";
+      for (let i5 = 0; i5 < firstDay; i5++) {
+        const empty = document.createElement("div");
+        empty.className = "calendar-day empty";
+        days.appendChild(empty);
+      }
+      const today = /* @__PURE__ */ new Date();
+      for (let day = 1; day <= daysInMonth; day++) {
+        const dayEl = document.createElement("div");
+        const isToday = day === today.getDate() && month === today.getMonth() && year === today.getFullYear();
+        dayEl.className = isToday ? "calendar-day today" : "calendar-day";
+        dayEl.textContent = String(day);
+        days.appendChild(dayEl);
+      }
+      container.appendChild(header);
+      container.appendChild(todayButton);
+      container.appendChild(weekdays);
+      container.appendChild(days);
+      return container;
+    }
+    async createContent() {
+      return this.generateCalendar();
+    }
+    async createPreview() {
+      const preview = document.createElement("div");
+      preview.className = "calendar-widget-preview";
+      preview.style.background = "none";
+      preview.style.display = "flex";
+      preview.style.flexDirection = "column";
+      preview.style.alignItems = "center";
+      preview.style.justifyContent = "center";
+      preview.style.gap = "12px";
+      preview.style.padding = "12px";
+      preview.style.minHeight = "auto";
+      const label = document.createElement("div");
+      label.style.fontSize = "2rem";
+      label.style.fontWeight = "700";
+      label.style.color = "var(--color-base05)";
+      label.style.marginBottom = "0.5rem";
+      label.textContent = "Calendar";
+      let image = document.createElement("img");
+      image.src = getExtensionImage("icons/widgets/kalender_512x512.png");
+      image.classList = "calendar-image";
+      preview.appendChild(label);
+      preview.appendChild(image);
+      return preview;
+    }
+  };
+  registerWidget(new CalendarWidget());
+
   // src/fixes-utils/migration.ts
-  async function migrate() {
-    await removeLegacyData();
-    let settingsData = await browser.runtime.sendMessage({
-      action: "getRawSettingsData"
-    });
-    if (settingsData == void 0) return;
-    if (settingsData.backgroundBlurAmount == void 0) return;
-    await migrateV5(settingsData);
-  }
-  async function migrateV5(settingsData) {
-    console.log("MIG V:\n Started migration with", settingsData);
-    await migrateSettingsV5(settingsData);
-    await migrateImageV5(settingsData);
-    await migrateWidgetSettingsData();
-  }
-  async function migrateWidgetSettingsData() {
-    let delijnAppData = await browser.runtime.sendMessage({
-      action: "getDelijnAppData"
-    });
-    let weatherAppData = await browser.runtime.sendMessage({
-      action: "getWeatherAppData"
-    });
-    if (Object.keys(delijnAppData).length !== 0) {
-      await setWidgetSetting("DelijnWidget.halte", {
-        entiteit: delijnAppData.delijnAppData.entiteitnummer,
-        nummer: delijnAppData.delijnAppData.haltenummer
-      });
-    }
-    if (Object.keys(weatherAppData).length !== 0) {
-      let weatherWidgets = widgets.filter(
-        (item) => item.name.toLowerCase().includes("weather")
-      );
-      weatherWidgets.forEach(async (widget) => {
-        await widget.setSetting(
-          "currentLocation",
-          weatherAppData.weatherAppData.lastLocation
-        );
-      });
-    }
-  }
-  async function migrateImageV5(oldData) {
-    let data2;
-    switch (oldData.backgroundSelection) {
-      case 0:
-        data2 = {
-          imageData: null,
-          link: "",
-          type: "default"
-        };
-        break;
-      case 1:
-        data2 = {
-          imageData: oldData.backgroundLink,
-          link: oldData.backgroundLink,
-          type: "link"
-        };
-        break;
-      case 2:
-        let imageData = await browser.runtime.sendMessage({
-          action: "getBackgroundImage"
-        });
-        data2 = {
-          imageData: imageData.backgroundImage,
-          link: oldData.backgroundLink,
-          type: "file"
-        };
-        break;
-      default:
-        break;
-    }
-    await browser.runtime.sendMessage({
-      action: "setImage",
-      id: "backgroundImage",
-      data: data2
-    });
-    console.log(
-      "MIG V: \n Successfully migrated background image  with data:",
-      data2
-    );
-  }
-  async function migrateSettingsV5(oldData) {
-    let newWeatherOverlayType;
-    switch (oldData.weatherOverlaySelection) {
-      case 0:
-        newWeatherOverlayType = "snow";
-        break;
-      case 1:
-        newWeatherOverlayType = "realtime";
-        break;
-      case 2:
-        newWeatherOverlayType = "snow";
-        break;
-    }
-    console.log(oldData);
-    console.log(oldData.customName);
-    let newSettingsData = {
-      username: oldData.customName,
-      theme: oldData.theme,
-      background: {
-        blur: oldData.backgroundBlurAmount
-      },
-      weatherOverlay: {
-        type: newWeatherOverlayType,
-        amount: oldData.weatherOverlayAmount
-      },
-      tabLogo: oldData.enableSMPPLogo ? "smpp" : "sm",
-      news: oldData.showNews,
-      quicks: oldData.quicks,
-      performanceMode: oldData.enablePerfomanceMode
-    };
-    await browser.runtime.sendMessage({
-      action: "setRawSettingsData",
-      data: newSettingsData
-    });
-    const settings = await browser.runtime.sendMessage({
+  async function updateSettings() {
+    let data2 = await browser.runtime.sendMessage({
       action: "getSettingsData"
     });
     await browser.runtime.sendMessage({
       action: "setSettingsData",
-      data: settings
+      data: data2
     });
-    console.log(
-      "MIG V: \n Succesfully migrated settings data to:",
-      newSettingsData
-    );
+  }
+  async function migrate() {
+    await removeLegacyData();
+    let dataVersion = await browser.runtime.sendMessage({
+      action: "getDataVersion"
+    });
+    if (dataVersion < currentDataVersion) {
+      await browser.runtime.sendMessage({
+        action: "setDataVersion",
+        version: currentDataVersion
+      });
+    }
+    let settingsData = await browser.runtime.sendMessage({
+      action: "getRawSettingsData"
+    });
+    if (!settingsData) return;
+    if (settingsData.glass != void 0) return;
+    await migrateV6();
+  }
+  async function migrateV6() {
+    await migrateCustomThemeV6();
+    await migrateImagesV6();
+    await updateSettings();
+    new Toast(`Updated to 6.0.0`, "info", 1e4).render();
+  }
+  async function migrateCustomThemeV6(customTheme) {
+    let oldCustomThemeData = await browser.runtime.sendMessage({
+      action: "getCustomThemeData"
+    });
+    if (!oldCustomThemeData) return;
+    let theme = {
+      displayName: "Custom Theme",
+      cssProperties: {
+        "--color-accent": oldCustomThemeData.color_accent,
+        "--color-base00": oldCustomThemeData.color_base00,
+        "--color-base01": oldCustomThemeData.color_base01,
+        "--color-base02": oldCustomThemeData.color_base02,
+        "--color-base03": oldCustomThemeData.color_base03,
+        "--color-homepage-sidebars-bg": "#02020585",
+        "--color-splashtext": oldCustomThemeData.color_text,
+        "--color-text": oldCustomThemeData.color_text,
+        "--darken-background": "#00000033"
+      }
+    };
+    let id = await browser.runtime.sendMessage({
+      action: "saveCustomTheme",
+      data: theme
+    });
+    let data2 = await browser.runtime.sendMessage({
+      action: "getSettingsData"
+    });
+    if (data2.appearance.theme == "custom") {
+      await browser.runtime.sendMessage({
+        action: "setSetting",
+        name: "appearance.theme",
+        data: id
+      });
+    }
+    data2 = await browser.runtime.sendMessage({
+      action: "getSettingsData"
+    });
+  }
+  async function migrateImagesV6() {
+    browser.runtime.sendMessage({
+      action: "migrateImagesV6"
+    });
   }
   async function removeLegacyData() {
+    let rawSettingsData = await browser.runtime.sendMessage({
+      action: "getRawSettingsData"
+    });
     if (window.localStorage.getItem("settingsdata")) {
       await clearAllData();
     }
@@ -13087,7 +14800,6 @@ ${code}`;
 
   // src/main-features/main.ts
   var originalUsername;
-  var themes;
   var onHomePage;
   var onLoginPage;
   var isGOSchool;
@@ -13095,6 +14807,7 @@ ${code}`;
   var originalPfpUrl;
   var keybinds;
   var liteMode;
+  var currentDataVersion = 6;
   function updateDiscordPopup(discordButtonEnabled) {
     if (discordButtonEnabled) {
       let discordButtonContainer = document.getElementById("discord-link-container") || document.createElement("div");
@@ -13158,7 +14871,9 @@ ${code}`;
     } else if (startButton && !data2.home) {
       startButton.innerHTML = "Start";
     }
-    const messageButton = document.querySelector(".js-btn-messages");
+    const messageButton = document.querySelector(
+      `a.topnav__btn[title="Berichten"]`
+    );
     if (messageButton && data2.mail) {
       const textSpan = messageButton.querySelector("span");
       messageButton.innerHTML = messageSvg;
@@ -13189,9 +14904,7 @@ ${code}`;
         iconElement.href = "https://static4.smart-school.net/smsc/svg/favicon/favicon.svg";
         break;
       case "smpp":
-        iconElement.href = liteMode ? "https://raw.githubusercontent.com/frickingbird8002/smpp-images/main/smpp_lite_logo128.png" : "https://raw.githubusercontent.com/frickingbird8002/smpp-images/main/icon128.png";
-        break;
-      default:
+        iconElement.href = getExtensionImage("icons/smpp/128.png");
         break;
     }
   }
@@ -13208,10 +14921,7 @@ ${code}`;
       data2.switchCoursesAndLinks ? topNav.insertBefore(linksButton, coursesButton) : topNav.insertBefore(coursesButton, linksButton);
     }
   }
-  async function createStaticGlobals() {
-    themes = await browser.runtime.sendMessage({
-      action: "getThemes"
-    });
+  async function createGlobals() {
     let originalUsernameElement = document.querySelector(
       ".js-btn-profile .hlp-vert-box span"
     );
@@ -13240,7 +14950,7 @@ ${code}`;
     }
     setGlobalGlass(appearance.glass);
     await setTheme(appearance.theme);
-    setBackground(appearance);
+    setBackground(appearance.theme);
     updateNews(appearance.news);
     updateTabLogo(appearance.tabLogo);
     if (onLoginPage) {
@@ -13257,6 +14967,7 @@ ${code}`;
       updateSplashText(other.splashText);
     keybinds = other.keybinds;
     other.performanceMode ? document.body.classList.remove("enableAnimations") : document.body.classList.add("enableAnimations");
+    document.body.classList.toggle("smpp-focus-mode", !!other.focusMode);
     if (onHomePage) updateDiscordPopup(other.discordButton);
   }
   function applyProfile(profile) {
@@ -13277,7 +14988,7 @@ ${code}`;
       "notifsToggleLabel"
     );
     if (notifsToggleLabel) notifsToggleLabel.innerText = "Toon pop-ups";
-    if (window.location.pathname.startsWith("/results/main/results/")) {
+    if (window.location.pathname.startsWith("/results/main/results")) {
       buisStats();
     }
     if (document.querySelector(".login-app__left")) updateLoginPanel();
@@ -13287,6 +14998,7 @@ ${code}`;
       action: "getSettingsData"
     });
     console.log("Applying with settings data: \n", data2);
+    updateCurrentThemeName(data2.appearance.theme);
     await reloadDMenuConfig();
     if (onHomePage) setEditMode(false);
     await applyAppearance(data2.appearance);
@@ -13370,9 +15082,9 @@ ${code}`;
       alert("SMPP is 2x geladen");
     }
     document.body.classList.add("smpp");
-    await migrate();
     applyFixes();
-    await createStaticGlobals();
+    await migrate();
+    await createGlobals();
     await createWidgetSystem();
     if (document.querySelector("nav.topnav")) {
       await createSettingsWindow();

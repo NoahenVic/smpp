@@ -5,11 +5,82 @@ import { clearAllData } from "../../fixes-utils/utils.js";
 import { openGlobalChat } from "../globalchat.js";
 import { resetPlant } from "../../widgets/plant.js";
 import { openURL, browser } from "../../common/utils.ts";
+import { Toast } from "../../fixes-utils/utils.js";
+import { updateTheme } from "../appearance/themes.js";
 
 let quicks = [];
 let links = [];
 let vakken = [];
 let goto_items = [];
+let favoriteKeys = [];
+
+function normalizeQuick(quick) {
+  return {
+    name: quick.name.toLowerCase(),
+    url: quick.url,
+    favorite: quick.favorite ?? false,
+  };
+}
+
+function makeFavoriteKey(kind, value) {
+  return `${kind}:${value.toLowerCase()}`;
+}
+
+function isFavoriteKey(favoriteKey) {
+  return favoriteKeys.includes(favoriteKey);
+}
+
+async function loadFavoriteKeys() {
+  const loadedFavoriteKeys = await browser.runtime.sendMessage({
+    action: "getSetting",
+    name: "other.quickFavorites",
+  });
+  favoriteKeys = Array.isArray(loadedFavoriteKeys)
+    ? loadedFavoriteKeys.map((key) => String(key).toLowerCase())
+    : [];
+}
+
+async function saveFavoriteKeys() {
+  await browser.runtime.sendMessage({
+    action: "setSetting",
+    name: "other.quickFavorites",
+    data: favoriteKeys,
+  });
+}
+
+function setFavoriteKey(favoriteKey, nextFavorite) {
+  const normalizedKey = favoriteKey.toLowerCase();
+  const hasKey = favoriteKeys.includes(normalizedKey);
+
+  if (nextFavorite && !hasKey) {
+    favoriteKeys.push(normalizedKey);
+  }
+
+  if (!nextFavorite && hasKey) {
+    favoriteKeys = favoriteKeys.filter((key) => key != normalizedKey);
+  }
+
+  void saveFavoriteKeys();
+}
+
+function createQuickMenuItem(kind, value, meta, extra = {}) {
+  const favoriteKey = makeFavoriteKey(kind, value);
+  const favorite = isFavoriteKey(favoriteKey);
+  const extraFavoriteToggle = extra.onFavoriteToggle;
+  return {
+    ...extra,
+    value,
+    meta,
+    favorite,
+    favoriteKey,
+    onFavoriteToggle: (nextFavorite) => {
+      setFavoriteKey(favoriteKey, nextFavorite);
+      if (typeof extraFavoriteToggle == "function") {
+        extraFavoriteToggle(nextFavorite);
+      }
+    },
+  };
+}
 
 if (document.querySelector(".topnav")) {
   fetch_links();
@@ -19,16 +90,25 @@ if (document.querySelector(".topnav")) {
 
 function quick_cmd_list() {
   let cmd_list = [];
-  for (let i = 0; i < quicks.length; i++) {
-    cmd_list.push({ value: quicks[i].name, meta: "quick: " + quicks[i].url });
+  for (let quick of quicks) {
+    cmd_list.push(
+      createQuickMenuItem("quick", quick.name, "quick", {
+        url: quick.url,
+      })
+    );
   }
   return cmd_list;
 }
 
-function add_quick(name, url) {
-  let quick = { name: name.toLowerCase(), url: url };
+function add_quick(name, url, favorite = undefined) {
+  let quick = {
+    name: name.toLowerCase(),
+    url: url,
+    favorite: favorite ?? false,
+  };
   for (let i = 0; i < quicks.length; i++) {
     if (quicks[i].name == name) {
+      quick.favorite = favorite ?? quicks[i].favorite ?? false;
       quicks[i] = quick;
       quick_save();
       return;
@@ -36,6 +116,15 @@ function add_quick(name, url) {
   }
   quicks.push(quick);
   quick_save();
+}
+function set_quick_favorite(name, favorite) {
+  for (let i = 0; i < quicks.length; i++) {
+    if (quicks[i].name == name) {
+      quicks[i].favorite = favorite;
+      quick_save();
+      return;
+    }
+  }
 }
 function remove_quick(name) {
   for (let i = 0; i < quicks.length; i++) {
@@ -48,13 +137,30 @@ function remove_quick(name) {
 }
 
 export async function quickLoad() {
-  const quicks = await browser.runtime.sendMessage({
+  await loadFavoriteKeys();
+  const loadedQuicks = await browser.runtime.sendMessage({
     action: "getSetting",
     name: "other.quicks",
   });
-  if (!quicks) {
+  if (!loadedQuicks) {
+    quicks = [];
     return [];
   }
+  quicks = loadedQuicks.map(normalizeQuick);
+  const migratedFavoriteKeys = quicks
+    .filter((quick) => quick.favorite)
+    .map((quick) => makeFavoriteKey("quick", quick.name));
+  const mergedFavoriteKeys = [
+    ...new Set([...favoriteKeys, ...migratedFavoriteKeys]),
+  ];
+  if (mergedFavoriteKeys.length !== favoriteKeys.length) {
+    favoriteKeys = mergedFavoriteKeys;
+    await saveFavoriteKeys();
+  }
+  quicks = quicks.map((quick) => ({
+    ...quick,
+    favorite: isFavoriteKey(makeFavoriteKey("quick", quick.name)),
+  }));
   return quicks;
 }
 
@@ -70,8 +176,8 @@ function add_quick_interactive() {
   let cmd_list = quick_cmd_list();
   dmenu(
     cmd_list,
-    function(name, shift) {
-      value_list = [];
+    function (name, shift) {
+      let value_list = [];
       for (let i = 0; i < quicks.length; i++) {
         if (quicks[i].name == name) {
           value_list = [{ value: quicks[i].url }];
@@ -80,7 +186,7 @@ function add_quick_interactive() {
       }
       dmenu(
         value_list,
-        function(value, shift) {
+        function (value, shift) {
           if (!value.startsWith("http")) {
             value = "https://" + value;
           }
@@ -97,7 +203,7 @@ function remove_quick_interactive() {
   let cmd_list = quick_cmd_list();
   dmenu(
     cmd_list,
-    function(name, shift) {
+    function (name, shift) {
       remove_quick(name);
     },
     "name:"
@@ -145,9 +251,7 @@ async function fetch_vakken() {
 
 function scrape_goto() {
   goto_items = [];
-  let goto_items_html = document.querySelectorAll(
-    ".js-shortcuts-container > a"
-  );
+  let goto_items_html = document.querySelectorAll(".js-shortcuts-container a");
   for (let i = 0; i < goto_items_html.length; i++) {
     const item = goto_items_html[i];
     goto_items.push({
@@ -163,28 +267,52 @@ export function unbloat() {
 }
 
 export async function do_qm(opener = "") {
+  await loadFavoriteKeys();
+  const settings = await browser.runtime.sendMessage({
+    action: "getSettingsData",
+  });
   let cmd_list = quick_cmd_list()
-    .concat(goto_items)
-    .concat(vakken)
-    .concat(links)
+    .concat(
+      goto_items.map((item) =>
+        createQuickMenuItem("goto", item.value, item.meta, { url: item.url })
+      )
+    )
+    .concat(
+      vakken.map((item) =>
+        createQuickMenuItem("vak", item.value, item.meta, { url: item.url })
+      )
+    )
+    .concat(
+      links.map((item) =>
+        createQuickMenuItem("link", item.value, item.meta, { url: item.url })
+      )
+    )
     .concat([
-      "home",
-      "quick add",
-      "quick remove",
-      "unbloat",
-      "config",
-      "clearsettings",
-      "discord",
-      "toggle performance mode",
-      "dizzy",
-      "breakdmenu",
-      "glass",
-      "ridge",
-      "reset plant",
-      "remove current theme",
-      "test cats",
-      "posh text",
-      "funny text",
+      createQuickMenuItem("cmd", "home", "command"),
+      createQuickMenuItem("cmd", "planner", "command"),
+      createQuickMenuItem("cmd", "messages", "command"),
+      createQuickMenuItem("cmd", "results", "command"),
+      createQuickMenuItem("cmd", "assignments", "command"),
+      createQuickMenuItem("cmd", "today", "command"),
+      createQuickMenuItem("cmd", "focus", "command"),
+      createQuickMenuItem("cmd", "theme random", "command"),
+      createQuickMenuItem("cmd", "copy link", "command"),
+      createQuickMenuItem("cmd", "reload", "command"),
+      createQuickMenuItem("cmd", "top", "command"),
+      createQuickMenuItem("cmd", "quick add", "command"),
+      createQuickMenuItem("cmd", "quick remove", "command"),
+      createQuickMenuItem("cmd", "unbloat", "command"),
+      createQuickMenuItem("cmd", "config", "command"),
+      createQuickMenuItem("cmd", "clearsettings", "command"),
+      createQuickMenuItem("cmd", "discord", "command"),
+      createQuickMenuItem("cmd", "dizzy", "command"),
+      createQuickMenuItem("cmd", "breakdmenu", "command"),
+      createQuickMenuItem("cmd", "glass", "command"),
+      createQuickMenuItem("cmd", "ridge", "command"),
+      createQuickMenuItem("cmd", "reset plant", "command"),
+      createQuickMenuItem("cmd", "remove current theme", "command"),
+      createQuickMenuItem("cmd", "posh text", "command"),
+      createQuickMenuItem("cmd", "funny text", "command"),
     ]);
 
   if (dmenuConfig.toplevelConfig) {
@@ -193,7 +321,7 @@ export async function do_qm(opener = "") {
 
   dmenu(
     cmd_list,
-    async function(cmd) {
+    async function (cmd) {
       switch (cmd) {
         case "unbloat":
           unbloat();
@@ -210,7 +338,7 @@ export async function do_qm(opener = "") {
         case "config":
           dmenu(
             await getDMenuOptionsForSettings(false),
-            function(cmd, shift) {
+            function (cmd, shift) {
               dmenuEditConfig(cmd);
             },
             "config: "
@@ -228,15 +356,71 @@ export async function do_qm(opener = "") {
         case "home":
           openURL("/");
           return;
+        case "planner":
+          openURL("/planner");
+          return;
+        case "messages":
+          openURL("/messages");
+          return;
+        case "results":
+          openURL("/results");
+          return;
+        case "assignments":
+          openURL("/planner");
+          return;
+        case "today":
+          openURL("/");
+          return;
+        case "focus":
+          settings.other.focusMode = !settings.other.focusMode;
+          await browser.runtime.sendMessage({
+            action: "setSettingsData",
+            data: settings,
+          });
+          document.body.classList.toggle(
+            "smpp-focus-mode",
+            settings.other.focusMode
+          );
+          new Toast(
+            settings.other.focusMode
+              ? "Focus mode enabled"
+              : "Focus mode disabled",
+            "info"
+          ).render();
+          return;
         case "clearsettings":
           clearAllData();
+          return;
+        case "theme random":
+          {
+            const themes = await browser.runtime.sendMessage({
+              action: "getThemes",
+              categories: ["quickSettings"],
+              includeHidden: false,
+            });
+            const themeNames = Object.keys(themes);
+            if (themeNames.length === 0) return;
+            const nextTheme =
+              themeNames[Math.floor(Math.random() * themeNames.length)];
+            await updateTheme(nextTheme);
+            new Toast("Theme changed", "success").render();
+          }
+          return;
+        case "copy link":
+          await navigator.clipboard.writeText(window.location.href);
+          new Toast("Page link copied", "success").render();
+          return;
+        case "reload":
+          window.location.reload();
+          return;
+        case "top":
+          window.scrollTo({ top: 0, behavior: "smooth" });
           return;
         case "ridge":
           document.body.classList.add("ridge");
           return;
         case "gcbeta":
           openGlobalChat(null, true);
-          console.log("a");
           return;
         case "dizzy":
           const styleEl = document.createElement("style");
@@ -252,12 +436,6 @@ export async function do_qm(opener = "") {
         case "reset plant":
           resetPlant();
           return;
-        case "plant data":
-          console.log(
-            await browser.runtime.sendMessage({
-              action: "getPlantAppData",
-            })
-          );
         case "remove current theme":
           let data = await browser.runtime.sendMessage({
             action: "getSettingsData",
@@ -267,13 +445,6 @@ export async function do_qm(opener = "") {
             id: data.appearance.theme,
           });
           break;
-        case "test cats":
-          let themes = await browser.runtime.sendMessage({
-            action: "getThemes",
-            categories: ["quickSettings"],
-            includeHidden: true,
-          });
-          console.log(themes);
         case "posh text":
           document.body.style.setProperty(
             "--font-family",

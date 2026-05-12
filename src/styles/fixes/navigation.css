@@ -1,8 +1,10 @@
 .smsc-topnav .topnav__badge {
   background-color: var(--color-text) !important;
-  color: var(--color-base02) !important;
-  border: 2px solid var(--color-base03) !important;
-  max-height: 18.6px !important;
+  color: var(--color-base01) !important;
+  border: transparent solid var(--color-base03) !important;
+  min-width: 16px !important;
+  min-height: 16px !important;
+  max-height: 16px !important;
 }
 
 .topnav__menu-arrow {
@@ -161,6 +163,7 @@ input::placeholder {
   align-items: center !important;
   transition: none !important;
   overflow-y: hidden !important;
+  box-shadow: 0 0.333rem 1.333rem var(--color-shadow) !important;
 }
 
 .glass .smsc-topnav .topnav__menu,
@@ -220,11 +223,20 @@ input::placeholder {
   font-weight: 600 !important;
 }
 
+.blueprint .bp-c-combo-primary--300,
+.blueprint .bp-c-combo-hover-primary--300 {
+  border: 2px solid !important;
+  border-radius: 0.75rem !important;
+}
+
+.blueprint .bp-c-combo-primary--300,
+.blueprint .bp-c-combo-hover-primary--300,
 .btn.btn--primary {
   border-color: var(--color-accent) !important;
   background-color: var(--color-base02) !important;
 }
-
+.blueprint .bp-c-combo-primary--300:hover,
+.blueprint .bp-c-combo-hover-primary--300:hover,
 .btn.btn--primary:hover {
   border-color: var(--color-accent) !important;
   background-color: var(--color-base03) !important;
@@ -388,7 +400,8 @@ td[bgcolor*="#"] {
   top: 0px !important;
   margin-top: 37px !important;
   height: 100% !important;
-
+  max-height: calc(100vh - 100px) !important;
+  overflow-y: scroll !important;
   border: 2px solid var(--color-base02) !important;
   border-radius: 1.5rem !important;
   padding: 1rem !important;
@@ -427,4 +440,25 @@ td[bgcolor*="#"] {
 
 .smsc-topnav [data-shortcuts] .topnav__menu--shortcuts hr.menu-divider {
   border-top: none !important;
+}
+
+.smsc-topnav [data-shortcuts] .topnav__menu--shortcuts .pin-button {
+  right: 0 !important;
+}
+
+.smsc-topnav [data-shortcuts] .topnav__menu--shortcuts .pin-button:focus,
+.smsc-topnav [data-shortcuts] .topnav__menu--shortcuts .pin-button:hover {
+  border: 2px solid var(--color-base03) !important;
+  background-color: var(--color-base02) !important;
+  border-radius: 0.5rem !important;
+}
+
+.modern-ui .smsc-topnav .topnav .favourites-container,
+.smsc-topnav .topnav .favourites-container {
+  gap: 0.5rem !important;
+}
+
+.classMatesContainer.show {
+  max-height: calc(100vh - 50px) !important;
+  overflow-y: scroll !important;
 }
