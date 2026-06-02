@@ -1,0 +1,70 @@
+{
+  "username": null,
+  "useSMpfp": false,
+  "theme": "default",
+  "glass": false,
+  "quickSettingsThemes": [
+    "default",
+    "white",
+    "ldev",
+    "birb",
+    "stalker",
+    "purple",
+    "chocolate",
+    "fall",
+    "winter",
+    "matcha",
+    "mountain",
+    "sand",
+    "galaxy",
+    "pink",
+    "tech"
+  ],
+  "background": {
+    "blur": 0
+  },
+  "weatherOverlay": {
+    "type": "realtime",
+    "amount": 0,
+    "opacity": 1
+  },
+  "tabLogo": "sm",
+  "news": true,
+  "buttons": {
+    "GO": false,
+    "GC": true,
+    "search": false,
+    "quickMenu": false
+  },
+  "switchCoursesAndLinks": true,
+  "icons": {
+    "home": true,
+    "mail": true,
+    "notifications": true,
+    "settings": true
+  },
+  "quicks": [],
+  "performanceMode": false,
+  "splashText": true,
+  "discordButton": true,
+  "dmenu": {
+    "centered": true,
+    "itemScore": false,
+    "toplevelConfig": false
+  },
+  "keybinds": {
+    "dmenu": ":",
+    "widgetEditMode": "E",
+    "widgetBag": "Space",
+    "settings": ",",
+    "gc": "G",
+    "pageNavigation": {
+      "home": "H",
+      "messages": "M",
+      "planner": "P"
+    }
+  },
+  "reminders": {
+    "assignments": true
+  }
+}

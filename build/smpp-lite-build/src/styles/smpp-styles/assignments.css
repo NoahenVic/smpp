@@ -1,0 +1,45 @@
+/* Whaatt Jorne gebruikt classes in assignments??? - you rn */
+
+.assignment__item {
+  transition-property: background-color, margin-left, padding-left;
+  transition: 0.3s ease;
+}
+.assignment__item {
+  position: relative;
+  border-radius: 0.75rem;
+  overflow: visible;
+  display: flex;
+  align-items: stretch;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.assignment__item:hover {
+  margin-left: 0.25rem;
+  padding-left: 0.25rem;
+  background-color: var(--color-base00);
+  cursor: pointer;
+}
+
+.abvr__div {
+  max-width: fit-content;
+  display: flex;
+  align-items: center;
+  padding-right: 7.5px;
+}
+
+.wrapperdiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.667rem;
+  height: 2.667rem;
+  border-radius: 0.5rem;
+}
+
+.as_all_done {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 1.2em;
+  color: var(--color-text);
+}

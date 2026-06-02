@@ -1,0 +1,48 @@
+{
+  "dark": [
+    "default",
+    "birb",
+    "ldev",
+    "tech",
+    "stalker",
+    "mountain",
+    "purple",
+    "chocolate",
+    "fall",
+    "winter",
+    "matcha",
+    "vax",
+    "sand",
+    "ocean",
+    "otters",
+    "galaxy",
+    "japan",
+    "error",
+    "smkerst",
+    "darkglass",
+    "minecraft",
+    "lost",
+    "mclaren"
+  ],
+  "light": [
+    "white",
+    "summer",
+    "pink",
+    "fairyblue",
+    "boringwhite",
+    "pizza",
+    "lightglass"
+  ],
+  "seasonal": ["fall", "smkerst", "winter", "summer", "matcha"],
+  "hidden": [
+    "fairyblue",
+    "vax",
+    "pizza",
+    "error",
+    "smkerst",
+    "japan",
+    "summer",
+    "ocean",
+    "boringwhite"
+  ]
+}

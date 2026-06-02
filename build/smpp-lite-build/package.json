@@ -1,0 +1,31 @@
+{
+  "name": "smpp",
+  "version": "1.0.0",
+  "description": "Verbeter en personaliseer je Smartschool-ervaring met thema's, widgets, games en meer.",
+  "homepage": "https://github.com/sprksoft/smpp#readme",
+  "bugs": {
+    "url": "https://github.com/sprksoft/smpp/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sprksoft/smpp.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "build": "esbuild src/index.ts src/background-scripts/index.ts --bundle --external:*.png --external:*.svg --external:\"\"  --outdir=./extension && tsc"
+  },
+  "devDependencies": {
+    "@types/colorthief": "^2.6.0",
+    "@types/node": "^25.0.9",
+    "esbuild": "^0.27.2",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "browser-image-compression": "^2.0.2",
+    "colord": "^2.9.3",
+    "node-vibrant": "^4.0.3"
+  }
+}

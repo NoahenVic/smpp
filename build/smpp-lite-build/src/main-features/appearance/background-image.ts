@@ -1,0 +1,59 @@
+import { browser, getExtensionImage } from "../../common/utils.js";
+import { isValidImage } from "../../fixes-utils/utils.js";
+import { getImageURL, type SMPPImage } from "../modules/images.js";
+import type { Settings } from "../settings/main-settings.js";
+
+export async function setBackground(appearance: Settings["appearance"]) {
+  function displayBackgroundImage(imageSrc: string | null) {
+    document.documentElement.style.setProperty(
+      "--background-color",
+      `transparent`
+    );
+    let imgContainer =
+      (document.getElementById(
+        "smpp-background-image-container"
+      ) as HTMLDivElement) || document.createElement("div");
+    imgContainer.id = "smpp-background-image-container";
+    imgContainer.classList.add("smpp-background-image-container");
+
+    let img =
+      (document.getElementById("smpp-background-image") as HTMLImageElement) ||
+      document.createElement("img");
+    img.id = "smpp-background-image";
+    img.classList.add("smpp-background-image");
+
+    if (imageSrc) {
+      img.classList.remove("image-not-available");
+      img.src = imageSrc;
+    } else {
+      img.classList.add("image-not-available");
+      img.src = "";
+    }
+
+    if (
+      !document.getElementById("smpp-background-image") &&
+      !document.getElementById("tinymce")
+    ) {
+      document.body.appendChild(imgContainer);
+      imgContainer.appendChild(img);
+    }
+  }
+
+  let imageURL = await getImageURL(
+    appearance.theme,
+    async () => {
+      return await getExtensionImage(
+        "theme-backgrounds/" + appearance.theme + ".jpg"
+      );
+    },
+    false
+  );
+  console.log(imageURL.url);
+  if (await isValidImage(imageURL.url)) {
+    console.log("valid");
+    displayBackgroundImage(imageURL.url);
+  } else {
+    console.log("not valid");
+    displayBackgroundImage(null);
+  }
+}

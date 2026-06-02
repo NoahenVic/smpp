@@ -1,0 +1,69 @@
+{
+  "profile": {
+    "username": "string",
+    "useSMpfp": "boolean"
+  },
+  "appearance": {
+    "theme": null,
+    "glass": "boolean",
+    "quickSettingsThemes": "array",
+    "background": {
+      "blur": "number"
+    },
+    "weatherOverlay": {
+      "type": [
+        "realtime",
+        "rain",
+        "snow"
+      ],
+      "amount": "number",
+      "opacity": "number"
+    },
+    "tabLogo": [
+      "sm",
+      "smpp"
+    ],
+    "news": "boolean"
+  },
+  "topNav": {
+    "buttons": {
+      "GO": "boolean",
+      "GC": "boolean",
+      "search": "boolean",
+      "quickMenu": "boolean"
+    },
+    "switchCoursesAndLinks": "boolean",
+    "icons": {
+      "home": "boolean",
+      "mail": "boolean",
+      "notifications": "boolean",
+      "settings": "boolean"
+    }
+  },
+  "other": {
+    "quicks": "array",
+    "performanceMode": "boolean",
+    "splashText": "boolean",
+    "discordButton": "boolean",
+    "dmenu": {
+      "centered": "boolean",
+      "itemScore": "boolean",
+      "toplevelConfig": "boolean"
+    },
+    "keybinds": {
+      "dmenu": "keybind",
+      "widgetEditMode": "keybind",
+      "widgetBag": "keybind",
+      "settings": "keybind",
+      "gc": "keybind",
+      "pageNavigation": {
+        "home": "keybind",
+        "messages": "keybind",
+        "planner": "keybind"
+      }
+    },
+    "reminders": {
+      "assignments": "boolean"
+    }
+  }
+}

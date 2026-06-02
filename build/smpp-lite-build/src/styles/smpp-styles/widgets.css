@@ -1,0 +1,563 @@
+html {
+  --smpp-widget-insertion-point-size: 4px;
+  --smpp-widget-bag-widget-margin: 1rem;
+  --smpp-widget-bag-margin: 3%;
+  --smpp-widget-bag-handle-radius: 40px;
+  --smpp-widget-bag-handle-height: 60px;
+
+  --pannel-width: calc(
+    300px + 1rem * 2
+  ); /*  panelWidth(300px) + widgetMargin(1rem) + widgetBorderSize(3px) * 2  // times 2 because left and right border+margin */
+
+  --preview-width: calc(var(--pannel-width) * 0.7);
+  --bag-close-transformy: calc(
+    -100% - var(--smpp-widget-bag-margin) - 8px +
+      var(--smpp-widget-bag-handle-height)
+  ); /* -8px for 2 times the border size */
+}
+
+/* Loading spinner animation */
+.loading-spinner {
+  animation: spin 1s linear infinite;
+  transform-origin: center;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.glass .smpp-widget {
+  background: var(--darken-background) !important;
+  backdrop-filter: var(--large-blur) !important;
+  border-width: 2px;
+}
+/* Only use rem's here no em because widgets will be moved to body when they are dragged */
+.smpp-widget {
+  height: min-content;
+  transition:
+    transform 0.4s,
+    padding 0.25s;
+  transform: scale(1) rotate(0deg);
+  background-color: var(--color-base01);
+  padding: 1.5rem;
+  border-radius: 1.75rem;
+  box-shadow: 0 0 10px var(--color-shadow);
+  margin: 0rem 1rem 0rem 1rem;
+  border: 3px solid var(--color-base03);
+  box-sizing: border-box;
+  /* Needed to make getClientBounds return the width without the border size*/
+  font-size: 1rem;
+  /* Inherited font-size is not in rem */
+}
+
+.smpp-widget-preview {
+  overflow: visible;
+  position: relative;
+}
+
+.smpp-widgets-container {
+  display: flex;
+  flex-direction: row;
+  border: none;
+  height: 100%;
+}
+
+/* NEWS */
+.smpp-news-container {
+  flex-grow: 1;
+  overflow: auto;
+  overflow-x: hidden;
+}
+
+.smpp-news-container.show-news {
+  backdrop-filter: blur(2px);
+}
+
+#smpp-news-content {
+  display: none !important;
+  background: var(--darken-background) !important;
+}
+.smpp-news-container.show-news:not(.smpp-news-editmode) #smpp-news-content {
+  display: block !important;
+}
+
+.smpp-news-editor {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: calc(100% - 6rem);
+  margin: 3rem;
+  background-color: transparent;
+  border-radius: 4rem;
+}
+.enableAnimations .smpp-news-editor {
+  transition: background-color 0.3s;
+}
+.smpp-news-container.show-news .smpp-news-editor {
+  background-color: var(--darken-background);
+}
+
+.smpp-widget.smpp-widget-preview {
+  margin: 0;
+}
+
+.smpp-widget-preview {
+  min-width: var(--preview-width);
+  max-width: var(--preview-width);
+}
+
+.smpp-widget-preview:has(.smpp-widget-smartschool) {
+  min-width: var(--pannel-width);
+  max-width: var(--pannel-width);
+}
+
+.smpp-widget-bag-placeholder {
+  display: none;
+}
+
+.smpp-widget-bag-placeholder {
+  background: var(--color-base02);
+  border-radius: 1.5rem;
+}
+.glass .smpp-widget-pannel {
+  backdrop-filter: none;
+}
+.smpp-widget-pannel {
+  min-width: calc(
+    300px + 1rem * 2
+  ); /* panelWidth(300px) + widgetMargin(1rem) + widgetBorderSize(3px) * 2  // times 2 because left and right border+margin */
+  max-width: calc(300px + (1rem) * 2);
+  background-color: var(--color-homepage-sidebars-bg);
+  backdrop-filter: blur(4px);
+  overflow: auto; /* Enable scroll because when there are too many widgets in 1 panel the page scrolls weird*/
+}
+
+.smpp-widget-insertion-point {
+  background-color: transparent;
+  max-height: var(--smpp-widget-insertion-point-size);
+  min-height: var(--smpp-widget-insertion-point-size);
+  min-width: unset;
+  max-width: unset;
+  border-radius: 100000px;
+  margin: 0.5rem 1rem;
+}
+
+.enableAnimations .smpp-widget-insertion-point {
+  transition: background-color 0.5s;
+}
+
+.smpp-widget-insertion-point.smpp-widget-insertion-point-pannel {
+  background-color: var(--color-base02);
+  min-width: var(--smpp-widget-insertion-point-size);
+  max-width: var(--smpp-widget-insertion-point-size);
+  min-height: unset;
+  max-height: unset;
+  margin: 0px;
+}
+
+.smpp-widget-dragging-something .smpp-widget-insertion-point-targeted {
+  background-color: var(--color-accent);
+}
+
+/* EDITMODE */
+
+.smpp-widget-edit-mode {
+  user-select: none;
+}
+.enableAnimations .smpp-widget-edit-mode .topnav {
+  filter: blur(1px) saturate(50%);
+}
+.smpp-widget-edit-mode .topnav {
+  pointer-events: none;
+  filter: saturate(50%);
+  opacity: 0.9;
+}
+
+.enableAnimations .topnav {
+  transition:
+    opacity 0.3s ease-in-out,
+    filter 0.3s ease-in-out !important;
+}
+
+.smpp-widget-edit-mode:not(.smpp-widget-dragging-something)
+  .smpp-widget:not(.smpp-widget-preview):not(.smpp-widget-dragging) {
+  border-color: transparent;
+  outline: 4px dashed var(--color-black);
+  box-shadow: 0 0 0 3.5px var(--color-yellow);
+}
+
+.smpp-widget-edit-mode .smpp-widget > *,
+.smpp-widget-preview > * {
+  pointer-events: none;
+  user-select: none;
+}
+
+.smpp-widget-edit-mode:not(.smpp-widget-dragging-something) .smpp-widget:hover {
+  transform: translateY(-5px);
+  cursor: move;
+}
+
+.smpp-widget.smpp-widget-dragging {
+  margin: 0px;
+  position: fixed;
+  z-index: 10000000;
+  pointer-events: none;
+
+  opacity: 0.5;
+  cursor: move;
+}
+
+.smpp-widget.smpp-widget-delete {
+  animation: smppWidgetDelete 0.4s infinite;
+  border-color: var(--color-red);
+}
+
+@keyframes smppWidgetDelete {
+  0% {
+    transform: rotate(5deg);
+  }
+
+  50% {
+    transform: rotate(-5deg);
+  }
+
+  100% {
+    transform: rotate(5deg);
+  }
+}
+
+.edit_button {
+  fill: none;
+  stroke: var(--color-accent);
+}
+
+/* BAG */
+.smpp-widget-bag {
+  position: fixed;
+  left: var(--smpp-widget-bag-margin);
+  right: var(--smpp-widget-bag-margin);
+  top: var(--smpp-widget-bag-margin);
+  bottom: var(--smpp-widget-bag-margin);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+  transform: translateY(-100vh);
+
+  z-index: 100;
+}
+
+.smpp-widget-edit-mode .smpp-widget-bag {
+  transform: translateY(calc(var(--bag-close-transformy) - 10px));
+  @starting-style {
+    transform: translateY(-100vh);
+  }
+}
+
+.smpp-widget-edit-mode .smpp-widget-bag.smpp-widget-bag-delete,
+.smpp-widget-edit-mode .smpp-widget-bag:not(.smpp-widget-bag-open):hover {
+  transform: translateY(var(--bag-close-transformy));
+}
+
+.enableAnimations .smpp-widget-bag {
+  transition: transform 0.5s;
+}
+
+.glass .smpp-widget-bag-content {
+  background: var(--darken-background);
+  backdrop-filter: var(--surface-blur);
+}
+
+.smpp-widget-bag-content {
+  width: 100%;
+  background-color: var(--color-base01);
+  color: var(--color-text);
+  border: solid var(--color-accent) 4px;
+  border-radius: 50px;
+
+  box-shadow: 0px 0px 100px #000000aa;
+
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+
+  pointer-events: auto;
+  overflow: hidden;
+}
+
+.smpp-widget-bag-inner-content {
+  padding-top: 20px;
+  overflow: scroll;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.smpp-widget-bag.smpp-widget-bag-delete .smpp-widget-bag-handle,
+.smpp-widget-bag.smpp-widget-bag-delete .smpp-widget-bag-content {
+  border-color: var(--color-red);
+}
+
+.smpp-widget-bag-group {
+  margin: 1rem;
+  gap: 2rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.smpp-widget-bag-group-title {
+  margin: 1rem 1rem 0.5rem 3rem !important;
+  width: fit-content;
+  font-size: 2.5rem;
+  border-bottom: 3px solid var(--color-base02) !important;
+}
+
+.smpp-widget-bag.smpp-widget-bag-open {
+  transform: translateY(0px);
+}
+
+/* BAG HANDLE */
+.smpp-widget-bag-handle {
+  height: var(--smpp-widget-bag-handle-height);
+  width: 40%;
+
+  background-color: var(--color-base01);
+  color: var(--color-accent);
+  border: solid var(--color-accent) 4px;
+  border-top: none;
+  border-bottom-left-radius: var(--smpp-widget-bag-handle-radius);
+  border-bottom-right-radius: var(--smpp-widget-bag-handle-radius);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.smpp-widget-bag.smpp-widget-bag-delete .smpp-widget-bag-handle-icon {
+  color: var(--color-red);
+}
+
+.enableAnimations .smpp-widget-bag-handle-icon,
+.enableAnimations .smpp-widget-bag-handle {
+  transition:
+    border-color 0.5s,
+    color 0.5s,
+    transform 0.5s;
+}
+
+.smpp-widget-bag-open .smpp-widget-bag-handle-icon {
+  transform: rotate(180deg);
+}
+
+.smpp-widget-bag-handle-icon {
+  width: 50px;
+  display: block;
+}
+
+/* WIDGET STYLES */
+.smpp-error-widget {
+  color: var(--color-red);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-weight: bold;
+}
+
+p.smpp-error-widget {
+  margin-bottom: 0 !important;
+}
+
+.smpp-error-widget .widgetName {
+  text-align: center;
+  display: block;
+}
+
+.enableAnimations .smpp-error-widget button {
+  transition:
+    scale 0.1s ease-in-out,
+    border-color 0.2s ease-in-out,
+    background 0.2s ease-in-out;
+}
+
+.smpp-error-widget button {
+  margin-top: 0.5rem;
+  appearance: none;
+  cursor: pointer;
+  box-shadow: 0px 2px 10px 0px var(--color-shadow);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: var(--color-accent) !important;
+  font-size: 1.4rem !important;
+  font-weight: 700 !important;
+  padding: 0.5rem 1.5rem 0.6rem;
+  background: var(--color-base01);
+  border-radius: 1.25rem;
+  border: 2px solid var(--color-base03);
+  gap: 0.5rem;
+}
+
+.smpp-error-widget button:hover {
+  border-color: var(--color-accent);
+  background: var(--color-base02);
+}
+
+.smpp-widget:has(.smpp-widget-smartschool) {
+  padding: 0px !important;
+}
+
+div.smpp-widget.smpp-widget-transparent {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  border-color: transparent;
+  box-shadow: none;
+  padding: 0rem;
+}
+
+.smpp-widget-edit-mode .smpp-widget-transparent {
+  background-color: var(--color-base01) !important;
+  border: 3px solid var(--color-base03);
+  box-shadow: 0 0 10px var(--color-shadow);
+  padding: 1rem;
+}
+
+@keyframes moveDoneButton {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0;
+    transform: translateY(-30px) translateX(0px);
+    filter: var(--medium-blur);
+  }
+
+  70% {
+    opacity: 1;
+    filter: blur(0px);
+    transform: translateY(10px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes moveDoneButtonBack {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0;
+    transform: translateY(-30px) translateX(0px);
+    filter: var(--medium-blur);
+  }
+
+  90% {
+    opacity: 1;
+    filter: blur(0px);
+    transform: translateY(2px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.widgets-done-button {
+  padding: 0 !important;
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+  height: 3.25rem;
+  display: flex !important;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.7rem;
+  font-weight: 700;
+  opacity: 1;
+  border-radius: 100000px;
+  padding: 0rem 1.5rem !important;
+  border: 3px solid var(--color-base02);
+  background-color: var(--color-base01);
+  box-shadow: 0rem -0.5rem 2rem 1rem rgba(0, 0, 0, 0.5);
+  z-index: 90;
+}
+
+.widgets-done-button:active {
+  scale: 0.9;
+}
+
+.enableAnimations .widgets-done-button {
+  animation: moveDoneButtonBack 0.5s ease-in-out 0s 1;
+}
+.enableAnimations .widgets-done-button.smpp-widget-bag-open {
+  animation: moveDoneButton 0.5s ease-in-out 0s 1;
+}
+.widgets-done-button.smpp-widget-bag-open {
+  top: 5%;
+  right: 5%;
+  z-index: 1000;
+  height: 4rem;
+  font-size: 2rem;
+  box-shadow: 0rem 0rem 2rem 0rem rgba(0, 0, 0, 0.194);
+}
+
+.enableAnimations .widgets-done-button {
+  transition:
+    opacity 0.2s ease-in,
+    top 0.4s ease-in-out,
+    right 0.4s ease-in-out,
+    font-size 0.4s ease-in-out,
+    height 0.4s ease-in-out;
+}
+
+.enableAnimations .widgets-done-button {
+  transition-property: border-color, background-color;
+  transition: 0.1s ease-out;
+}
+.enableAnimations .widgets-done-button > svg {
+  transition-property: border-color, background-color, fill;
+  transition: 0.1s ease-out;
+}
+.widgets-done-button:hover {
+  border-color: var(--color-base03);
+  background-color: var(--color-base02);
+}
+
+.widgets-done-button.hidden {
+  display: flex !important;
+  opacity: 0;
+}
+
+.widgets-done-button:hover > svg {
+  fill: var(--color-green);
+}
+
+.widgets-done-button > svg {
+  width: 1.7rem;
+  overflow: visible;
+  margin: 0;
+  fill: var(--color-text);
+}
+
+.smpp-widget-bag-group:last-child {
+  margin-bottom: 1rem;
+}
+
+svg .pencil {
+  fill: var(--color-accent);
+}
